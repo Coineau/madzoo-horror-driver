@@ -6,6 +6,8 @@ void jeuInit(Jeu *pJeu)
 {
 	carInit(&(pJeu->car));
 	terInit(&(pJeu->ter));
+	/*int nsurvi=1;
+	dessurvisInit(pjeu->DesSurvivants,nsurvi);*/
 }
 
 Terrain *jeuGetTerrainPtr(Jeu *pJeu)

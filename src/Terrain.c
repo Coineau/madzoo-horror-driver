@@ -18,8 +18,8 @@ void terInit(Terrain *pTer)
 		".....#..............",
 		".....#####..........",
 		"....................",
-		"....................",
-		"...................." };
+		"............o.......",
+		"..................o." };
 
 	pTer->dimx = 20;
 	pTer->dimy = 20;
@@ -30,13 +30,7 @@ void terInit(Terrain *pTer)
 
 	for(y=0;y<pTer->dimy;++y)
 		for(x=0;x<pTer->dimx;++x)
-			pTer->tab[y][x] = terrain_defaut[y][x];
-		
-	for(y=0;y<pTer->dimy;++y)
-		for(x=0;x<pTer->dimx;++x)
-			if(pTer.tab[y][x] == 'o')
-				
-				surviInit(;
+			pTer->tab[y][x] = terrain_defaut[y][x];			
 }
 
 void terLibere(Terrain *pTer)
