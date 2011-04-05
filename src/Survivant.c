@@ -3,9 +3,10 @@
 #include <malloc.h>
 #include <assert.h>
 
-void surviInit(Survivant * survi)
+void surviInit(Survivant * survi, int posx, int posy)
 {
-	survi	.x=survi.y=0;
+	survi	.x=posx;
+	survi.y=posy;
 	survi.etat=0;
 }
 
