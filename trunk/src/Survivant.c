@@ -3,10 +3,9 @@
 #include <malloc.h>
 #include <assert.h>
 
-void surviInit(Survivant * survi, int posx, int posy)
+void surviInit(Survivant * survi)
 {
-	survi	.x=posx;
-	survi.y=posy;
+	survi	.x=survi.y=0;
 	survi.etat=0;
 }
 
@@ -25,4 +24,11 @@ int surviChangeEtat(Survivant * survi)
 	
 	
 	
+}
+
+
+void surviPlace(Survivant*, int posx, int posy)
+{
+	survi.x=posx;
+	survi.y=posy;
 }

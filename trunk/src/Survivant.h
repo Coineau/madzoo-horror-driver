@@ -10,9 +10,11 @@ typedef struct
 	
 } Survivant;
 
-void surviInit(Survivant);
+void surviInit(Survivant*)
 int surviGetX(Survivant);
 int surviGetY(Survivant);
-int surviChangeEtat(Survivant);
+int surviGetEtat(Survivant);
+void surviChangeEtat(Survivant);
+void surviPlace(Survivant*,x,y);
 
 #endif
