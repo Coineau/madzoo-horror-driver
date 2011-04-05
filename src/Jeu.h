@@ -2,20 +2,20 @@
 #ifndef _JEU_H
 #define _JEU_H
 
-#include "Pacman.h"
+#include "Car.h"
 #include "Terrain.h"
 
 typedef struct 
 {
 	Terrain ter;
-	Pacman pac;
+	Car car;
 } Jeu;
 
 void jeuInit(Jeu *);
 Terrain *jeuGetTerrainPtr(Jeu *);
-Pacman *jeuGetPacmanPtr(Jeu *);
+Car *jeuGetCarPtr(Jeu *);
 const Terrain *jeuGetConstTerrainPtr(const Jeu *);
-const Pacman *jeuGetConstPacmanPtr(const Jeu *);
+const Car *jeuGetConstCarPtr(const Jeu *);
 
 void jeuActionClavier(Jeu *j, const char);
 
