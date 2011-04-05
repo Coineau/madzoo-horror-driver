@@ -51,3 +51,5 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	rm -f $(OBJ_DIR)/*.o $(BIN_DIR)/$(FINAL_TARGET)
+
+blabla
