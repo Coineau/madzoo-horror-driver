@@ -4,7 +4,7 @@
 
 void jeuInit(Jeu *pJeu)
 {
-	pacInit(&(pJeu->pac));
+	carInit(&(pJeu->car));
 	terInit(&(pJeu->ter));
 }
 
@@ -13,9 +13,9 @@ Terrain *jeuGetTerrainPtr(Jeu *pJeu)
 	return &(pJeu->ter);
 }
 
-Pacman *jeuGetPacmanPtr(Jeu *pJeu)
+Car *jeuGetCarPtr(Jeu *pJeu)
 {
-	return &(pJeu->pac);
+	return &(pJeu->car);
 }
 
 const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
@@ -23,9 +23,9 @@ const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 	return &(pJeu->ter);
 }
 
-const Pacman *jeuGetConstPacmanPtr(const Jeu *pJeu)
+const Car *jeuGetConstCarPtr(const Jeu *pJeu)
 {
-	return &(pJeu->pac);
+	return &(pJeu->car);
 }
 
 
@@ -34,16 +34,16 @@ void jeuActionClavier(Jeu *pJeu, const char touche)
 	switch(touche)
 	{
 		case 'g' : 
-				pacGauche(&(pJeu->pac), &(pJeu->ter));
+				carGauche(&(pJeu->car), &(pJeu->ter));
 				break;
 		case 'd' :
-				pacDroite(&(pJeu->pac), &(pJeu->ter));
+				carDroite(&(pJeu->car), &(pJeu->ter));
 				break;
 		case 'h' :
-				pacHaut(&(pJeu->pac), &(pJeu->ter));
+				carHaut(&(pJeu->car), &(pJeu->ter));
 				break;
 		case 'b' : 
-				pacBas(&(pJeu->pac), &(pJeu->ter));
+				carBas(&(pJeu->car), &(pJeu->ter));
 				break;
 	}
 }
