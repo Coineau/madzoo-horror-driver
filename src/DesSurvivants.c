@@ -7,13 +7,16 @@
 void surviInit(DesSurvivants *dsurvis, Terrain *pTer)
 {
     int i, j;
-    for(j=0;j<getDimY(&pTer);++)
+    int k = 0;
+    dsurvis->tabS = (Survivant*)malloc(terGetnbS(&pTer)*sizeof(Survivant));
+    for(j=0;j<getDimY(&pTer);j++)
     {
         for(i=0;i<getDimX(&pTer);i++)
         {
             if (terEstPositionSurvivant(&pTer,i,j)==1)
             {
-                surviInit(Survivant*, const int x, const int y);
+                surviInit(tabS[k], i,j);
+                k=k+1;
             }
         }
     }
