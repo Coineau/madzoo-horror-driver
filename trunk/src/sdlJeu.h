@@ -10,7 +10,7 @@ typedef struct
 {
 	Jeu jeu;
 	SDL_Surface* surface_ecran;
-	SDL_Surface* surface_car;
+	SDL_Surface* surface_auto;
 	SDL_Surface* surface_mur;
         SDL_Surface* surface_titre;
 } sdlJeu;
