@@ -15,7 +15,7 @@ void dSurviInit(DesSurvivants *dsurvis, Terrain *pTer)
         {
             if (terEstPositionSurvivant(pTer,i,j)==1)
             {
-                surviInit(dsurvis->tabS[k], i,j);
+                surviInit(&(dsurvis->tabS[k]), i,j);
                 k=k+1;
             }
         }
