@@ -7,12 +7,12 @@ JEU	= graphique
 OS	= LINUX
 
 ifeq ($(JEU),texte)
-	SRCS = Pacman.c Terrain.c Jeu.c ncursJeu.c main.c
-	FINAL_TARGET = pacman_txt
+	SRCS = Auto.c Terrain.c Jeu.c ncursJeu.c main.c
+	FINAL_TARGET = mhd_txt
 	DEFINE = -D$(OS) -DJEU_NCURSES
 else
-	SRCS = Pacman.c Terrain.c Jeu.c sdlJeu.c main.c
-	FINAL_TARGET = pacman_gfx
+	SRCS = Auto.c Terrain.c Jeu.c sdlJeu.c main.c
+	FINAL_TARGET = mhd_gfx
 	DEFINE = -D$(OS) -DJEU_SDL
 endif
 
