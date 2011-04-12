@@ -12,7 +12,7 @@ void terInit(Terrain *pTer)
 		"    ##   #",
 		"          ",
 		"##    ####",
-		"##    #   #",
+		"##    #  #",
 		"          ",
 		"      ##  ",
 		"       #  ",
@@ -95,7 +95,7 @@ const int terGetnbS(const Terrain *pTer)
     return pTer->nbS;
 }
 
-void terSetnbS(const Terrain *, const int n)
+void terSetnbS(Terrain *pTer, const int n)
 {
     pTer->nbS = n;
 }
