@@ -8,7 +8,7 @@
 typedef struct 
 {
 	Terrain ter;
-	Auto auto;
+	Auto oto;
 } Jeu;
 
 void jeuInit(Jeu *);

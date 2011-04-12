@@ -4,7 +4,7 @@
 
 void jeuInit(Jeu *pJeu)
 {
-	autoInit(&(pJeu->auto));
+	autoInit(&(pJeu->oto));
 	terInit(&(pJeu->ter));
 	/*int nsurvi=1;
 	dessurvisInit(pjeu->DesSurvivants,nsurvi);*/
@@ -17,7 +17,7 @@ Terrain *jeuGetTerrainPtr(Jeu *pJeu)
 
 Auto *jeuGetAutoPtr(Jeu *pJeu)
 {
-	return &(pJeu->auto);
+	return &(pJeu->oto);
 }
 
 const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
@@ -27,7 +27,7 @@ const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 
 const Auto *jeuGetConstAutoPtr(const Jeu *pJeu)
 {
-	return &(pJeu->auto);
+	return &(pJeu->oto);
 }
 
 
@@ -36,16 +36,16 @@ void jeuActionClavier(Jeu *pJeu, const char touche)
 	switch(touche)
 	{
 		case 'g' : 
-				autoGauche(&(pJeu->auto), &(pJeu->ter));
+				autoGauche(&(pJeu->oto), &(pJeu->ter));
 				break;
 		case 'd' :
-				autoDroite(&(pJeu->auto), &(pJeu->ter));
+				autoDroite(&(pJeu->oto), &(pJeu->ter));
 				break;
 		case 'h' :
-				autoHaut(&(pJeu->auto), &(pJeu->ter));
+				autoHaut(&(pJeu->oto), &(pJeu->ter));
 				break;
 		case 'b' : 
-				autoBas(&(pJeu->auto), &(pJeu->ter));
+				autoBas(&(pJeu->oto), &(pJeu->ter));
 				break;
 	}
 }

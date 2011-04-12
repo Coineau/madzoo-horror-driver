@@ -42,10 +42,6 @@ int autoGetY(const Auto *pauto)
 	return pauto->y;
 }
 
-/*void autoLibere(Auto*)
-{
-}*/
-
 int autoGetPdv(const Auto *pauto)
 {
 	return(pauto->pdv);
