@@ -27,12 +27,12 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	dimy = (dimy+1) * TAILLE_SPRITE;
 	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_SWSURFACE );
 	assert( pSdlJeu->surface_ecran!=NULL);
-	SDL_WM_SetCaption( "Car v0.2", NULL );
+	SDL_WM_SetCaption( "Auto v0.2", NULL );
 
-	pSdlJeu->surface_car = SDL_load_image("data/car.bmp");
-	if (pSdlJeu->surface_car==NULL)
-		pSdlJeu->surface_car = SDL_load_image("../data/car.bmp");
-	assert( pSdlJeu->surface_car!=NULL);
+	pSdlJeu->surface_auto = SDL_load_image("data/auto.bmp");
+	if (pSdlJeu->surface_auto==NULL)
+		pSdlJeu->surface_auto = SDL_load_image("../data/auto.bmp");
+	assert( pSdlJeu->surface_auto!=NULL);
 
 	pSdlJeu->surface_mur = SDL_load_image("data/mur.bmp");
 	if (pSdlJeu->surface_mur==NULL)
@@ -55,7 +55,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	int x,y;
 
 	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
-	const Car *pPac = jeuGetConstCarPtr(&(pSdlJeu->jeu));
+	const Auto *pPac = jeuGetConstAutoPtr(&(pSdlJeu->jeu));
 
 	/* Remplir l'écran de blanc */
 	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0xFF, 0xFF, 0xFF ) );
@@ -65,8 +65,8 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 			if (terGetXY(pTer,x,y)=='#')
 				SDL_apply_surface(  pSdlJeu->surface_mur, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 
-	/* Copier le sprite de Car sur l'écran */
-	SDL_apply_surface(  pSdlJeu->surface_car, pSdlJeu->surface_ecran, carGetX(pPac)*TAILLE_SPRITE,  carGetY(pPac)*TAILLE_SPRITE);
+	/* Copier le sprite de Auto sur l'écran */
+	SDL_apply_surface(  pSdlJeu->surface_auto, pSdlJeu->surface_ecran, autoGetX(pPac)*TAILLE_SPRITE,  autoGetY(pPac)*TAILLE_SPRITE);
 
 	/* Mettre le titre en bas de l'écran */
 	SDL_apply_surface( pSdlJeu->surface_titre, pSdlJeu->surface_ecran, ((getDimX(pTer)/2)-1)*TAILLE_SPRITE,(getDimY(pTer))*TAILLE_SPRITE);
@@ -126,7 +126,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 
 void sdljeuDetruit( sdlJeu *pSdlJeu)
 {
-	SDL_FreeSurface( pSdlJeu->surface_car );
+	SDL_FreeSurface( pSdlJeu->surface_auto );
 	SDL_FreeSurface( pSdlJeu->surface_mur );
 	SDL_Quit();
 }
