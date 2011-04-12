@@ -5,7 +5,7 @@
 
 typedef struct
 {
-	Survivant* tabS[nbS];
+	Survivant* tabS[];
 
 } DesSurvivants;
 

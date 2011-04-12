@@ -4,7 +4,7 @@
 #include <assert.h>
 
 
-void surviInit(DesSurvivants *dsurvis, Terrain *pTer)
+void dSurviInit(DesSurvivants *dsurvis, Terrain *pTer)
 {
     int i, j;
     int k = 0;
@@ -21,3 +21,4 @@ void surviInit(DesSurvivants *dsurvis, Terrain *pTer)
         }
     }
 }
+
