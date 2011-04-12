@@ -60,6 +60,4 @@ int autoGetnbSurviDansAuto(const Auto*);
 /**Change le nombre de places occupées*/
 void autoSetnbSurviDansAuto(Auto*,int);
 
-
-//void autoLibere(Auto*);
 #endif
