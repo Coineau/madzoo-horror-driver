@@ -4,7 +4,7 @@
 
 void jeuInit(Jeu *pJeu)
 {
-	carInit(&(pJeu->car));
+	autoInit(&(pJeu->auto));
 	terInit(&(pJeu->ter));
 	/*int nsurvi=1;
 	dessurvisInit(pjeu->DesSurvivants,nsurvi);*/
@@ -15,9 +15,9 @@ Terrain *jeuGetTerrainPtr(Jeu *pJeu)
 	return &(pJeu->ter);
 }
 
-Car *jeuGetCarPtr(Jeu *pJeu)
+Auto *jeuGetAutoPtr(Jeu *pJeu)
 {
-	return &(pJeu->car);
+	return &(pJeu->auto);
 }
 
 const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
@@ -25,9 +25,9 @@ const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 	return &(pJeu->ter);
 }
 
-const Car *jeuGetConstCarPtr(const Jeu *pJeu)
+const Auto *jeuGetConstAutoPtr(const Jeu *pJeu)
 {
-	return &(pJeu->car);
+	return &(pJeu->auto);
 }
 
 
@@ -36,16 +36,16 @@ void jeuActionClavier(Jeu *pJeu, const char touche)
 	switch(touche)
 	{
 		case 'g' : 
-				carGauche(&(pJeu->car), &(pJeu->ter));
+				autoGauche(&(pJeu->auto), &(pJeu->ter));
 				break;
 		case 'd' :
-				carDroite(&(pJeu->car), &(pJeu->ter));
+				autoDroite(&(pJeu->auto), &(pJeu->ter));
 				break;
 		case 'h' :
-				carHaut(&(pJeu->car), &(pJeu->ter));
+				autoHaut(&(pJeu->auto), &(pJeu->ter));
 				break;
 		case 'b' : 
-				carBas(&(pJeu->car), &(pJeu->ter));
+				autoBas(&(pJeu->auto), &(pJeu->ter));
 				break;
 	}
 }
