@@ -3,13 +3,18 @@
 
 #include "Survivant.h"
 
-typedef struct 
+typedef struct
 {
-	Survivant* tabsurvis[nbs];
-	int nbs;
-	
+	Survivant* tabsurvis[nbS];
+	int nbS;
+
 } DesSurvivants;
 
-void surviInit(DesSurvivant);
+void dsurviInit(DesSurvivants* , const int, Terrain *);
+void dsurviLibere(DesSurvivants *);
+void AjouterSurvi(DesSurvivants *);
+void SupprimerSurvi(DesSurvivants *);
+Survivant dGetSurvi(DesSurvivants *, const int);
+void dSetSurvi(DesSurvivants *, const int);
 
 #endif
