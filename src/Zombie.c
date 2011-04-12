@@ -6,30 +6,30 @@
 
 void zombieInit(Zombie * pZon ,int cx ,int cy)
 {
-	(pZon*).x=cx;
-	(pZon*).y=cy;
+	pZon->x=cx;
+	pZon->y=cy;
 }
 
-int zombieGetX(Zombie* pZon)
+int zombieGetX(const Zombie* pZon)
 {
-	return (pZon*).x;
+	return pZon->x;
 }
 
-int zombieGetY(Zombie* pZon);
+int zombieGetY(const Zombie* pZon)
 {
-	return pZon.y;
+	return pZon->y;
 }
 
 //void zombieDeplacement(zombie *,terrain);
 
 
 
-int zombieGetPdv(Zombie *)
+int zombieGetPdv(const Zombie * pZon)
 {
-	return (pZon*).y;
+	return pZon->pdv;
 }
 
 void zombieSetPdv(Zombie * pZon, int pv)
 {
-	(pZon*).pdv=pv;
+	pZon->pdv=pv;
 }
