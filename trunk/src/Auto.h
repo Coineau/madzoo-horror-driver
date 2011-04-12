@@ -6,10 +6,21 @@
 
 typedef struct 
 {
+	/**Coordonnées du joueur*/
 	int x,y;
-	int nbSurviDansAuto;
+		
+	/** PV restants*/
 	int pdv;
+	
+	/** PV initiaux*/
+	int pdvmax;
+	
+	/** Nombre de places occupées dans l'auto*/
+	int nbSurviDansAuto;
+	
+	/** Nombre de places total*/
 	int nbPlaces;
+
 } Auto;
 
 /** Initialise une structure Auto*/
@@ -30,6 +41,12 @@ int autoGetPdv(const Auto*);
 
 /**Change les PV*/
 void autoSetPdv(Auto*,int);
+
+/**Récupère les PV totaux du joueur*/
+int autoGetPdvMax(const Auto*);
+
+/**Change les PV totaux*/
+void autoSetPdvMax(Auto*,int);
 
 /** Récupère le nombre de places total*/
 int autoGetNbPlaces(const Auto*);
