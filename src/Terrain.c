@@ -83,7 +83,7 @@ const int getDimY(const Terrain *pTer)
 	return pTer->dimy;
 }
 
-int terEstPositionSurvivant(const Terrain*, const int x, const int y)
+int terEstPositionSurvivant(const Terrain *pTer, const int x, const int y)
 {
 	if(pTer->tab[x][y]=='o')
 		return 1;

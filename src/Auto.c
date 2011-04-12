@@ -76,6 +76,6 @@ int autoGetnbSurviDansAuto(const Auto *pauto)
 void autoSetnbSurviDansAuto(Auto *pauto,int sda)
 {
 	assert(sda>0);
-	assert(sda<=nbPlaces);
+	assert(sda<=pauto->nbPlaces);
 	pauto->nbSurviDansAuto=sda;
 }
