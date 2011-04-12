@@ -8,15 +8,15 @@ void terInit(Terrain *pTer)
 	int x,y;
 	
 	const char terrain_defaut[20][20] = {
-		"...#................",
-		"...#................",
+		"...#..........#.....",
+		"...#..........#....",
 		"....................",
 		"....................",
-		"......#.............",
+		"....................",
 		".....#####..........",
 		".....#..............",
-		".....#..............",
-		".....#####..........",
+		"....................",
+		".....##.##..........",
 		"....................",
 		"............o.......",
 		"..................o." };
@@ -81,4 +81,12 @@ const int getDimX(const Terrain *pTer)
 const int getDimY(const Terrain *pTer)
 {
 	return pTer->dimy;
+}
+
+int terEstPositionSurvivant(const Terrain*, const int x, const int y)
+{
+	if(pTer->tab[x][y]=='o')
+		return 1;
+	else
+		return 0;
 }
