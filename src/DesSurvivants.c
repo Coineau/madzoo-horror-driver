@@ -4,7 +4,7 @@
 #include <assert.h>
 
 
-void surviInit(DesSurvivants *dsurvis, const int nbS, Terrain *pTer)
+void surviInit(DesSurvivants *dsurvis, Terrain *pTer)
 {
     int i, j;
     for(j=0;j<getDimY(&pTer);++)

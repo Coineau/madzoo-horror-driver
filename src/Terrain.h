@@ -17,5 +17,8 @@ void terSetXY(const Terrain *, const int x, const int y, const char);
 int terEstPositionSurvivant(const Terrain*, const int x, const int y);
 const int getDimX(const Terrain *);
 const int getDimY(const Terrain *);
+const int terGetnbS(const Terrain *);
+void terSetnbS(const Terrain *, const int);
+
 
 #endif
