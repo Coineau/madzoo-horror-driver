@@ -13,6 +13,7 @@ void terLibere(Terrain *);
 int terEstPositionPersoValide(const Terrain *, const int x, const int y);
 const char terGetXY(const Terrain *, const int x, const int y);
 void terSetXY(const Terrain *, const int x, const int y, const char);
+int terEstPositionSurvivant(const Terrain*, const int x, const int y);
 const int getDimX(const Terrain *);
 const int getDimY(const Terrain *);
 
