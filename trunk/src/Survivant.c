@@ -3,9 +3,10 @@
 #include <malloc.h>
 #include <assert.h>
 
-void surviInit(Survivant * survi)
+void surviInit(Survivant*, const int x, const int y)
 {
-	survi	.x=survi.y=0;
+	survi->x = x;
+	survi->y = y;
 	survi.etat=0;
 }
 
@@ -19,16 +20,12 @@ int surviGetY(const Survivant *psurvi)
 	return psurvi->y;
 }
 
-int surviChangeEtat(Survivant * survi)
+int surviGetEtat(const Survivant *psurvi)
 {
-	
-	
-	
+    return psurvi->etat;
 }
 
-
-void surviPlace(Survivant*, int posx, int posy)
+int surviSetEtat(Survivant *psurvi, const int e);
 {
-	survi.x=posx;
-	survi.y=posy;
+    psurvi->etat = e;
 }
