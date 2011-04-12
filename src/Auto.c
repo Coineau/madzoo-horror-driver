@@ -1,5 +1,7 @@
 #include "Auto.h"
-
+#include <stdio.h>
+#include <malloc.h>
+#include <assert.h>
 
 void autoInit(Auto *pauto)
 {
@@ -38,4 +40,42 @@ int autoGetX(const Auto *pauto)
 int autoGetY(const Auto *pauto)
 {
 	return pauto->y;
+}
+
+/*void autoLibere(Auto*)
+{
+}*/
+
+int autoGetPdv(const Auto *pauto)
+{
+	return(pauto->pdv);
+}
+
+void autoSetPdv(Auto *pauto,int pv)
+{
+	assert(pv>=0);
+	pauto->pdv=pv;
+}
+
+int autoGetNbPlaces(const Auto *pauto)
+{
+	return(pauto->nbPlaces);
+}
+
+void autoSetNbPlaces(Auto *pauto,int nbp)
+{
+	assert(nbp>0);
+	pauto->nbPlaces=nbp;
+}
+
+int autoGetnbSurviDansAuto(const Auto *pauto)
+{
+	return(pauto->nbSurviDansAuto);
+	
+}
+void autoSetnbSurviDansAuto(Auto *pauto,int sda)
+{
+	assert(sda>0);
+	assert(sda<=nbPlaces);
+	pauto->nbSurviDansAuto=sda;
 }
