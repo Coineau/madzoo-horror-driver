@@ -19,13 +19,13 @@ void surviInit(Survivant*, const int x, const int y);
 void surviLibere(Survivant*);
 
 /**Renvoi la coordonnee x du survivant*/
-int surviGetX(Survivant *);
+int surviGetX(const Survivant *);
 
 /**Renvoi la coordonnee y du survivant*/
-int surviGetY(Survivant *);
+int surviGetY(const Survivant *);
 
 /**Renvoi l etat du survivant*/
-int surviGetEtat(Survivant *);
+int surviGetEtat(const Survivant *);
 
 /**Modifie l etat du survivant*/
 int surviSetEtat(Survivant *, const int);
