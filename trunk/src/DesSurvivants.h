@@ -10,7 +10,7 @@ typedef struct
 
 } DesSurvivants;
 
-void dsurviInit(DesSurvivants* , const int, Terrain *);
+void dsurviInit(DesSurvivants*, Terrain *);
 void dsurviLibere(DesSurvivants *);
 void AjouterSurvi(DesSurvivants *);
 void SupprimerSurvi(DesSurvivants *);
