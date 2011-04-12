@@ -19,14 +19,19 @@ typedef struct
 void zombieInit(Zombie *,int,int);
 
 /**Recupere la coordonner X d'un zombie*/
-int zombieGetX(Zombie);
-/recupere la coordonner Y d'un Zombie*/
-int zombieGetY(Zombie*);
+int zombieGetX(const Zombie*);
+
+/**recupere la coordonner Y d'un Zombie*/
+int zombieGetY(const Zombie*);
+
 /**Deplacement du zombie sur le terrain 
  * il prend en compte le train*/
+
 //void zombieDeplacement(zombie *,terrain);
+
 /**recupere les point de vie du zombie */
-int zombieGetPdv(Zombie);
+int zombieGetPdv(const Zombie*);
+
 /** modifie les point de vie du zombie */
 void zombieSetPdv(Zombie *, int);
 

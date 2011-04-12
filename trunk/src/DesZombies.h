@@ -5,20 +5,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
-#include <malloc.ht >
 
 typedef struct
 {
 	/** tableau conteanant tous le zombie du jeux */
-	Zombie zombies[];
+	Zombie *zombies;
 	/** le nombre de zombie dans le jeux */
 	int nbz;
 	/** nombre de zombie restant */
-	int zomrest
+	int zomrest;
 }DesZombies;
 
-void dZombieInit(DesZombies *, int , int , int);
-void dZombieLibere(DesZombies *,int);
+void dZombieInit(DesZombies *);
+void dZombieLibere(DesZombies *);
 void AjouterZombie(DesZombies *, Zombie );
 void SupprimeZombie(DesZombies *);
 //Zombie dGetZombie(DesZombies *, int );
