@@ -5,8 +5,7 @@
 
 const int TAILLE_SPRITE=32;
 
-SDL_Surface *SDL_load_image(const char* #include <SDL/SDL_ttf.h>
-filename );
+SDL_Surface *SDL_load_image(const char* filename );
 void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y );
 
 
@@ -44,7 +43,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	TTF_Font *font; 
 	SDL_Color textColor = { 238, 238,0 };
 	font=TTF_OpenFont( "/usr/share/fonts/truetype/msttcorefonts/Courier_New.ttf", 28 );
-	pSdlJeu->surface_titre = TTF_RenderText_Solid( font, "PACMAN", textColor ); 
+	pSdlJeu->surface_titre = TTF_RenderText_Solid( font, "MHD", textColor ); 
 
 }
 
