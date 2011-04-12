@@ -7,7 +7,7 @@ void surviInit(Survivant *psurvi, const int x, const int y)
 {
 	psurvi->x = x;
 	psurvi->y = y;
-	psurvi.etat=0;
+	psurvi->etat=0;
 }
 
 int surviGetX(const Survivant *psurvi)
