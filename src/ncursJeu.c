@@ -15,7 +15,7 @@ void ncursAff( WINDOW* win, const Jeu *pJeu)
         int col = getDimX(jeuGetConstTerrainPtr(pJeu));
 
 	const Terrain *pTer = jeuGetConstTerrainPtr(pJeu);
-	const Car *pPac = jeuGetConstCarPtr(pJeu);
+	const Auto *pAuto = jeuGetConstAutoPtr(pJeu);
 	
 	wclear(win);
 
@@ -23,9 +23,9 @@ void ncursAff( WINDOW* win, const Jeu *pJeu)
 		for(y=0;y<getDimY(pTer);++y)
 			mvwprintw( win, y, x, "%c", terGetXY(pTer,x,y) );
 
-	mvwprintw( win, carGetY(pPac), carGetX(pPac), "*");
+	mvwprintw( win, autoGetY(pAuto), autoGetX(pAuto), "*");
 
-	wmove( win, carGetY(pPac), carGetX(pPac));
+	wmove( win, autoGetY(pAuto), autoGetX(pAuto));
 
 	mvwprintw(win,row,(col/2)-3,"PACMAN");
        
@@ -41,7 +41,7 @@ void ncursBoucle(Jeu *pJeu)
 	initscr();		/* passe l'écran texte en mode NCurses */
 	clear();		/* efface l'écran */
 	noecho();  	/* Lorsqu'une touche est préssée au clavier, elle n'apparait pasa à l'écran */
-	cbreak();		/* un caractère est directement affiché, il ne passe pas dans un buffer */
+	cbreak();		/* un autoactère est directement affiché, il ne passe pas dans un buffer */
 		
 	/* Creation d'une nouvelle fenetre en mode texte */
 	/* => fenetre de dimension et position ( WIDTH, HEIGHT, STARTX,STARTY) */
