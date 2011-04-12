@@ -1,8 +1,8 @@
 CC 			= gcc
 LD 			= gcc
 
-#JEU	= texte
-JEU	= graphique
+JEU	= texte
+#JEU	= graphique
 #OS	= WIN32
 OS	= LINUX
 
