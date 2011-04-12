@@ -73,9 +73,22 @@ int autoGetnbSurviDansAuto(const Auto *pauto)
 	return(pauto->nbSurviDansAuto);
 	
 }
+
 void autoSetnbSurviDansAuto(Auto *pauto,int sda)
 {
 	assert(sda>0);
 	assert(sda<=pauto->nbPlaces);
 	pauto->nbSurviDansAuto=sda;
+}
+
+int autoGetPdvMax(const Auto *pauto)
+{
+	return(pauto->pdvmax);
+}
+
+void autoSetPdvMax(Auto *pauto, int pdvm)
+{
+	assert(pdvm>0);
+	assert(pdvm>pauto->pdvmax);
+	pauto->pdvmax=pdvm;
 }
