@@ -4,22 +4,17 @@
 #include <assert.h>
 
 
-void surviInit(DesSurvivants* dessurvis, int nbs)
+void surviInit(DesSurvivants *dsurvis, const int nbS, Terrain *pTer)
 {
-	dessurvis.tabsurvis= (char *)malloc(sizeof(char)*nbs);
-	for (int x=0; x<nbs ; x++)
-	{
-		Survivant * surv;
-		survInit(surv);
-		dessurvis.tabsurvis[x]=surv;
-		for(y=0;y<pTer->dimy;++y)
-			for(x=0;x<pTer->dimx;++x)
-			{
-				if(pTer.tab[y][x] == 'o')
-				{
-					surviPlace(tab[i],x,y);
-					i++;
-				}
-			}		
-	}
+    int i, j;
+    for(j=0;j<getDimY(&pTer);++)
+    {
+        for(i=0;i<getDimX(&pTer);i++)
+        {
+            if (terEstPositionSurvivant(&pTer,i,j)==1)
+            {
+                surviInit(Survivant*, const int x, const int y);
+            }
+        }
+    }
 }

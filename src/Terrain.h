@@ -6,6 +6,7 @@ typedef struct
 	int dimx;
 	int dimy;
 	char **tab;
+	int nbS;
 } Terrain;
 
 void terInit(Terrain *);
