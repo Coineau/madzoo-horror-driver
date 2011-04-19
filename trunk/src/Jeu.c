@@ -44,7 +44,15 @@ void recupSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto)
 	}
 }
 
-
+void collisionZombie(Terrain *pter, DesZombies *pdzombies, Auto *pauto)
+{
+	int autoX;
+	int autoY;
+	autoX=autoGetX(pauto);
+	autoY=autoGetY(pauto);
+	
+	if(
+	}
 void jeuActionClavier(Jeu *pJeu, const char touche)
 {
 	switch(touche)
