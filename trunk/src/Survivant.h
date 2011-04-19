@@ -5,18 +5,15 @@
 
 typedef struct
 {
-	/**Coordonnees (x,y) du survivant sur la carte"*/
+	/**Coordonnees (x,y) du survivant sur la carte*/
 	int x,y;
-	/**0 si n'est pas dans la voiture, 1 sinon"*/
+	/**0 si est dehors, 1 si sauve*/
 	int etat;
 
 } Survivant;
 
 /**Place le survivant a sa position initiale*/
 void surviInit(Survivant*, const int x, const int y);
-
-/***/
-void surviLibere(Survivant*);
 
 /**Renvoi la coordonnee x du survivant*/
 int surviGetX(const Survivant *);
