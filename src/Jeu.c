@@ -6,8 +6,6 @@ void jeuInit(Jeu *pJeu)
 {
 	autoInit(&(pJeu->oto));
 	terInit(&(pJeu->ter));
-	/*int nsurvi=1;
-	dessurvisInit(pjeu->DesSurvivants,nsurvi);*/
 }
 
 Terrain *jeuGetTerrainPtr(Jeu *pJeu)
@@ -31,12 +29,28 @@ const Auto *jeuGetConstAutoPtr(const Jeu *pJeu)
 }
 
 
+void recupSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto)
+{
+	int autoX;
+	int autoY;
+	autoX=autoGetX(pauto);
+	autoY=autoGetY(pauto);
+
+	if((terEstPositionSurvivant(pTer, autoX,autoY)&&(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(const Auto *pauto))
+	{
+		pter->tab[autoX][autoY]=' ';
+		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 1);
+		autonbSurviDansAutoPlusUn(pauto);
+	}
+}
+
+
 void jeuActionClavier(Jeu *pJeu, const char touche)
 {
 	switch(touche)
 	{
 		case 'g' : 
-				autoGauche(&(pJeu->oto), &(pJeu->ter));
+				autoGauche(&(pJeu->oto), &(pJeu->ter));					
 				break;
 		case 'd' :
 				autoDroite(&(pJeu->oto), &(pJeu->ter));

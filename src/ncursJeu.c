@@ -40,7 +40,7 @@ void ncursBoucle(Jeu *pJeu)
 
 	initscr();		/* passe l'écran texte en mode NCurses */
 	clear();		/* efface l'écran */
-	noecho();  	/* Lorsqu'une touche est préssée au clavier, elle n'apparait pasa à l'écran */
+	noecho();  	/* Lorsqu'une touche est préssée au clavier, elle n'apparait pas à l'écran */
 	cbreak();		/* un autoactère est directement affiché, il ne passe pas dans un buffer */
 
 	/* Creation d'une nouvelle fenetre en mode texte */
