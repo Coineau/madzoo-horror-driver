@@ -25,7 +25,7 @@ int surviGetEtat(const Survivant *psurvi)
     return psurvi->etat;
 }
 
-int surviSetEtat(Survivant *psurvi, const int e)
+void surviSetEtat(Survivant *psurvi, const int e)
 {
     psurvi->etat = e;
 }

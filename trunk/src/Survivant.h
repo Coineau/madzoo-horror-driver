@@ -25,6 +25,6 @@ int surviGetY(const Survivant *);
 int surviGetEtat(const Survivant *);
 
 /**Modifie l etat du survivant*/
-int surviSetEtat(Survivant *, const int);
+void surviSetEtat(Survivant *, const int);
 
 #endif
