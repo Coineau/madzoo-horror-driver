@@ -9,7 +9,7 @@
 typedef struct
 {
 	/** tableau conteanant tous le zombie du jeux */
-	Zombie *zombies;
+	Zombie ** zombies;
 	/** le nombre de zombie dans le jeux */
 	int nbz;
 	/** nombre de zombie restant */
@@ -18,10 +18,9 @@ typedef struct
 
 void dZombieInit(DesZombies *);
 void dZombieLibere(DesZombies *);
-void AjouterZombie(DesZombies *, Zombie );
-void SupprimeZombie(DesZombies *);
-//Zombie dGetZombie(DesZombies *, int );
-//void dSetZombie(DesZombies *,int);
+void AjouterZombie(DesZombies *, int , int , int );
+void SupprimeZombie(DesZombies *, int);
+//Zombie dGetZombie(DesZombies , int );
 //void dZombieDeplacer(DesZombies *);
 
 #endif
