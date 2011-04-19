@@ -6,6 +6,7 @@
 
 void dZombieInit(DesZombies * pdzon)
 {
+
 	pdzon->nbz=0;
 	pdzon->zomrest=0;
 }
@@ -28,23 +29,16 @@ void dZombieLibere(DesZombies * pdzon)
 void AjouterZombie(DesZombies * pdzon, int x , int y , int i)
 {
 	pdzon->zombies[i] = (Zombie*)malloc(sizeof(Zombie));
-	ZombieInit(&pdzon->zombies[i] , x, y);
-	pdzon->nbz=pdzon.nbz + 1;
-	pdzon->zomrest=pdzonzomrest + 1;
+	zombieInit(pdzon->zombies[i] , x, y);
+	pdzon->nbz=pdzon->nbz + 1;
+	pdzon->zomrest=pdzon->zomrest + 1;
 }
 
-void SupprimeZombie((DesZombies *pdzon,  int i)
+void SupprimeZombie(DesZombies *pdzon,  int i)
 {
-		free((pdzon->zombies[i]);
+		free(pdzon->zombies[i]);
 		pdzon->zombies[i] = NULL;
-		pdzon->nbz=pdzon.nbz - 1;
-		pdzon->zomrest=pdzon.zomrest - 1;
-}
-	
-Zombie dGetZombie(DesZombies *, int )
-{
-	return pdzon.zombies[i];
+		pdzon->zomrest=pdzon->zomrest - 1;
 }
 
-//void dSetZombie(DesZombies *,int, int);
 //void dZombieDeplacer(DesZombies *);
