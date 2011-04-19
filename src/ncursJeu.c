@@ -10,13 +10,13 @@
 void ncursAff( WINDOW* win, const Jeu *pJeu)
 {
 	int x,y;
- 
+
 	int row = getDimY(jeuGetConstTerrainPtr(pJeu));
         int col = getDimX(jeuGetConstTerrainPtr(pJeu));
 
 	const Terrain *pTer = jeuGetConstTerrainPtr(pJeu);
 	const Auto *pAuto = jeuGetConstAutoPtr(pJeu);
-	
+
 	wclear(win);
 
 	for(x=0;x<getDimX(pTer);++x)
@@ -27,8 +27,8 @@ void ncursAff( WINDOW* win, const Jeu *pJeu)
 
 	wmove( win, autoGetY(pAuto), autoGetX(pAuto));
 
-	mvwprintw(win,row,(col/2)-3,"PACMAN");
-       
+	mvwprintw(win,row,(col/2)-1,"MHD");
+
 }
 
 
@@ -42,10 +42,10 @@ void ncursBoucle(Jeu *pJeu)
 	clear();		/* efface l'écran */
 	noecho();  	/* Lorsqu'une touche est préssée au clavier, elle n'apparait pasa à l'écran */
 	cbreak();		/* un autoactère est directement affiché, il ne passe pas dans un buffer */
-		
+
 	/* Creation d'une nouvelle fenetre en mode texte */
 	/* => fenetre de dimension et position ( WIDTH, HEIGHT, STARTX,STARTY) */
-	win = newwin( getDimY(jeuGetConstTerrainPtr(pJeu))+1, getDimX(jeuGetConstTerrainPtr(pJeu)), 10, 5 );	
+	win = newwin( getDimY(jeuGetConstTerrainPtr(pJeu))+1, getDimX(jeuGetConstTerrainPtr(pJeu)), 10, 5 );
 	keypad(win, TRUE);		/* pour que les flèches soient traitées (il faut le faire après création de la fenêtre) */
 
 	halfdelay( 10 );
@@ -53,18 +53,18 @@ void ncursBoucle(Jeu *pJeu)
 	/* wtimeout( win, 500 ); */
 	/* nodelay(win,true); */
 
-	
-			      
+
+
 
 	continue_boucle = 1;
 	do
-	{	
+	{
 		ncursAff( win, pJeu);
-	
+
 		c = wgetch(win);
 		/* jeuActionClavier( jeu, 'd'); */
 		switch(c)
-		{	
+		{
 			case KEY_LEFT:
 				jeuActionClavier( pJeu, 'g');
 				break;
@@ -82,6 +82,6 @@ void ncursBoucle(Jeu *pJeu)
 				break;
 		}
 	} while (continue_boucle==1);
-	
+
 	endwin();
 }
