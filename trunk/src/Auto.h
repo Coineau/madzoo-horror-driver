@@ -36,6 +36,10 @@ void autoBas(Auto *, const Terrain *);
 int autoGetX(const Auto *);
 int autoGetY(const Auto *);
 
+/**Les deux fonctions suivantes modifient la position du joueur*/
+int autoSetX(const Auto*);
+int autoSetY(const Auto*);
+
 /**Récupère les PV du joueur*/
 int autoGetPdv(const Auto*);
 
@@ -57,7 +61,7 @@ void autoSetNbPlaces(Auto*,int);
 /** Récupère le nombre de places occupées*/
 int autoGetnbSurviDansAuto(const Auto*);
 
-/**Change le nombre de places occupées*/
-void autoSetnbSurviDansAuto(Auto*,int);
+/**Augmente de un le nombre de place occupées dans l'auto*/
+void autonbSurviDansAutoPlusUn(Auto*);
 
 #endif

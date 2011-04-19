@@ -9,6 +9,8 @@ typedef struct
 {
 	Terrain ter;
 	Auto oto;
+	DesSurvivants dsurvis;
+	DesZombies dzombies;
 } Jeu;
 
 void jeuInit(Jeu *);
