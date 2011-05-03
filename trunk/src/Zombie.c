@@ -20,7 +20,29 @@ int zombieGetY(const Zombie* pZon)
 	return pZon->y;
 }
 
-/*void zombieDeplacement(const Zombie * pZon,int Xa,int  Ya,Terrain *Pter)
+void zombieSetX(zombie*,cx)
+{
+    pZon->x = cx ;
+}
+
+void zombieSetY(zombie*,y);
+{
+    pZon->y = cy;
+}
+
+
+int testDeplacementZombie(terrain* pter ,int Xz,int  Yz,Terrain *Pter)
+{
+     if((terEstPositionPersoValide(pTer,Xz, Yz) == 1) &&
+        (terEstPositionSurvivant(pTer, Xz,Yz) !=1) &&
+        (terEstPositionZombie(pTer, Xz, Yz)))
+        {
+            return 1;
+        }
+    return 0;
+}
+
+void zombieDeplacement(const Zombie * pZon,int Xa,int  Ya,Terrain *Pter)
 {
     int Xz=zombieGetX(pZon);
     int Yz=zombieGetY(pZon);
@@ -29,15 +51,21 @@ int zombieGetY(const Zombie* pZon)
     {
         if(Xz<Xa)
         {
-            if((terEstPositionPersoValide(pTer,Xz+1, Yz) == 1) &&
-               (terEstPositionSurvivant(pTer, Xz+1,Yz) !=1) &&
-               ()
+            if(testDeplacementZombie(pter , Xz+1 , Yz,pTer)
             {
-                pZon->
-        }
+                zombieSetX(pZon , Xz+1 );
+            }
+            else{
+                if(Yz>Ya)
+                {
+                    if(testDeplacementZombie(pter , Xz , Yz +1,pTer)
+                       {
+                           zombieSetY(pZon , Yz+1 );
+                       }
+                }
     }
 }
-}*/
+}
 
 
 

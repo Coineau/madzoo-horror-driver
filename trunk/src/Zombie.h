@@ -16,7 +16,7 @@ typedef struct
 }Zombie;
 
 /**Initialise une stucture zombie*/
-void zombieInit(Zombie *,int,int);
+void zombieInit(Zombie *,int x,int y);
 
 /**Recupere la coordonner X d'un zombie*/
 int zombieGetX(const Zombie*);
@@ -24,8 +24,17 @@ int zombieGetX(const Zombie*);
 /**recupere la coordonner Y d'un Zombie*/
 int zombieGetY(const Zombie*);
 
+/**modifie la coordoner x du zombieù*/
+void zombieSetX(zombie*;int x);
+
+/**modifie la coordoner y du zombieù*/
+void zombieSetY(zombie*,int y);
+
+/**test si sur le chemain il y est un mur , un zombie ou un survivant*/
+int testDeplacementZombie(terrain* pter ,int Xz,int  Yz,Terrain *Pter)
+
 /**deplacement du zombie en fonction de l'auto*/
-//void zombieDeplacement(zombie *,int autoX, int autoY,Terrain*);
+void zombieDeplacement(zombie *,int autoX, int autoY,Terrain*);
 
 /**recupere les point de vie du zombie */
 int zombieGetPdv(const Zombie*);
