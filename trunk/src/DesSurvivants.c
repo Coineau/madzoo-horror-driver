@@ -33,7 +33,7 @@ int dSurviTestSauve (DesSurvivants *dsurvis)
     int i;
     for (i=0;i<(GetNbS(dsurvis));i++)
     {
-        if (surviGetEtat(&(dsurvis->tabS[i]))==0 || surviGetEtat(&(dsurvis->tabS[i]))==1)
+        if (surviGetEtat(&(dsurvis->tabS[i]))==0)
         {
             return 0;
         }

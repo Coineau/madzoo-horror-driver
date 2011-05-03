@@ -23,7 +23,7 @@ void dsurviLibere(DesSurvivants *);
 int dSurviTestSauve (DesSurvivants *);
 
 /**Renvoie le survivant dont les coordonnees sont passées en parametre*/
-Survivant* dGetSurvi(DesSurvivants *, const int x, const int y);
+Survivant dGetSurvi(DesSurvivants *, const int x, const int y);
 
 /**Renvoie le nombre total de survivants*/
 int GetNbS (DesSurvivants *);
