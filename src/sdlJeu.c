@@ -31,6 +31,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	pSdlJeu->surface_auto = SDL_load_image("data/auto.bmp");
 	if (pSdlJeu->surface_auto==NULL)
 		pSdlJeu->surface_auto = SDL_load_image("../data/auto.bmp");
+	assert(fopen("../data/auto.bmp", "r") || fopen("data/auto.bmp","r"));
 	assert( pSdlJeu->surface_auto!=NULL);
 
 	pSdlJeu->surface_mur = SDL_load_image("data/mur.bmp");
