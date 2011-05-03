@@ -13,6 +13,8 @@ typedef struct
 	SDL_Surface* surface_auto;
 	SDL_Surface* surface_mur;
         SDL_Surface* surface_titre;
+	SDL_Surface* surface_zombie;
+	SDL_Surface* surface_survivant;
 } sdlJeu;
 
 void sdljeuInit(sdlJeu *);

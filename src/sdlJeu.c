@@ -31,8 +31,18 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	pSdlJeu->surface_auto = SDL_load_image("data/auto.bmp");
 	if (pSdlJeu->surface_auto==NULL)
 		pSdlJeu->surface_auto = SDL_load_image("../data/auto.bmp");
-	assert(fopen("../data/auto.bmp", "r") || fopen("data/auto.bmp","r"));
 	assert( pSdlJeu->surface_auto!=NULL);
+	
+	pSdlJeu->surface_zombie = SDL_load_image("data/zombie.bmp");
+	if (pSdlJeu->surface_zombie==NULL)
+		pSdlJeu->surface_zombie = SDL_load_image("../data/zombie.bmp");
+	assert( pSdlJeu->surface_zombie!=NULL);
+
+	pSdlJeu->surface_survivant = SDL_load_image("data/survivant.bmp");
+	if (pSdlJeu->surface_survivant==NULL)
+		pSdlJeu->surface_survivant = SDL_load_image("../data/survivant.bmp");
+	assert( pSdlJeu->surface_survivant!=NULL);
+
 
 	pSdlJeu->surface_mur = SDL_load_image("data/mur.bmp");
 	if (pSdlJeu->surface_mur==NULL)
@@ -63,10 +73,28 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y)
 			if (terGetXY(pTer,x,y)=='#')
+			{
 				SDL_apply_surface(  pSdlJeu->surface_mur, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
-
+			}
+			else
+			{
+				if(terGetXY(pTer,x,y)=='x')
+				{
+					SDL_apply_surface(  pSdlJeu->surface_zombie, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+				}
+				else
+				{	
+					if(terGetXY(pTer,x,y)=='o')
+					{
+						SDL_apply_surface(  pSdlJeu->surface_survivant, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+					}
+				}
+			}
 	/* Copier le sprite de Auto sur l'écran */
 	SDL_apply_surface(  pSdlJeu->surface_auto, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  autoGetY(pAuto)*TAILLE_SPRITE);
+	
+	/* Copier le sprite de Zombie sur l'écran */
+	SDL_apply_surface(  pSdlJeu->surface_zombie, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  autoGetY(pAuto)*TAILLE_SPRITE);
 
 	/* Mettre le titre en bas de l'écran */
 	SDL_apply_surface( pSdlJeu->surface_titre, pSdlJeu->surface_ecran, ((getDimX(pTer)/2)-1)*TAILLE_SPRITE,(getDimY(pTer))*TAILLE_SPRITE);
