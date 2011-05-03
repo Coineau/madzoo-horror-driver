@@ -24,10 +24,8 @@ int zombieGetX(const Zombie*);
 /**recupere la coordonner Y d'un Zombie*/
 int zombieGetY(const Zombie*);
 
-/**Deplacement du zombie sur le terrain 
- * il prend en compte le train*/
-
-//void zombieDeplacement(zombie *,terrain);
+/**deplacement du zombie en fonction de l'auto*/
+//void zombieDeplacement(zombie *,int autoX, int autoY,Terrain*);
 
 /**recupere les point de vie du zombie */
 int zombieGetPdv(const Zombie*);

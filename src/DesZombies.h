@@ -18,9 +18,8 @@ typedef struct
 
 void dZombieInit(DesZombies *);
 void dZombieLibere(DesZombies *);
-void AjouterZombie(DesZombies *, int , int , int );
-void SupprimeZombie(DesZombies *, int);
-//Zombie dGetZombie(DesZombies , int );
-//void dZombieDeplacer(DesZombies *);
+void AjouterZombie(DesZombies *, int x , int y, int i);
+void SupprimeZombie(DesZombies *, int i);
+//void dZombieDeplacer(DesZombies *, int autoX , int autoY,Terrain *);
 
 #endif
