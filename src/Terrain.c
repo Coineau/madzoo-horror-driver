@@ -7,21 +7,31 @@ void terInit(Terrain *pTer)
 {
 	int x,y;
 
-	const char terrain_defaut[10][10] = {
-		"    ##   #",
-		"    ##   #",
-		"          ",
-		"##    ####",
-		"##    #  #",
-		"          ",
-		"      ##  ",
-		"       #  ",
-		"###       ",
-		"o         ",
+	const char terrain_defaut[20][20] = {
+		"        ##      #   ",
+		"        ##      #   ",
+		"       ##########   ",
+		"##              ####",
+		"##      ### #      #",
+		"   z    zz####      ",
+		"       z ##  z##    ",
+		"     zzz ###   # zzz",
+		"###            #### ",
+		"         zzzzz######",
+		"##      ### #      #",
+		"   z    zz####      ",
+		"       z ##  z##    ",
+		"     zzz ###   # zzz",
+		"###            #### ",
+		"        ##      #   ",
+		"        ##      #   ",
+		"       ##########   ",
+		"##              ####",
+		"##   o          ####",
 	};
 
-	pTer->dimx = 10;
-	pTer->dimy = 10;
+	pTer->dimx = 20;
+	pTer->dimy = 20;
 
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
@@ -92,7 +102,7 @@ int terEstPositionSurvivant(const Terrain *pTer, const int x, const int y)
 
 int terEstPositionZombie(const Terrain* pTer, const int x, const int y)
 {
-	if(pTer->tab[x][y]=='x')
+	if(pTer->tab[x][y]=='z')
 		return 1;
 	else
 		return 0;

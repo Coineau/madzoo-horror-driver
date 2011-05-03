@@ -54,7 +54,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	TTF_Font *font; 
 	SDL_Color textColor = { 238, 238,0 };
 	font=TTF_OpenFont( "/usr/share/fonts/truetype/msttcorefonts/Courier_New.ttf", 28 );
-	pSdlJeu->surface_titre = TTF_RenderText_Solid( font, "MHD", textColor ); 
+	pSdlJeu->surface_titre = TTF_RenderText_Solid( font, "Madzoo Horror Driver", textColor ); 
 
 }
 
@@ -78,7 +78,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 			}
 			else
 			{
-				if(terGetXY(pTer,x,y)=='x')
+				if(terGetXY(pTer,x,y)=='z')
 				{
 					SDL_apply_surface(  pSdlJeu->surface_zombie, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 				}
@@ -92,12 +92,9 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 			}
 	/* Copier le sprite de Auto sur l'écran */
 	SDL_apply_surface(  pSdlJeu->surface_auto, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  autoGetY(pAuto)*TAILLE_SPRITE);
-	
-	/* Copier le sprite de Zombie sur l'écran */
-	SDL_apply_surface(  pSdlJeu->surface_zombie, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  autoGetY(pAuto)*TAILLE_SPRITE);
 
 	/* Mettre le titre en bas de l'écran */
-	SDL_apply_surface( pSdlJeu->surface_titre, pSdlJeu->surface_ecran, ((getDimX(pTer)/2)-1)*TAILLE_SPRITE,(getDimY(pTer))*TAILLE_SPRITE);
+	SDL_apply_surface( pSdlJeu->surface_titre, pSdlJeu->surface_ecran, ((getDimX(pTer)/2)-5)*TAILLE_SPRITE,(getDimY(pTer))*TAILLE_SPRITE);
 }
 
 
