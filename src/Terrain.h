@@ -19,6 +19,6 @@ const int getDimX(const Terrain *);
 const int getDimY(const Terrain *);
 const int terGetnbS(const Terrain *);
 void terSetnbS(Terrain *, const int);
-
+int terEstPositionZombie(const Terrain*, const int x, const int y);
 
 #endif

@@ -8,11 +8,13 @@ void autoInit(Auto *pauto)
 	pauto->x=pauto->y=0;
 }	
 
+
 void autoGauche(Auto *pauto, const Terrain *pTer)
 {
 	if (terEstPositionPersoValide( pTer, autoGetX(pauto)-1, autoGetY(pauto))
 		autoSetX(pauto,autoGetX(pauto)-1);
 }
+
 
 void autoDroite(Auto *pauto, const Terrain *pTer)
 {
@@ -20,11 +22,13 @@ void autoDroite(Auto *pauto, const Terrain *pTer)
 		autoSetX(pauto->x++;
 }
 
+
 void autoHaut(Auto *pauto, const Terrain *pTer)
 {
 	if (terEstPositionPersoValide( pTer, pauto->x, pauto-1))
 		pauto->y--;
 }
+
 
 void autoBas(Auto *pauto, const Terrain *pTer)
 {
@@ -32,10 +36,12 @@ void autoBas(Auto *pauto, const Terrain *pTer)
 		pauto->y++;
 }
 
+
 int autoGetX(const Auto *pauto)
 {
 	return pauto->x;
 }
+
 
 int autoGetY(const Auto *pauto)
 {
@@ -49,6 +55,8 @@ void autoSetX(const Auto *pauto, const int X)
 	assert( x<pTer->dimx ) ;
 	pauto->x= X;
 }
+
+
 
 void autoSetY(const Auto *pauto, const int Y)
 {
@@ -71,10 +79,13 @@ void autoSetPdv(Auto *pauto,int pv)
 	pauto->pdv=pv;
 }
 
+
+
 int autoGetPdvMax(const Auto *pauto)
 {
 	return(pauto->pdvmax);
 }
+
 
 void autoSetPdvMax(Auto *pauto, int pdvm)
 {

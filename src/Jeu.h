@@ -21,5 +21,7 @@ const Auto *jeuGetConstAutoPtr(const Jeu *);
 
 void jeuActionClavier(Jeu *j, const char);
 
+void recupSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto);
+void collisionZombie(Terrain *pter, DesZombies *pdzombies, Auto *pauto);
 
 #endif
