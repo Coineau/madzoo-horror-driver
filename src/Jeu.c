@@ -29,36 +29,35 @@ const Auto *jeuGetConstAutoPtr(const Jeu *pJeu)
 }
 
 
-void collisionSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto)
+void collisionSurvi(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto)
 {
 	int autoX;
 	int autoY;
 	autoX=autoGetX(pauto);
 	autoY=autoGetY(pauto);
 
-	if((terEstPositionSurvivant(pTer, autoX,autoY)&&(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(const Auto *pauto))
+	if((terEstPositionSurvivant(pTer, autoX,autoY))&&(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(pauto)))
 	{
-		pter->tab[autoX][autoY]=' ';
+		pTer->tab[autoX][autoY]=' ';
 		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 1);
 		autonbSurviDansAutoPlusUn(pauto);
 	}
 }
 
-void collisionZombie(Terrain *pter, DesZombies *pdzombies, Auto *pauto)
+void collisionZombie(Terrain *pTer, DesZombies *pdzombies, Auto *pauto)
 {
 	int autoX;
 	int autoY;
+	int autoPdV;
 	autoX=autoGetX(pauto);
 	autoY=autoGetY(pauto);
-	autoPdV=autoGetPdv(pauto)
+	autoPdV=autoGetPdv(pauto);
 	
-	if(terEstPositionZombie(pTer, autoX,autoY)&&(autoPdv>1)
+	if(terEstPositionZombie(pTer, autoX,autoY)&&(autoPdV>))
 		{
-			pter->tab[autoX][autoY]=' ';
-			autoSetPdv(pauto,autoPdV-1);
+			pTer->tab[autoX][autoY]=' ';
+			autoSetPdV(pauto,autoPdV-1);
 		}
-	else
-	{break;}
 }
 	
 void jeuActionClavier(Jeu *pJeu, const char touche)

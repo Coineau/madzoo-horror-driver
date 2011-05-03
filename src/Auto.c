@@ -11,29 +11,29 @@ void autoInit(Auto *pauto)
 
 void autoGauche(Auto *pauto, const Terrain *pTer)
 {
-	if (terEstPositionPersoValide( pTer, autoGetX(pauto)-1, autoGetY(pauto))
-		autoSetX(pauto,autoGetX(pauto)-1);
+	if (terEstPositionPersoValide( pTer, (autoGetX(pauto)-1), autoGetY(pauto)))
+		autoSetX(pauto,(autoGetX(pauto)-1));
 }
 
 
 void autoDroite(Auto *pauto, const Terrain *pTer)
 {
 	if (terEstPositionPersoValide( pTer, autoGetX(pauto)+1, autoGetY(pauto)))
-		autoSetX(pauto->x++;
+		autoSetX(pauto,(autoGetX(pauto)+1));
 }
 
 
 void autoHaut(Auto *pauto, const Terrain *pTer)
 {
-	if (terEstPositionPersoValide( pTer, pauto->x, pauto-1))
-		pauto->y--;
+	if (terEstPositionPersoValide( pTer, autoGetX(pauto), autoGetY(pauto)-1))
+		autoSetY(pauto,(autoGetY(pauto)-1));
 }
 
 
 void autoBas(Auto *pauto, const Terrain *pTer)
 {
-	if (terEstPositionPersoValide( pTer, pauto->x, pauto->y+1))
-		pauto->y++;
+	if (terEstPositionPersoValide( pTer, autoGetX(pauto), autoGetY(pauto)+1))
+		autoSetY(pauto,(autoGetY(pauto)+1));
 }
 
 
@@ -49,20 +49,18 @@ int autoGetY(const Auto *pauto)
 }
 
 
-void autoSetX(const Auto *pauto, const int X)
+void autoSetX(Auto *pauto, const int x)
 {
 	assert( x>=0) ;
-	assert( x<pTer->dimx ) ;
-	pauto->x= X;
+	pauto->x= x;
 }
 
 
 
-void autoSetY(const Auto *pauto, const int Y)
+void autoSetY(Auto *pauto, const int y)
 {
 	assert( y>=0) ;
-	assert( y<pTer->dimy ) ;
-	pauto->y= Y;
+	pauto->y= y;
 }
 
 
