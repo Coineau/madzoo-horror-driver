@@ -56,7 +56,7 @@ void collisionZombie(Terrain *pTer, DesZombies *pdzombies, Auto *pauto)
 	if(terEstPositionZombie(pTer, autoX,autoY)&&(autoPdV>1))
 		{
 			pTer->tab[autoX][autoY]=' ';
-			autoSetPdV(pauto,autoPdV-1);
+			autoSetPdv(pauto,autoPdV-1);
 		}
 }
 	
