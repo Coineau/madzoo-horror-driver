@@ -37,8 +37,8 @@ int autoGetX(const Auto *);
 int autoGetY(const Auto *);
 
 /**Les deux fonctions suivantes modifient la position du joueur*/
-int autoSetX(Auto* pauto, const int x);
-int autoSetY(Auto* pauto, const int y);
+void autoSetX(Auto *, const int x);
+void autoSetY(Auto *, const int y);
 
 /**Récupère les PV du joueur*/
 int autoGetPdv(const Auto*);
