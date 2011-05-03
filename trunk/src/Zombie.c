@@ -20,7 +20,25 @@ int zombieGetY(const Zombie* pZon)
 	return pZon->y;
 }
 
-//void zombieDeplacement(zombie *,terrain);
+/*void zombieDeplacement(const Zombie * pZon,int Xa,int  Ya,Terrain *Pter)
+{
+    int Xz=zombieGetX(pZon);
+    int Yz=zombieGetY(pZon);
+    float d=sqrt(sqr(Xa-Xz)+sqr(Ya-Yz));
+    if(d < 4)
+    {
+        if(Xz<Xa)
+        {
+            if((terEstPositionPersoValide(pTer,Xz+1, Yz) == 1) &&
+               (terEstPositionSurvivant(pTer, Xz+1,Yz) !=1) &&
+               ()
+            {
+                pZon->
+        }
+    }
+}
+}*/
+
 
 
 

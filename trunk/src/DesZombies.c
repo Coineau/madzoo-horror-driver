@@ -41,4 +41,15 @@ void SupprimeZombie(DesZombies *pdzon,  int i)
 		pdzon->zomrest=pdzon->zomrest - 1;
 }
 
-//void dZombieDeplacer(DesZombies *);
+/*void dZombieDeplacer(DesZombies pdzon* ,int autoX ,int autoY ,Terrrain pTer*)
+{
+    int i = 0;
+	while(i < pdzon->nbz)
+	{
+		if(pdzon->zombies[i] != NULL );
+		{
+			zombieDeplacement(pdzon->zombies[i] ,autoX,autoY,pTer);
+		}
+		i++;
+	}
+}*/
