@@ -7,7 +7,7 @@ typedef struct
 {
 	/**Coordonnees (x,y) du survivant sur la carte*/
 	int x,y;
-	/**0 si est dehors, 1 si sauve*/
+	/**0 si est dehors, 1 si dans voiture, 2 si sauve*/
 	int etat;
 
 } Survivant;
