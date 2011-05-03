@@ -29,7 +29,7 @@ const Auto *jeuGetConstAutoPtr(const Jeu *pJeu)
 }
 
 
-void recupSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto)
+void collisionSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto)
 {
 	int autoX;
 	int autoY;
@@ -52,11 +52,13 @@ void collisionZombie(Terrain *pter, DesZombies *pdzombies, Auto *pauto)
 	autoY=autoGetY(pauto);
 	autoPdV=autoGetPdv(pauto)
 	
-	if(terEstPositionSurvivant(pTer, autoX,autoY)&&(autoPdv>1)
-	{
-		pter->tab[autoX][autoY]=' ';
-		autoSetPdv(pauto,autoPdV-1);
-	}
+	if(terEstPositionZombie(pTer, autoX,autoY)&&(autoPdv>1)
+		{
+			pter->tab[autoX][autoY]=' ';
+			autoSetPdv(pauto,autoPdV-1);
+		}
+	else
+	{break;}
 }
 	
 void jeuActionClavier(Jeu *pJeu, const char touche)

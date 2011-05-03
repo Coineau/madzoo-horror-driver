@@ -4,6 +4,8 @@
 
 #include "Auto.h"
 #include "Terrain.h"
+#include "DesSurvivants.h"
+#include "DesZombies.h"
 
 typedef struct 
 {
@@ -21,7 +23,7 @@ const Auto *jeuGetConstAutoPtr(const Jeu *);
 
 void jeuActionClavier(Jeu *j, const char);
 
-void recupSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto);
+void collisionSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto);
 void collisionZombie(Terrain *pter, DesZombies *pdzombies, Auto *pauto);
 
 #endif
