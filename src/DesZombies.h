@@ -20,6 +20,6 @@ void dZombieInit(DesZombies *);
 void dZombieLibere(DesZombies *);
 void AjouterZombie(DesZombies *, int x , int y, int i);
 void SupprimeZombie(DesZombies *, int i);
-//void dZombieDeplacer(DesZombies *, int autoX , int autoY,Terrain *);
+void dZombieDeplacer(DesZombies *, int autoX , int autoY,Terrain *);
 
 #endif
