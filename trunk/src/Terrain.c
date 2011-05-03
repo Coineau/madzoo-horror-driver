@@ -90,6 +90,15 @@ int terEstPositionSurvivant(const Terrain *pTer, const int x, const int y)
 		return 0;
 }
 
+int terEstPositionZombie(const Terrain* pTer, const int x, const int y)
+{
+	if(pTer->tab[x][y]=='x')
+		return 1;
+	else
+		return 0;
+}
+
+
 const int terGetnbS(const Terrain *pTer)
 {
     return pTer->nbS;

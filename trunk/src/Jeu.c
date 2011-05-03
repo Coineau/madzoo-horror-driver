@@ -50,9 +50,15 @@ void collisionZombie(Terrain *pter, DesZombies *pdzombies, Auto *pauto)
 	int autoY;
 	autoX=autoGetX(pauto);
 	autoY=autoGetY(pauto);
+	autoPdV=autoGetPdv(pauto)
 	
-	if(
+	if(terEstPositionSurvivant(pTer, autoX,autoY)&&(autoPdv>1)
+	{
+		pter->tab[autoX][autoY]=' ';
+		autoSetPdv(pauto,autoPdV-1);
 	}
+}
+	
 void jeuActionClavier(Jeu *pJeu, const char touche)
 {
 	switch(touche)
