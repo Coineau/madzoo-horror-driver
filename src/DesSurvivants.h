@@ -18,6 +18,9 @@ void dsurviInit(DesSurvivants*, Terrain *);
 /**Libere le tableau de survivants*/
 void dsurviLibere(DesSurvivants *);
 
+/**Supprime le survivant passe en parametre*/
+void SupprimeSurvi(DesSurvivants *dsurvis, Survivant survi);
+
 /**Test si tous les survivants ont ete sauves*/
 int dSurviTestSauve (DesSurvivants *);
 

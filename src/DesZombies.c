@@ -8,18 +8,17 @@ void dZombieInit(DesZombies * pdzon , Terrain *pTer )
 {
 	int i,j;
 	int k =0;
-	zombieSetnbz(pdzon,terGetnbz(pTer));
-	int nbz = dzombieGetnbz(pdzon);
+	dzombieSetnbZ(pdzon,terGetnbZ(pTer));
+	int nbz = dzombieGetnbZ(pdzon);
 	int DimX = getDimX(pTer);
-	int DimY = getDimy(pTer);
-	*pdzon = (*Zombie)malloc(nbz * sizeof(Zombie));
+	int DimY = getDimY(pTer);
+	pdzon->zombies = (Zombie**)malloc(nbz * sizeof(Zombie*));
 	for(i=0; i < DimX ; i++)
 	{
 		for(j=0; j <DimY; j++)
 		{
 			if(terEstPositionZombie(pTer , i ,j) == 1)
 			{
-				int  =0;
 				pdzon->zombies[k] = (Zombie*)malloc(sizeof(Zombie));
 				zombieInit(pdzon->zombies[k] , i, j);
 				k++;
@@ -54,15 +53,15 @@ void dZombieLibere(DesZombies * pdzon)
 	pdzon->zomrest=pdzon->zomrest + 1;
 }*/
 
-void SupprimeZombie(DesZombies *pdzon , Zombie pzon)
+void SupprimeZombie(DesZombies *pdzon , Zombie* pzon)
 {
 	
-	int i = dzombieGetnbz(pdzon);
-	Zombie e = pzon;
+	int i = dzombieGetnbZ(pdzon);
+	Zombie* e = pzon;
 	pzon= pdzon->zombies[i-1];
 	pdzon->zombies[i-1] = e;
 	free(pdzon->zombies[i-1]);
-	dzombieSetnbz(pdzon*, i-1);
+	dzombieSetnbZ(pdzon, i-1);
 }
 
 /*void dZombieDeplacer(DesZombies pdzon* ,int autoX ,int autoY ,Terrrain pTer*)
@@ -80,7 +79,7 @@ void SupprimeZombie(DesZombies *pdzon , Zombie pzon)
 
 
 
-int dzombieGetnbz(DesZombies pdzon* )
+int dzombieGetnbZ(const DesZombies *pdzon )
 {
 	return pdzon->nbz;
 }
@@ -90,7 +89,7 @@ int dzombieGetnbz(DesZombies pdzon* )
 	return pdzon->zomrest;
 }*/
 
-void dzombieSetnbz(DesZombies pdzon*, int nbzi)
+void dzombieSetnbZ(DesZombies *pdzon, int nbzi)
 {
 	pdzon->nbz=nbzi;
 }
