@@ -28,15 +28,17 @@ void SupprimeZombie(DesZombies *pdzon, Zombie* pzon);
 /*void dZombieDeplacer(DesZombies *pdzon, int autoX , int autoY,Terrain * pTer);*/
 
 /**Recupere le nombre de zombie*/
-int dzombieGetnbz(const desZombie*);
-
-/**Recupere le nombre de zombie restant*/
-int dzombieGetzomrest(const Zombie*);
-
+int dzombieGetnbZ(const DesZombies* pdzon);
 
 /**Modifie la valeur du nombre de zombie */
-void dzombieSetnbz(Zombie*,int x);
+void dzombieSetnbZ(DesZombies* pdzon,int n);
 
-/**Modifie la valeur du nombre de zombie restant */
-void dzombieSetzomrest(Zombie*,int y);
+
+/**Recupere le nombre de zombie restant
+int dzombieGetzomrest(const Zombie*);*/
+
+
+
+/**Modifie la valeur du nombre de zombie restant
+void dzombieSetzomrest(Zombie*,int y); */
 #endif
