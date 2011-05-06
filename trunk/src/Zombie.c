@@ -4,10 +4,12 @@
 #include <assert.h>
 #include <malloc.h>
 
-void zombieInit(Zombie * pZon ,int cx ,int cy)
+void zombieInit(Zombie *pZon ,int cx ,int cy)
 {
 	pZon->x=cx;
 	pZon->y=cy;
+  pZon->xa=cx;
+  pZon->ya=cy;
 }
 
 int zombieGetX(const Zombie* pZon)
@@ -20,18 +22,37 @@ int zombieGetY(const Zombie* pZon)
 	return pZon->y;
 }
 
-void zombieSetX(zombie*,cx)
+void zombieSetX(Zombie* pZon,int cx)
 {
     pZon->x = cx ;
 }
 
-void zombieSetY(zombie*,y);
+void zombieSetY(Zombie* pZon,int cy)
 {
     pZon->y = cy;
 }
 
+int zombieGetXA(const Zombie* pZon)
+{
+	return pZon->xa;
+}
 
-int testDeplacementZombie(terrain* pter ,int Xz,int  Yz,Terrain *Pter)
+int zombieGetYA(const Zombie* pZon)
+{
+	return pZon->ya;
+}
+
+void zombieSetXA(Zombie* pZon,int cx)
+{
+    pZon->xa = cx ;
+}
+
+void zombieSetYA(Zombie* pZon,int cy)
+{
+    pZon->ya= cy;
+}
+
+int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz)
 {
      if((terEstPositionPersoValide(pTer,Xz, Yz) == 1) &&
         (terEstPositionSurvivant(pTer, Xz,Yz) !=1) &&
@@ -42,30 +63,17 @@ int testDeplacementZombie(terrain* pter ,int Xz,int  Yz,Terrain *Pter)
     return 0;
 }
 
-void zombieDeplacement(const Zombie * pZon,int Xa,int  Ya,Terrain *Pter)
+/*void zombieDeplacement(const Zombie * pZon,int Xa,int  Ya,Terrain *Pter)
 {
     int Xz=zombieGetX(pZon);
     int Yz=zombieGetY(pZon);
     float d=sqrt(sqr(Xa-Xz)+sqr(Ya-Yz));
     if(d < 4)
     {
-        if(Xz<Xa)
-        {
-            if(testDeplacementZombie(pter , Xz+1 , Yz,pTer)
-            {
-                zombieSetX(pZon , Xz+1 );
-            }
-            else{
-                if(Yz>Ya)
-                {
-                    if(testDeplacementZombie(pter , Xz , Yz +1,pTer)
-                       {
-                           zombieSetY(pZon , Yz+1 );
-                       }
-                }
+        
     }
 }
-}
+}*/
 
 
 

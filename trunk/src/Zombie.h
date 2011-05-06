@@ -9,37 +9,51 @@
 
 typedef struct
 {
-	/** coordoner du zombie */
+	/** Coordonées du zombie au temps T */
 	int x,y;
-	/** point de vie du zombie */
+  /**Coordonnées du zombie au temps T-1*/
+  int xa,ya;
+	/** Points de vie du zombie */
 	int pdv;
 }Zombie;
 
 /**Initialise une stucture zombie*/
 void zombieInit(Zombie *,int x,int y);
 
-/**Recupere la coordonner X d'un zombie*/
+/**Recupere la coordonnée x d'un zombie*/
 int zombieGetX(const Zombie*);
 
-/**recupere la coordonner Y d'un Zombie*/
+/**Recupere la coordonnée y d'un zombie*/
 int zombieGetY(const Zombie*);
 
-/**modifie la coordoner x du zombieÃ¹*/
-void zombieSetX(zombie*;int x);
+/**Modifie la coordonée x du zombie*/
+void zombieSetX(Zombie*,int x);
 
-/**modifie la coordoner y du zombieÃ¹*/
-void zombieSetY(zombie*,int y);
+/**Modifie la coordonée y du zombie*/
+void zombieSetY(Zombie*,int y);
 
-/**test si sur le chemain il y est un mur , un zombie ou un survivant*/
-int testDeplacementZombie(terrain* pter ,int Xz,int  Yz,Terrain *Pter)
+/**Recupere la valeur de xa*/
+int zombieGetXA(const Zombie*);
 
-/**deplacement du zombie en fonction de l'auto*/
-void zombieDeplacement(zombie *,int autoX, int autoY,Terrain*);
+/**Recupere la valeur de ya*/
+int zombieGetYA(const Zombie*);
 
-/**recupere les point de vie du zombie */
+/**Modifie la valeur de xa */
+void zombieSetXA(Zombie*,int x);
+
+/**Modifie la valeur de ya*/
+void zombieSetYA(Zombie*,int y);
+
+/**Test si sur le chemain il y a un mur , un zombie ou un survivant*/
+int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz);
+
+/**Deplacement du zombie en fonction de l'auto*/
+void zombieDeplacement(Zombie *,int autoX, int autoY,Terrain*);
+
+/**Recupere les points de vie du zombie */
 int zombieGetPdv(const Zombie*);
 
-/** modifie les point de vie du zombie */
+/** Modifie les points de vie du zombie */
 void zombieSetPdv(Zombie *, int);
 
 #endif
