@@ -114,7 +114,17 @@ const int terGetnbS(const Terrain *pTer)
     return pTer->nbS;
 }
 
-void terSetnbS(Terrain *pTer, const int n)
+void terSetnbS(Terrain *pTer, const int s)
 {
-    pTer->nbS = n;
+    pTer->nbS = s;
+}
+
+const int terGetnbZ(const Terrain *pTer)
+{
+    return pTer->nbZ;
+}
+
+void terSetnbZ(Terrain *pTer, const int z)
+{
+    pTer->nbZ = z;
 }
