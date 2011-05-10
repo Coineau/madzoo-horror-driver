@@ -63,7 +63,7 @@ void collisionSurvi(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto)
 
 	if((terEstPositionSurvivant(pTer, autoX,autoY))&&(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(pauto)))
 	{
-		terSetXY(pTer, autoX, autoY, ' ');
+		terSetXY(pTer, autoY, autoX, ' ');
 		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 1);
 		autonbSurviDansAutoPlusUn(pauto);
 	}
