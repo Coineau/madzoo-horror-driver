@@ -12,7 +12,7 @@ typedef struct
 	Terrain ter;
 	Auto oto;
 	DesSurvivants dsurvis;
-	DesZombies dzombies;
+	/*DesZombies dzombies;*/
 } Jeu;
 
 /** Initialise une structure Jeu*/
@@ -25,8 +25,10 @@ Auto *jeuGetAutoPtr(Jeu *);
 const Terrain *jeuGetConstTerrainPtr(const Jeu *);
 /** Renvoie la structure Auto contenue dans Jeu en constante*/
 const Auto *jeuGetConstAutoPtr(const Jeu *);
+
 /** Renvoie une lettre en fonction de la touche pressee par l'utilisateur*/
 void jeuActionClavier(Jeu *j, const char);
+
 /** Gère les collisions entre un Survivant et l'Auto*/
 void collisionSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto);
 /** Gère les collisions entre un Zombie et l'Auto*/
