@@ -35,20 +35,24 @@ void jeuActionClavier(Jeu *pJeu, const char touche)
 	switch(touche)
 	{
 		case 'g' : 
-				autoGauche(&(pJeu->oto), &(pJeu->ter));
 				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				autoGauche(&(pJeu->oto), &(pJeu->ter));
+				/*collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));*/
 				break;
 		case 'd' :
+								collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
 				autoDroite(&(pJeu->oto), &(pJeu->ter));
-				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				/*collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));*/
 				break;
 		case 'h' :
+							collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
 				autoHaut(&(pJeu->oto), &(pJeu->ter));
-				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				/*collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));*/
 				break;
 		case 'b' : 
+							collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
 				autoBas(&(pJeu->oto), &(pJeu->ter));
-				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				/*collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));*/
 				break;
 	}
 }
@@ -61,7 +65,7 @@ void collisionSurvi(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto)
 	autoX=autoGetX(pauto);
 	autoY=autoGetY(pauto);
 
-	if((terEstPositionSurvivant(pTer, autoX,autoY))&&(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(pauto)))
+	if((terEstPositionSurvivant(pTer, autoX,autoY)==1)&&(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(pauto)))
 	{
 		terSetXY(pTer, autoY, autoX, ' ');
 		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 1);

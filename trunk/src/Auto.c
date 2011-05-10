@@ -69,7 +69,6 @@ void autoSetY(Auto *pauto, const int y)
 
 
 
-
 int autoGetPdv(const Auto *pauto)
 {
 	return(pauto->pdv);
