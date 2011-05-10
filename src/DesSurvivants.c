@@ -37,8 +37,8 @@ void dsurviLibere(DesSurvivants *dsurvis)
         free (dsurvis->tabS[n]);
         SetNbS(dsurvis,n);
 }*/
-        
-        
+
+
 
 int dSurviTestSauve (DesSurvivants *dsurvis)
 {
