@@ -15,16 +15,16 @@ typedef struct
 /**Place le survivant a sa position initiale*/
 void surviInit(Survivant*, const int x, const int y);
 
-/**Renvoi la coordonnee x du survivant*/
+/**Renvoie la coordonnee x du survivant*/
 int surviGetX(const Survivant *);
 
-/**Renvoi la coordonnee y du survivant*/
+/**Renvoie la coordonnee y du survivant*/
 int surviGetY(const Survivant *);
 
-/**Renvoi l etat du survivant*/
+/**Renvoie l"etat du survivant*/
 int surviGetEtat(const Survivant *);
 
-/**Modifie l etat du survivant*/
+/**Modifie l'etat du survivant*/
 void surviSetEtat(Survivant , const int);
 
 #endif
