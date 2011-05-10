@@ -58,7 +58,7 @@ Survivant dGetSurvi(DesSurvivants *dsurvis, const int x, const int y)
     int i;
     for (i=0;i<(GetNbS(dsurvis));i++)
     {
-        if (surviGetX(&(dsurvis->tabS[i]))==x && surviGetY(&(dsurvis->tabS[i]))==y)
+        if (surviGetX(&(dsurvis->tabS[i]))==y && surviGetY(&(dsurvis->tabS[i]))==x)
         {
             return dsurvis->tabS[i];
         }

@@ -32,7 +32,8 @@ void terInit(Terrain *pTer)
 
 	pTer->dimx = 20;
 	pTer->dimy = 20;
-
+	
+	pTer->nbS=1;
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
 		pTer->tab[y] = (char *)malloc(sizeof(char)*pTer->dimx);

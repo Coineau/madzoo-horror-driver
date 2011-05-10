@@ -6,6 +6,10 @@
 void autoInit(Auto *pauto)
 {
 	pauto->x=pauto->y=0;
+	pauto->pdv=2;
+	pauto->pdvmax=2;
+	pauto->nbSurviDansAuto=0;
+	pauto->nbPlaces=1;
 }	
 
 
