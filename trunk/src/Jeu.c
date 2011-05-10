@@ -6,6 +6,8 @@ void jeuInit(Jeu *pJeu)
 {
 	autoInit(&(pJeu->oto));
 	terInit(&(pJeu->ter));
+	dSurviInit(&(pJeu->dsurvis),&(pJeu->ter));
+	/*dZombiesInit(&(pjeu->dzombies));*/
 }
 
 Terrain *jeuGetTerrainPtr(Jeu *pJeu)
@@ -26,6 +28,29 @@ const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 const Auto *jeuGetConstAutoPtr(const Jeu *pJeu)
 {
 	return &(pJeu->oto);
+}
+	
+void jeuActionClavier(Jeu *pJeu, const char touche)
+{
+	switch(touche)
+	{
+		case 'g' : 
+				autoGauche(&(pJeu->oto), &(pJeu->ter));
+				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				break;
+		case 'd' :
+				autoDroite(&(pJeu->oto), &(pJeu->ter));
+				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				break;
+		case 'h' :
+				autoHaut(&(pJeu->oto), &(pJeu->ter));
+				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				break;
+		case 'b' : 
+				autoBas(&(pJeu->oto), &(pJeu->ter));
+				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				break;
+	}
 }
 
 
@@ -58,23 +83,4 @@ void collisionZombie(Terrain *pTer, DesZombies *pdzombies, Auto *pauto)
 			pTer->tab[autoX][autoY]=' ';
 			autoSetPdv(pauto,autoPdV-1);
 		}
-}
-	
-void jeuActionClavier(Jeu *pJeu, const char touche)
-{
-	switch(touche)
-	{
-		case 'g' : 
-				autoGauche(&(pJeu->oto), &(pJeu->ter));					
-				break;
-		case 'd' :
-				autoDroite(&(pJeu->oto), &(pJeu->ter));
-				break;
-		case 'h' :
-				autoHaut(&(pJeu->oto), &(pJeu->ter));
-				break;
-		case 'b' : 
-				autoBas(&(pJeu->oto), &(pJeu->ter));
-				break;
-	}
 }
