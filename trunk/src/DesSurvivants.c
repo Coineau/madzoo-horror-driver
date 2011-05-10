@@ -10,9 +10,9 @@ void dSurviInit(DesSurvivants *dsurvis, Terrain *pTer)
     int k = 0;
     SetNbS (dsurvis, terGetnbS(pTer));
     dsurvis->tabS = (Survivant*)malloc(GetNbS(dsurvis)*sizeof(Survivant));
-    for(j=0;j<getDimY(pTer);j++)
+    for(i=0;i<getDimX(pTer);i++)
     {
-        for(i=0;i<getDimX(pTer);i++)
+        for(j=0;j<getDimY(pTer);j++)
         {
             if (terEstPositionSurvivant(pTer,i,j)==1)
             {
