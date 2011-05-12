@@ -52,31 +52,6 @@ void zombieSetYA(Zombie* pZon,int cy)
     pZon->ya= cy;
 }
 
-int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz)
-{
-     if((terEstPositionPersoValide(pTer,Xz, Yz) == 1) &&
-        (terEstPositionSurvivant(pTer, Xz,Yz) !=1) &&
-        (terEstPositionZombie(pTer, Xz, Yz)))
-        {
-            return 1;
-        }
-    return 0;
-}
-
-/*void zombieDeplacement(const Zombie * pZon,int Xa,int  Ya,Terrain *Pter)
-{
-    int Xz=zombieGetX(pZon);
-    int Yz=zombieGetY(pZon);
-    float d=sqrt(sqr(Xa-Xz)+sqr(Ya-Yz));
-    if(d < 4)
-    {
-        
-    }
-}
-}*/
-
-
-
 
 int zombieGetPdv(const Zombie * pZon)
 {
@@ -87,3 +62,115 @@ void zombieSetPdv(Zombie * pZon, int pv)
 {
 	pZon->pdv=pv;
 }
+
+
+/** DEPLACEMENT DU ZOMBIE !! */
+
+
+int testDeplacementZombie(Zombie * pZon ,Terrain* pTer ,int Xz,int  Yz)
+{
+     if((terEstPositionPersoValide(pTer,Xz, Yz) == 1) &&
+        (terEstPositionSurvivant(pTer, Xz, Yz) !=1 ) &&
+        (terEstPositionZombie(pTer, Xz, Yz) != 1 ))
+        {
+            return 1;
+        }
+    return 0;
+}
+
+void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
+{
+    int z;
+    int y;
+    int s;
+    char i[4];
+    int r;
+    int Xz;
+    int Yz;
+
+    r = rand();
+    Xz=zombieGetX(pZon);
+    Yz=zombieGetY(pZon);
+
+    if(testDeplacementZombie(pZon ,pTer ,Xz,Yz-1))
+    {
+        i[0]=1;
+    }
+    else
+    {
+         i[0]=0;
+    }
+
+    if(testDeplacementZombie(pZon ,pTer ,Xz-1,Yz))
+    {
+        i[1]=1;
+    }
+    else
+    {
+        i[1]=0;
+    }
+    if(testDeplacementZombie(pZon ,pTer ,Xz,Yz+1))
+    {
+        i[2]=1;
+    }
+    else
+    {
+        i[2]=0;
+    }
+    if(testDeplacementZombie(pZon ,pTer ,Xz+1,Yz))
+    {
+        i[3]=1;
+    }
+    else
+    {
+        i[3]=0;
+    }
+
+    s = 0 ;
+    for(y = 0 ; y <4 ; y++)
+    {
+        s = s + i[y];
+    }
+
+    r = rand()%s;
+
+    y =0 ;
+    while(r != 0)
+    {
+        if(i[y] == 1)
+        {
+            if(r == 0)
+            {
+                z = y;
+            }
+            else
+            {
+                r --;
+            }
+
+        }
+        y++;
+
+    }
+
+	switch(z)
+	{
+        case '0' :
+				zombieSetY(pZon,Yz-1);
+				break;
+		case '1' :
+				zombieSetX(pZon,Xz-1);
+				break;
+		case '2' :
+				zombieSetY(pZon,Yz+1);
+				break;
+		case '3' :
+				zombieSetX(pZon,Xz+1);
+				break;
+	}
+
+
+}
+
+
+

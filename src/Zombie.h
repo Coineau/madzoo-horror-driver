@@ -12,7 +12,7 @@ typedef struct
 	/** Coordonées du zombie au temps T */
 	int x,y;
   /**Coordonnées du zombie au temps T-1*/
-  int xa,ya;
+ int xa,ya;
 	/** Points de vie du zombie */
 	int pdv;
 }Zombie;
@@ -44,16 +44,22 @@ void zombieSetXA(Zombie*,int x);
 /**Modifie la valeur de ya*/
 void zombieSetYA(Zombie*,int y);
 
-/**Test si sur le chemain il y a un mur , un zombie ou un survivant*/
-int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz);
-
-/**Deplacement du zombie en fonction de l'auto*/
-void zombieDeplacement(Zombie *,int autoX, int autoY,Terrain*);
-
 /**Recupere les points de vie du zombie */
 int zombieGetPdv(const Zombie*);
 
 /** Modifie les points de vie du zombie */
 void zombieSetPdv(Zombie *, int);
+
+
+/** DEPLACEMENT DU ZOMBIE !! **/
+
+
+/** teste si la position du futur deplacement du zombie est valide ( sans mur ,ni de survivant ,ni de zombie )*/
+int testDeplacementZombie(Zombie * ,Terrain* pTer ,int Xz,int  Yz);
+
+/**Deplacement du zombie en fonction de l'auto*/
+void zombieDeplacement(Zombie *,Terrain*,int autoX, int autoY);
+
+
 
 #endif
