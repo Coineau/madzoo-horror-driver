@@ -32,7 +32,7 @@ void terInit(Terrain *pTer)
 
 	pTer->dimx = 20;
 	pTer->dimy = 20;
-	
+
 	pTer->nbS=1;
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
@@ -95,7 +95,7 @@ const int getDimY(const Terrain *pTer)
 
 int terEstPositionSurvivant(const Terrain *pTer, const int x, const int y)
 {
-	if(pTer->tab[y][x]=='o')
+	if(terGetXY(pTer,x,y)=='o')
 		return 1;
 	else
 		return 0;
@@ -103,7 +103,7 @@ int terEstPositionSurvivant(const Terrain *pTer, const int x, const int y)
 
 int terEstPositionZombie(const Terrain* pTer, const int x, const int y)
 {
-	if(pTer->tab[x][y]=='z')
+	if(terGetXY(pTer,x,y)=='z')
 		return 1;
 	else
 		return 0;
