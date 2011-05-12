@@ -10,7 +10,7 @@ void autoInit(Auto *pauto)
 	pauto->pdvmax=2;
 	pauto->nbSurviDansAuto=0;
 	pauto->nbPlaces=1;
-}	
+}
 
 
 void autoGauche(Auto *pauto, const Terrain *pTer)
@@ -112,7 +112,7 @@ void autoSetNbPlaces(Auto *pauto,int nbp)
 int autoGetnbSurviDansAuto(const Auto *pauto)
 {
 	return(pauto->nbSurviDansAuto);
-	
+
 }
 
 void autonbSurviDansAutoPlusUn(Auto *pauto)
