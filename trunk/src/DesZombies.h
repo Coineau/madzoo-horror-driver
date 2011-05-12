@@ -25,7 +25,7 @@ void dZombieLibere(DesZombies *pdzon);
 /**suprime un zombie dans le tableau dinamique  */
 void SupprimeZombie(DesZombies *pdzon, Zombie* pzon);
 
-void dZombieDeplacer(DesZombies *pdzon, int autoX , int autoY,Terrain * pTer);
+void dZombieDeplacer(DesZombies *pdzon,Terrain * pTer, int autoX , int autoY);
 
 /**Recupere le nombre de zombie*/
 int dzombieGetnbZ(const DesZombies* pdzon);

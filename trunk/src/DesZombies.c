@@ -64,7 +64,7 @@ void SupprimeZombie(DesZombies *pdzon , Zombie* pzon)
 	dzombieSetnbZ(pdzon, i-1);
 }
 
-void dZombieDeplacer(DesZombies pdzon* ,int autoX ,int autoY ,Terrrain pTer*)
+void dZombieDeplacer(DesZombies *pdzon, *Terrrain pTer,int autoX ,int autoY )
 {
     int i = 0;
 	while(i < pdzon->nbz)
