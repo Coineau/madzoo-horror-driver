@@ -8,8 +8,9 @@ void zombieInit(Zombie *pZon ,int cx ,int cy)
 {
 	pZon->x=cx;
 	pZon->y=cy;
-  pZon->xa=cx;
-  pZon->ya=cy;
+  	pZon->xa=cx;
+  	pZon->ya=cy;
+	pZon->pdv=1;
 }
 
 int zombieGetX(const Zombie* pZon)
