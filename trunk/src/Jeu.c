@@ -60,13 +60,11 @@ void collisionSurvi(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto)
 	int autoY;
 	autoX=autoGetX(pauto);
 	autoY=autoGetY(pauto);
-	Survivant survitest;
 
 	if((terEstPositionSurvivant(pTer, autoX,autoY)==1)&&(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(pauto)))
 	{
 		terSetXY(pTer, autoX, autoY, ' ');
-		survitest=dGetSurvi(pdsurvis, autoX, autoY);
-		surviSetEtat(&survitest, 1);
+		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 1);
 		autonbSurviDansAutoPlusUn(pauto);
 	}
 }
