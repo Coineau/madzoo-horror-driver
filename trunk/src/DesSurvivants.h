@@ -21,8 +21,8 @@ void dsurviLibere(DesSurvivants *);
 /**Supprime le survivant passe en parametre*/
 void SupprimeSurvi(DesSurvivants *dsurvis, Survivant survi);
 
-/**Test si tous les survivants ont ete sauves*/
-int dSurviTestSauve (DesSurvivants *);
+/**Test si tous les survivants sont dans la voiture et les met dans l'etat sauvé*/
+int dSurviSauve (DesSurvivants *);
 
 /**Renvoie le survivant dont les coordonnees sont passees en parametre*/
 Survivant* dGetSurvi(DesSurvivants *, const int x, const int y);

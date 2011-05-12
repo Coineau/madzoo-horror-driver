@@ -40,17 +40,16 @@ void dsurviLibere(DesSurvivants *dsurvis)
 
 
 
-int dSurviTestSauve (DesSurvivants *dsurvis)
+void dSurviSauve (DesSurvivants *dsurvis)
 {
     int i;
     for (i=0;i<(GetNbS(dsurvis));i++)
     {
-        if (surviGetEtat(&(dsurvis->tabS[i]))==0)
+        if (surviGetEtat(&(dsurvis->tabS[i]))==1)
         {
-            return 0;
+            surviSetEtat(&(dsurvis->tabS[i]),2);
         }
     }
-    return 1;
 }
 
 Survivant* dGetSurvi(DesSurvivants *dsurvis, const int x, const int y)
