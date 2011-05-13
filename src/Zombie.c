@@ -8,9 +8,9 @@ void zombieInit(Zombie *pZon ,int cx ,int cy)
 {
 	pZon->x=cx;
 	pZon->y=cy;
-  	pZon->xa=cx;
-  	pZon->ya=cy;
-	pZon->pdv=1;
+	pZon->xa=cx;
+	pZon->ya=cy;
+	pZon->pdv=1; 
 }
 
 int zombieGetX(const Zombie* pZon)
@@ -68,7 +68,7 @@ void zombieSetPdv(Zombie * pZon, int pv)
 /** DEPLACEMENT DU ZOMBIE !! */
 
 
-int testDeplacementZombie(Zombie * pZon ,Terrain* pTer ,int Xz,int  Yz)
+int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz)
 {
      if((terEstPositionPersoValide(pTer,Xz, Yz) == 1) &&
         (terEstPositionSurvivant(pTer, Xz, Yz) !=1 ) &&
@@ -93,7 +93,7 @@ void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
     Xz=zombieGetX(pZon);
     Yz=zombieGetY(pZon);
 
-    if(testDeplacementZombie(pZon ,pTer ,Xz,Yz-1))
+    if(testDeplacementZombie(pTer ,Xz,Yz-1))
     {
         i[0]=1;
     }
@@ -102,7 +102,7 @@ void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
          i[0]=0;
     }
 
-    if(testDeplacementZombie(pZon ,pTer ,Xz-1,Yz))
+    if(testDeplacementZombie(pTer ,Xz-1,Yz))
     {
         i[1]=1;
     }
@@ -110,7 +110,7 @@ void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
     {
         i[1]=0;
     }
-    if(testDeplacementZombie(pZon ,pTer ,Xz,Yz+1))
+    if(testDeplacementZombie(pTer ,Xz,Yz+1))
     {
         i[2]=1;
     }
@@ -118,7 +118,7 @@ void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
     {
         i[2]=0;
     }
-    if(testDeplacementZombie(pZon ,pTer ,Xz+1,Yz))
+    if(testDeplacementZombie(pTer ,Xz+1,Yz))
     {
         i[3]=1;
     }
@@ -136,13 +136,14 @@ void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
     r = rand()%s;
 
     y =0 ;
-    while(r != 0)
+    while(y != 4)
     {
         if(i[y] == 1)
         {
             if(r == 0)
             {
                 z = y;
+                r--;
             }
             else
             {
@@ -156,16 +157,16 @@ void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
 
 	switch(z)
 	{
-        case '0' :
+        case 0 :
 				zombieSetY(pZon,Yz-1);
 				break;
-		case '1' :
+		case 1 :
 				zombieSetX(pZon,Xz-1);
 				break;
-		case '2' :
+		case 2 :
 				zombieSetY(pZon,Yz+1);
 				break;
-		case '3' :
+		case 3 :
 				zombieSetX(pZon,Xz+1);
 				break;
 	}
