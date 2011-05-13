@@ -55,7 +55,7 @@ void zombieSetPdv(Zombie *, int);
 
 
 /** teste si la position du futur deplacement du zombie est valide ( sans mur ,ni de survivant ,ni de zombie )*/
-int testDeplacementZombie(Zombie * ,Terrain* pTer ,int Xz,int  Yz);
+int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz);
 
 /**Deplacement du zombie en fonction de l'auto*/
 void zombieDeplacement(Zombie *,Terrain*,int autoX, int autoY);

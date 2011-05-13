@@ -64,15 +64,12 @@ void SupprimeZombie(DesZombies *pdzon , Zombie* pzon)
 	dzombieSetnbZ(pdzon, i-1);
 }
 
-void dZombieDeplacer(DesZombies *pdzon, *Terrrain pTer,int autoX ,int autoY )
+void dZombieDeplacer(DesZombies *pdzon ,int autoX ,int autoY ,Terrain *pTer)
 {
     int i = 0;
 	while(i < pdzon->nbz)
 	{
-		if(pdzon->zombies[i] != NULL );
-		{
-			zombieDeplacement(pdzon->zombies[i] ,autoX,autoY,pTer);
-		}
+		zombieDeplacement(pdzon->zombies[i],pTer ,autoX,autoY);
 		i++;
 	}
 }
@@ -84,17 +81,10 @@ int dzombieGetnbZ(const DesZombies *pdzon )
 	return pdzon->nbz;
 }
 
-/*int dzombieGet(DesZombies pdzon* )
-{
-	return pdzon->zomrest;
-}*/
+
 
 void dzombieSetnbZ(DesZombies *pdzon, int nbzi)
 {
 	pdzon->nbz=nbzi;
 }
-/*
-void dzombieSetPdv(DesZombies pdzon* , int zomresti)
-{
-	pdzon->zomrest=zomresti;
-}*/
+
