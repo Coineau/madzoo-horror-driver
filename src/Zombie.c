@@ -159,15 +159,23 @@ void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
 	{
         case 0 :
 				zombieSetY(pZon,Yz-1);
+				terSetXY(pTer, Xz, Yz, ' ');
+				terSetXY(pTer, Xz, Yz-1, 'z');
 				break;
 		case 1 :
 				zombieSetX(pZon,Xz-1);
+				terSetXY(pTer, Xz, Yz, ' ');
+				terSetXY(pTer, Xz-1, Yz, 'z');
 				break;
 		case 2 :
 				zombieSetY(pZon,Yz+1);
+				terSetXY(pTer, Xz, Yz, ' ');
+				terSetXY(pTer, Xz,Yz+1, 'z');
 				break;
 		case 3 :
 				zombieSetX(pZon,Xz+1);
+				terSetXY(pTer, Xz, Yz, ' ');
+				terSetXY(pTer, Xz+1, Yz, 'z');
 				break;
 	}
 
