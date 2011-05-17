@@ -29,9 +29,7 @@ const Auto *jeuGetConstAutoPtr(const Jeu *);
 /** Renvoie une lettre en fonction de la touche pressee par l'utilisateur*/
 void jeuActionClavier(Jeu *j, const char);
 
-/** Gère les collisions entre un Survivant et l'Auto*/
-void collisionSurvi(Terrain *pter, DesSurvivants *pdsurvis, Auto *pauto);
-/** Gère les collisions entre un Zombie et l'Auto*/
-void collisionZombie(Terrain *pter, DesZombies *pdzombies, Auto *pauto);
+/** Gère les collisions entre un Survivant ou un Zombie ou l'Heliport et l'Auto*/
+void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *pdzombies);
 
 #endif

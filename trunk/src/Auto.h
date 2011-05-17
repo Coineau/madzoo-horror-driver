@@ -62,6 +62,6 @@ void autoSetNbPlaces(Auto*,int);
 int autoGetnbSurviDansAuto(const Auto*);
 
 /**Change le nombre de survivants dans l'auto*/
-void autoSetnbSurviDansAuto(Auto*,double);
+void autoSetnbSurviDansAuto(Auto*,int);
 
 #endif
