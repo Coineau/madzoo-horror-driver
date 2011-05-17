@@ -51,7 +51,7 @@ int zombieGetPdv(const Zombie*);
 void zombieSetPdv(Zombie *, int);
 
 /** Suprimer Zombie x, y */
-void zombieSupr(Zombie *);
+void zombieSupr(Zombie *, Terrain* pTer);
 
 
 /** DEPLACEMENT DU ZOMBIE !! **/
