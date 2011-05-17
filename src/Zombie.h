@@ -50,6 +50,9 @@ int zombieGetPdv(const Zombie*);
 /** Modifie les points de vie du zombie */
 void zombieSetPdv(Zombie *, int);
 
+/** Suprimer Zombie x, y */
+void zombieSupr(Zombie *);
+
 
 /** DEPLACEMENT DU ZOMBIE !! **/
 

@@ -10,7 +10,7 @@ void zombieInit(Zombie *pZon ,int cx ,int cy)
 	pZon->y=cy;
 	pZon->xa=cx;
 	pZon->ya=cy;
-	pZon->pdv=1; 
+	pZon->pdv=1;
 }
 
 int zombieGetX(const Zombie* pZon)
@@ -62,6 +62,15 @@ int zombieGetPdv(const Zombie * pZon)
 void zombieSetPdv(Zombie * pZon, int pv)
 {
 	pZon->pdv=pv;
+}
+
+void zombieSupr(Zombie *pZon)
+{
+    int Xz;
+    int Yz;
+    Xz=zombieGetX(pZon);
+    Yz=zombieGetY(pZon);
+    free(pZon);
 }
 
 
