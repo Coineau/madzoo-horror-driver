@@ -73,7 +73,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	const Auto *pAuto = jeuGetConstAutoPtr(&(pSdlJeu->jeu));
 
 	/* Remplir l'écran de blanc */
-	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0xFF, 0xFF, 0xFF ) );
+	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0xFF, 0x00, 0xFF ) );
 
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y)
@@ -99,6 +99,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 						{
 						SDL_apply_surface(  pSdlJeu->surface_heli, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 						}
+					}
 				}
 			}
 	/* Copier le sprite de Auto sur l'écran */
