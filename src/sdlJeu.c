@@ -42,6 +42,11 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	if (pSdlJeu->surface_survivant==NULL)
 		pSdlJeu->surface_survivant = SDL_load_image("../data/survivant.bmp");
 	assert( pSdlJeu->surface_survivant!=NULL);
+	
+	pSdlJeu->surface_heli = SDL_load_image("data/heli.bmp");
+	if (pSdlJeu->surface_heli==NULL)
+		pSdlJeu->surface_heli = SDL_load_image("../data/heli.bmp");
+	assert( pSdlJeu->surface_heli!=NULL);
 
 
 	pSdlJeu->surface_mur = SDL_load_image("data/mur.bmp");
@@ -88,6 +93,12 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 					{
 						SDL_apply_surface(  pSdlJeu->surface_survivant, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 					}
+					else
+					{
+						if(terGetXY(pTer,x,y)=='H')
+						{
+						SDL_apply_surface(  pSdlJeu->surface_heli, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+						}
 				}
 			}
 	/* Copier le sprite de Auto sur l'écran */
