@@ -12,11 +12,11 @@
 int main ( int argc, char** argv )
 {
 
-#ifdef JEU_NCURSES
+/*#ifdef JEU_NCURSES
  	Jeu jeu;
  	jeuInit(&jeu);
 	ncursBoucle(&jeu);
-#endif
+#endif*/
 
 #ifdef JEU_SDL
 	sdlJeu sj;
