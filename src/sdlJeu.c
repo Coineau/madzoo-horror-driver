@@ -43,9 +43,9 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_survivant = SDL_load_image("../data/survivant.bmp");
 	assert( pSdlJeu->surface_survivant!=NULL);
 	
-	pSdlJeu->surface_heli = SDL_load_image("data/heli.bmp");
+	pSdlJeu->surface_heli = SDL_load_image("data/Heliport.bmp");
 	if (pSdlJeu->surface_heli==NULL)
-		pSdlJeu->surface_heli = SDL_load_image("../data/heli.bmp");
+		pSdlJeu->surface_heli = SDL_load_image("../data/Heliport.bmp");
 	assert( pSdlJeu->surface_heli!=NULL);
 
 
