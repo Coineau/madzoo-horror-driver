@@ -6,12 +6,12 @@
 
 void dZombieInit(DesZombies * pdzon , Terrain *pTer )
 {
-	int i,j;
-	int k =0;
-	int nbz = dzombieGetnbZ(pdzon);
+	int i,j,nbz;
+	int k = 0;
 	int DimX = getDimX(pTer);
 	int DimY = getDimY(pTer);
 	dzombieSetnbZ(pdzon,terGetnbZ(pTer));
+	nbz = dzombieGetnbZ(pdzon);
 	pdzon->zombies = (Zombie**)malloc(nbz * sizeof(Zombie*));
 	for(i=0; i < DimX ; i++)
 	{
@@ -76,7 +76,7 @@ void dZombieDeplacer(DesZombies *pdzon ,int autoX ,int autoY ,Terrain *pTer)
     int i = 0;
 	while(i < pdzon->nbz)
 	{
-		zombieDeplacement(pdzon->zombies[i],pTer ,autoX,autoY);
+		zombieDeplacementChoix(pdzon->zombies[i],pTer ,autoX,autoY);
 		i++;
 	}
 }

@@ -6,13 +6,12 @@
 #include <stdio.h>
 #include <assert.h>
 #include <malloc.h>
+#include <math.h>
 
 typedef struct
 {
 	/** Coordonées du zombie au temps T */
 	int x,y;
-  /**Coordonnées du zombie au temps T-1*/
- int xa,ya;
 	/** Points de vie du zombie */
 	int pdv;
 }Zombie;
@@ -32,18 +31,6 @@ void zombieSetX(Zombie*,int x);
 /**Modifie la coordonée y du zombie*/
 void zombieSetY(Zombie*,int y);
 
-/**Recupere la valeur de xa*/
-int zombieGetXA(const Zombie*);
-
-/**Recupere la valeur de ya*/
-int zombieGetYA(const Zombie*);
-
-/**Modifie la valeur de xa */
-void zombieSetXA(Zombie*,int x);
-
-/**Modifie la valeur de ya*/
-void zombieSetYA(Zombie*,int y);
-
 /**Recupere les points de vie du zombie */
 int zombieGetPdv(const Zombie*);
 
@@ -60,8 +47,12 @@ void zombieSupr(Zombie *, Terrain* pTer);
 /** teste si la position du futur deplacement du zombie est valide ( sans mur ,ni de survivant ,ni de zombie )*/
 int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz);
 
+void zombieDeplacementChoix(Zombie * pZon,Terrain *pTer,int Xa,int  Ya);
+
+void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya);
+
 /**Deplacement du zombie en fonction de l'auto*/
-void zombieDeplacement(Zombie *,Terrain*,int autoX, int autoY);
+void zombieDeplacementAleat(Zombie *,Terrain*);
 
 
 

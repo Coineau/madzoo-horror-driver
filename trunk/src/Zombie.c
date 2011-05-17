@@ -3,13 +3,12 @@
 #include <stdio.h>
 #include <assert.h>
 #include <malloc.h>
+#include <math.h>
 
 void zombieInit(Zombie *pZon ,int cx ,int cy)
 {
 	pZon->x=cx;
 	pZon->y=cy;
-	pZon->xa=cx;
-	pZon->ya=cy;
 	pZon->pdv=1;
 }
 
@@ -31,26 +30,6 @@ void zombieSetX(Zombie* pZon,int cx)
 void zombieSetY(Zombie* pZon,int cy)
 {
     pZon->y = cy;
-}
-
-int zombieGetXA(const Zombie* pZon)
-{
-	return pZon->xa;
-}
-
-int zombieGetYA(const Zombie* pZon)
-{
-	return pZon->ya;
-}
-
-void zombieSetXA(Zombie* pZon,int cx)
-{
-    pZon->xa = cx ;
-}
-
-void zombieSetYA(Zombie* pZon,int cy)
-{
-    pZon->ya= cy;
 }
 
 
@@ -77,7 +56,6 @@ void zombieSupr(Zombie *pZon,Terrain* pTer)
 
 /** DEPLACEMENT DU ZOMBIE !! */
 
-
 int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz)
 {
      if((terEstPositionPersoValide(pTer,Xz, Yz) == 1) &&
@@ -90,7 +68,82 @@ int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz)
     return 0;
 }
 
-void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
+void zombieDeplacementChoix(Zombie* pZon,Terrain *pTer,int Xa,int  Ya)
+{
+    float d;
+    int Xz;
+    int Yz;
+    Xz=zombieGetX(pZon);
+    Yz=zombieGetY(pZon);
+
+    d = sqrt((Xz - Xa )*(Xz - Xa )+ (Yz - Ya)*(Yz - Ya));
+    if(d <= 4)
+    {
+        zombieDeplacementAgro(pZon,pTer,Xa,Ya);
+    }
+    else
+    {
+        zombieDeplacementAleat(pZon,pTer);
+    }
+}
+
+void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
+{
+    int Xz;
+    int Yz;
+    int Xt;
+    int Yt;
+    Xz=zombieGetX(pZon);
+    Yz=zombieGetY(pZon);
+    Xt = Xa - Xz;
+    Yt = Ya - Yz;
+    if(abs(Xt) > abs(Yt ))
+    {
+        if(Xt > 0)
+        {
+             if(testDeplacementZombie(pTer ,Xz+1,Yz))
+            {
+                zombieSetX(pZon,Xz+1);
+				terSetXY(pTer, Xz, Yz, ' ');
+				terSetXY(pTer, Xz+1, Yz, 'z');
+
+            }
+        }
+        else
+        {
+            if(testDeplacementZombie(pTer ,Xz-1,Yz))
+            {
+                zombieSetX(pZon,Xz-1);
+                terSetXY(pTer, Xz, Yz, ' ');
+                terSetXY(pTer, Xz-1, Yz, 'z');
+            }
+        }
+    }
+    else
+    {
+        if(Yt>0)
+        {
+             if(testDeplacementZombie(pTer ,Xz,Yz+1))
+            {
+                zombieSetY(pZon,Yz+1);
+                terSetXY(pTer, Xz, Yz, ' ');
+                terSetXY(pTer, Xz,Yz+1, 'z');
+            }
+
+        }
+        else
+        {
+             if(testDeplacementZombie(pTer ,Xz,Yz-1))
+             {
+                zombieSetY(pZon,Yz-1);
+                terSetXY(pTer, Xz, Yz, ' ');
+                terSetXY(pTer, Xz, Yz-1, 'z');
+             }
+        }
+    }
+}
+
+void zombieDeplacementAleat(Zombie * pZon,Terrain *pTer)
 {
     int z;
     int y;
@@ -188,6 +241,7 @@ void zombieDeplacement(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
 				terSetXY(pTer, Xz, Yz, ' ');
 				terSetXY(pTer, Xz+1, Yz, 'z');
 				break;
+        default : break;
 	}
 
 
