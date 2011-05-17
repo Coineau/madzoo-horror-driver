@@ -53,7 +53,7 @@ void dZombieLibere(DesZombies * pdzon)
 	pdzon->zomrest=pdzon->zomrest + 1;
 }*/
 
-void SupprimeZombie(DesZombies *pdzon ,int autoX ,int autoY )
+void SupprimeZombie(DesZombies *pdzon ,int autoX ,int autoY , Terrain * pTer)
 {
 
 	int i,y;
@@ -66,7 +66,9 @@ void SupprimeZombie(DesZombies *pdzon ,int autoX ,int autoY )
 	p= pdzon->zombies[i-1];
 	pdzon->zombies[i-1] = e;
 	pdzon->zombies[y] = p ;
-	zombieSupr(e);
+	zombieSupr(e,pTer);
+	dzombieSetnbZ(pdzon, i-1);
+
 }
 
 void dZombieDeplacer(DesZombies *pdzon ,int autoX ,int autoY ,Terrain *pTer)
@@ -88,7 +90,7 @@ int dzombieGetzomb(const DesZombies *pdzon,int Xz ,int Yz)
     i = dzombieGetnbZ(pdzon);
     for(y =0 ; y <i ; y++)
     {
-        e = pdzon->zombies[i];
+        e = pdzon->zombies[y];
         Xe=zombieGetX(e);
         Ye=zombieGetY(e);
         if(Xe == Xz && Ye == Yz )

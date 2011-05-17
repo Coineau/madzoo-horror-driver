@@ -64,13 +64,14 @@ void zombieSetPdv(Zombie * pZon, int pv)
 	pZon->pdv=pv;
 }
 
-void zombieSupr(Zombie *pZon)
+void zombieSupr(Zombie *pZon,Terrain* pTer)
 {
     int Xz;
     int Yz;
     Xz=zombieGetX(pZon);
     Yz=zombieGetY(pZon);
     free(pZon);
+    terSetXY(pTer, Xz, Yz, ' ');
 }
 
 
@@ -81,7 +82,8 @@ int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz)
 {
      if((terEstPositionPersoValide(pTer,Xz, Yz) == 1) &&
         (terEstPositionSurvivant(pTer, Xz, Yz) !=1 ) &&
-        (terEstPositionZombie(pTer, Xz, Yz) != 1 ))
+        (terEstPositionZombie(pTer, Xz, Yz) != 1 ) &&
+        (terEstPositionHeli(pTer, Xz, Yz) != 1))
         {
             return 1;
         }

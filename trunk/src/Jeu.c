@@ -36,21 +36,20 @@ void jeuActionClavier(Jeu *pJeu, const char touche)
 	{
 		case 'g' :
 				autoGauche(&(pJeu->oto), &(pJeu->ter));
-				collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 				break;
 		case 'd' :
 				autoDroite(&(pJeu->oto), &(pJeu->ter));
-				collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 				break;
 		case 'h' :
 				autoHaut(&(pJeu->oto), &(pJeu->ter));
-				collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 				break;
 		case 'b' :
 				autoBas(&(pJeu->oto), &(pJeu->ter));
-				collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 				break;
 	}
+    collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
+    dZombieDeplacer(&(pJeu->dzombies) ,autoGetX(&(pJeu->oto)) ,autoGetY(&(pJeu->oto)) ,&(pJeu->ter));
+	collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 }
 
 
@@ -79,11 +78,12 @@ void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *
 		case 'z' :
 				if(autoPdV>0)
 				{
-					terSetXY(pTer, autoX, autoY, ' ');
+					/* terSetXY(pTer, autoX, autoY, ' '); */
+					SupprimeZombie(pdzombies,autoX,autoY,pTer);
 					autoSetPdv(pauto,autoPdV-1);
 				}
 				break;
-				
+
 		case 'H' :
 				if(autoGetnbSurviDansAuto(pauto)>=1)
 				{

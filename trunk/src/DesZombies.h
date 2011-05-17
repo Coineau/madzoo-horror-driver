@@ -21,7 +21,7 @@ void dZombieInit(DesZombies *pdzon,Terrain *pTer);
 void dZombieLibere(DesZombies *pdzon);
 
 /**suprime un zombie dans le tableau dinamique  */
-void SupprimeZombie(DesZombies *pdzon,int autoX,int autoY);
+void SupprimeZombie(DesZombies *pdzon,int autoX,int autoY,Terrain* pTer);
 
 void dZombieDeplacer(DesZombies *pdzon, int autoX , int autoY,Terrain * pTer);
 
