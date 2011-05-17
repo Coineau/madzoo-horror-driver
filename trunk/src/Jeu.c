@@ -7,7 +7,7 @@ void jeuInit(Jeu *pJeu)
 	autoInit(&(pJeu->oto));
 	terInit(&(pJeu->ter));
 	dSurviInit(&(pJeu->dsurvis),&(pJeu->ter));
-	/*dZombiesInit(&(pjeu->dzombies));*/
+	dZombieInit(&(pJeu->dzombies),&(pJeu->ter));
 }
 
 Terrain *jeuGetTerrainPtr(Jeu *pJeu)
@@ -65,7 +65,7 @@ void collisionSurvi(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto)
 	{
 		terSetXY(pTer, autoX, autoY, ' ');
 		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 1);
-		autonbSurviDansAutoPlusUn(pauto);
+		autoSetnbSurviDansAuto(pauto,1);
 	}
 }
 
@@ -83,4 +83,18 @@ void collisionZombie(Terrain *pTer, DesZombies *pdzombies, Auto *pauto)
 			pTer->tab[autoX][autoY]=' ';
 			autoSetPdv(pauto,autoPdV-1);
 		}
+}
+
+void collisionHeli(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto)
+{
+	int autoX;
+	int autoY;
+	autoX=autoGetX(pauto);
+	autoY=autoGetY(pauto);
+
+	if((terEstPositionHeli(pTer, autoX,autoY)==1)&&(autoGetnbSurviDansAuto(pauto)==1))
+	{
+		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 2);
+		autoSetnbSurviDansAuto(pauto,-1);
+	}
 }

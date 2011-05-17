@@ -12,7 +12,7 @@ typedef struct
 	Terrain ter;
 	Auto oto;
 	DesSurvivants dsurvis;
-	/*DesZombies dzombies;*/
+	DesZombies dzombies;
 } Jeu;
 
 /** Initialise une structure Jeu*/

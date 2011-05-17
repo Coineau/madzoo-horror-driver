@@ -13,7 +13,7 @@ typedef struct
 } DesSurvivants;
 
 /**Initialise les survivants en les placant sur le terrain*/
-void dsurviInit(DesSurvivants*, Terrain *);
+void dSurviInit(DesSurvivants*, Terrain *);
 
 /**Libere le tableau de survivants*/
 void dsurviLibere(DesSurvivants *);
