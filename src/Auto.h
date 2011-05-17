@@ -61,7 +61,7 @@ void autoSetNbPlaces(Auto*,int);
 /** Récupère le nombre de places occupées*/
 int autoGetnbSurviDansAuto(const Auto*);
 
-/**Augmente de un le nombre de place occupées dans l'auto*/
-void autonbSurviDansAutoPlusUn(Auto*);
+/**Change le nombre de survivants dans l'auto*/
+void autoSetnbSurviDansAuto(Auto*,double);
 
 #endif

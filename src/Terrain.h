@@ -30,6 +30,9 @@ int terEstPositionSurvivant(const Terrain*, const int x, const int y);
 /**Verifie que la case est un zombie*/
 int terEstPositionZombie(const Terrain*, const int x, const int y);
 
+/**Verifie que la case est l'heliport*/
+int terEstPositionHeli(const Terrain* pTer, const int x, const int y);
+
 /**Renvoie le caractere dont les coordonnees sont passees en parametre*/
 const char terGetXY(const Terrain *, const int x, const int y);
 

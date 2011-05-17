@@ -8,7 +8,7 @@ void terInit(Terrain *pTer)
 	int x,y;
 
 	const char terrain_defaut[20][20] = {
-		"        ##      #   ",
+		"H       ##      #   ",
 		"        ##      #   ",
 		"       ##########   ",
 		"##              ####",
@@ -109,6 +109,13 @@ int terEstPositionZombie(const Terrain* pTer, const int x, const int y)
 		return 0;
 }
 
+int terEstPositionHeli(const Terrain* pTer, const int x, const int y)
+{
+	if(terGetXY(pTer,x,y)=='H')
+		return 1;
+	else
+		return 0;
+}
 
 const int terGetnbS(const Terrain *pTer)
 {

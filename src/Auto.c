@@ -115,10 +115,9 @@ int autoGetnbSurviDansAuto(const Auto *pauto)
 
 }
 
-void autonbSurviDansAutoPlusUn(Auto *pauto)
+void autoSetnbSurviDansAuto(Auto *pauto,double x)
 {
-	assert(pauto->nbSurviDansAuto+1<=pauto->nbPlaces);
-	pauto->nbSurviDansAuto++;
+	pauto->nbSurviDansAuto=pauto->nbSurviDansAuto+x;
 }
 
 
