@@ -13,15 +13,15 @@ void terInit(Terrain *pTer)
 		"       ##########   ",
 		"##              ####",
 		"##      ### #      #",
-		"   z    zz####      ",
+		"   z      ####      ",
 		"       z ##  z##    ",
-		"     zzz ###   # zzz",
+		"         ###   #    ",
 		"###            #### ",
-		"         zzzzz######",
+		"              ######",
 		"##      ### #      #",
-		"   z    zz####      ",
-		"       z ##  z##    ",
-		"     zzz ###   # zzz",
+		"   z      ####      ",
+		"         ##  z##    ",
+		"         ###   #    ",
 		"###            #### ",
 		"        ##      #   ",
 		"        ##      #   ",
@@ -34,6 +34,7 @@ void terInit(Terrain *pTer)
 	pTer->dimy = 20;
 
 	pTer->nbS=1;
+	pTer->nbZ=5;
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
 		pTer->tab[y] = (char *)malloc(sizeof(char)*pTer->dimx);
