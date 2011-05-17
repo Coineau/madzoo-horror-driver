@@ -12,7 +12,11 @@
 int main ( int argc, char** argv )
 {
 
-
+#ifdef JEU_NCURSES
+ 	Jeu jeu;
+ 	jeuInit(&jeu);
+	ncursBoucle(&jeu);
+#endif
 
 #ifdef JEU_SDL
 	sdlJeu sj;
@@ -29,8 +33,4 @@ int main ( int argc, char** argv )
 
 
 
-/*#ifdef JEU_NCURSES
- 	Jeu jeu;
- 	jeuInit(&jeu);
-	ncursBoucle(&jeu);
-#endif*/
+
