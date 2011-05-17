@@ -36,65 +36,60 @@ void jeuActionClavier(Jeu *pJeu, const char touche)
 	{
 		case 'g' :
 				autoGauche(&(pJeu->oto), &(pJeu->ter));
-				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 				break;
 		case 'd' :
 				autoDroite(&(pJeu->oto), &(pJeu->ter));
-				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 				break;
 		case 'h' :
 				autoHaut(&(pJeu->oto), &(pJeu->ter));
-				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 				break;
 		case 'b' :
 				autoBas(&(pJeu->oto), &(pJeu->ter));
-				collisionSurvi(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto));
+				collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 				break;
 	}
 }
 
 
-void collisionSurvi(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto)
-{
-	int autoX;
-	int autoY;
-	autoX=autoGetX(pauto);
-	autoY=autoGetY(pauto);
 
-	if((terEstPositionSurvivant(pTer, autoX,autoY)==1)&&(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(pauto)))
-	{
-		terSetXY(pTer, autoX, autoY, ' ');
-		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 1);
-		autoSetnbSurviDansAuto(pauto,1);
-	}
-}
 
-void collisionZombie(Terrain *pTer, DesZombies *pdzombies, Auto *pauto)
+void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *pdzombies)
 {
 	int autoX;
 	int autoY;
 	int autoPdV;
+	char Pos;
 	autoX=autoGetX(pauto);
 	autoY=autoGetY(pauto);
 	autoPdV=autoGetPdv(pauto);
-
-	if(terEstPositionZombie(pTer, autoX,autoY)&&(autoPdV>1))
-		{
-			pTer->tab[autoX][autoY]=' ';
-			autoSetPdv(pauto,autoPdV-1);
-		}
-}
-
-void collisionHeli(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto)
-{
-	int autoX;
-	int autoY;
-	autoX=autoGetX(pauto);
-	autoY=autoGetY(pauto);
-
-	if((terEstPositionHeli(pTer, autoX,autoY)==1)&&(autoGetnbSurviDansAuto(pauto)==1))
+	Pos=terGetXY(pTer, autoX, autoY);
+	switch(Pos)
 	{
-		surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 2);
-		autoSetnbSurviDansAuto(pauto,-1);
+		case 'o' :
+				if(autoGetNbPlaces(pauto)>autoGetnbSurviDansAuto(pauto))
+				{
+					terSetXY(pTer, autoX, autoY, ' ');
+					surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 1);
+					autoSetnbSurviDansAuto(pauto,1);
+				}
+				break;
+		case 'z' :
+				if(autoPdV>0)
+				{
+					terSetXY(pTer, autoX, autoY, ' ');
+					autoSetPdv(pauto,autoPdV-1);
+				}
+				break;
+				
+		case 'H' :
+				if(autoGetnbSurviDansAuto(pauto)==1)
+				{
+					surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 2);
+					autoSetnbSurviDansAuto(pauto,-1);
+				}
+				break;
 	}
 }

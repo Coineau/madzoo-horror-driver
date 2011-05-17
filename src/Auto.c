@@ -115,7 +115,7 @@ int autoGetnbSurviDansAuto(const Auto *pauto)
 
 }
 
-void autoSetnbSurviDansAuto(Auto *pauto,double x)
+void autoSetnbSurviDansAuto(Auto *pauto,int x)
 {
 	pauto->nbSurviDansAuto=pauto->nbSurviDansAuto+x;
 }
