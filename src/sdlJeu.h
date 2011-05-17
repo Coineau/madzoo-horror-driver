@@ -2,7 +2,7 @@
 #ifndef _SDLJEU_H
 #define _SDLJEU_H
 
-#include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
 #include "Jeu.h"
 
 
@@ -16,6 +16,8 @@ typedef struct
 	SDL_Surface* surface_zombie;
 	SDL_Surface* surface_survivant;
 	SDL_Surface* surface_heli;
+	SDL_Surface* surface_HUD;
+	TTF_Font* surface_police;
 } sdlJeu;
 
 void sdljeuInit(sdlJeu *);

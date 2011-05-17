@@ -13,7 +13,10 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 void sdljeuInit(sdlJeu *pSdlJeu)
 {
 	Jeu *pJeu;
-	int dimx, dimy;
+	int dimx, dimy, tempsActuel;
+	char HUD[50]=" ";
+	SDL_Color textColor= { 238, 238,0 };
+	SDL_Color bgColorBlack= {0,0,0};
 	
 	pJeu = &(pSdlJeu->jeu);
 	jeuInit(pJeu);
@@ -23,10 +26,10 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
 	dimy = getDimY( jeuGetConstTerrainPtr(pJeu) );
 	dimx = dimx * TAILLE_SPRITE;
-	dimy = (dimy+1) * TAILLE_SPRITE;
+	dimy = (dimy+2) * TAILLE_SPRITE;
 	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_SWSURFACE );
 	assert( pSdlJeu->surface_ecran!=NULL);
-	SDL_WM_SetCaption( "MHD v0.2", NULL );
+	SDL_WM_SetCaption( "MHD v0.5", NULL );
 
 	pSdlJeu->surface_auto = SDL_load_image("data/auto.bmp");
 	if (pSdlJeu->surface_auto==NULL)
@@ -54,12 +57,16 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_mur = SDL_load_image("../data/mur.bmp");
 	assert( pSdlJeu->surface_mur!=NULL);
 
+	TTF_Init();
+	pSdlJeu->surface_police=TTF_OpenFont( "/usr/share/fonts/truetype/msttcorefonts/Courier_New.ttf", 28 );
+	
+	
+	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", textColor, bgColorBlack ); 
+	tempsActuel = SDL_GetTicks()/100;
+	
+	sprintf(HUD, "PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
 
-	TTF_Init();	
-	TTF_Font *font; 
-	SDL_Color textColor = { 238, 238,0 };
-	font=TTF_OpenFont( "/usr/share/fonts/truetype/msttcorefonts/Courier_New.ttf", 28 );
-	pSdlJeu->surface_titre = TTF_RenderText_Solid( font, "Madzoo Horror Driver", textColor ); 
+	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, textColor, bgColorBlack);
 
 }
 
@@ -67,46 +74,62 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 
 void sdljeuAff(sdlJeu *pSdlJeu)
 {
-	int x,y;
-
+	Jeu *pJeu;
+	int x,y,tempsActuel;
+	char HUD[50]=" ";
 	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
 	const Auto *pAuto = jeuGetConstAutoPtr(&(pSdlJeu->jeu));
+	SDL_Color textColor= { 238, 238,0 };
+	SDL_Color bgColorBlack= {0,0,0};
+	
+	pJeu = &(pSdlJeu->jeu);
 
-	/* Remplir l'écran de blanc */
-	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0xFF, 0x00, 0xFF ) );
-
+	/** Remplir l'écran */
+	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0x00, 0x00, 0xFF ) );
+	
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y)
 			if (terGetXY(pTer,x,y)=='#')
 			{
-				SDL_apply_surface(  pSdlJeu->surface_mur, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+				SDL_apply_surface(  pSdlJeu->surface_mur, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
 			}
 			else
 			{
 				if(terGetXY(pTer,x,y)=='z')
 				{
-					SDL_apply_surface(  pSdlJeu->surface_zombie, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+					SDL_apply_surface(  pSdlJeu->surface_zombie, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
 				}
 				else
 				{	
 					if(terGetXY(pTer,x,y)=='o')
 					{
-						SDL_apply_surface(  pSdlJeu->surface_survivant, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+						SDL_apply_surface(  pSdlJeu->surface_survivant, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
 					}
 					else
 					{
 						if(terGetXY(pTer,x,y)=='H')
 						{
-						SDL_apply_surface(  pSdlJeu->surface_heli, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+						SDL_apply_surface(  pSdlJeu->surface_heli, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
 						}
 					}
 				}
 			}
-	/* Copier le sprite de Auto sur l'écran */
-	SDL_apply_surface(  pSdlJeu->surface_auto, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  autoGetY(pAuto)*TAILLE_SPRITE);
+	/** Copier le sprite de Auto sur l'écran */
+	SDL_apply_surface(  pSdlJeu->surface_auto, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  (autoGetY(pAuto)+1)*TAILLE_SPRITE);
 
-	/* Mettre le titre en bas de l'écran */
-	SDL_apply_surface( pSdlJeu->surface_titre, pSdlJeu->surface_ecran, ((getDimX(pTer)/2)-5)*TAILLE_SPRITE,(getDimY(pTer))*TAILLE_SPRITE);
+	/** Mettre le titre en bas de l'écran */
+	SDL_apply_surface( pSdlJeu->surface_titre, pSdlJeu->surface_ecran, ((getDimX(pTer)/2)-5)*TAILLE_SPRITE,(getDimY(pTer)+1)*TAILLE_SPRITE);
+	
+	/** Gere le HUD */
+			
+	tempsActuel = SDL_GetTicks()/1000;
+	
+	sprintf(HUD, "PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
+	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, textColor, bgColorBlack);
+	
+	SDL_apply_surface( pSdlJeu->surface_HUD, pSdlJeu->surface_ecran, 0,0);
+	
+	SDL_FreeSurface(pSdlJeu->surface_HUD);
 }
 
 
