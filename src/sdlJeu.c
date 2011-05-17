@@ -62,7 +62,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	
 	
 	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", textColor, bgColorBlack ); 
-	tempsActuel = SDL_GetTicks()/100;
+	tempsActuel = SDL_GetTicks()/10;
 	
 	sprintf(HUD, "PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
 
@@ -122,7 +122,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	
 	/** Gere le HUD */
 			
-	tempsActuel = SDL_GetTicks()/1000;
+	tempsActuel = SDL_GetTicks()/10;
 	
 	sprintf(HUD, "PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
 	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, textColor, bgColorBlack);
