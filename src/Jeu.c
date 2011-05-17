@@ -85,9 +85,9 @@ void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *
 				break;
 				
 		case 'H' :
-				if(autoGetnbSurviDansAuto(pauto)==1)
+				if(autoGetnbSurviDansAuto(pauto)>=1)
 				{
-					surviSetEtat(dGetSurvi(pdsurvis, autoX, autoY), 2);
+					dSurviSauve (pdsurvis);
 					autoSetnbSurviDansAuto(pauto,-1);
 				}
 				break;
