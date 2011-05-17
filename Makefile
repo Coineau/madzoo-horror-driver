@@ -31,7 +31,7 @@ endif
 
 
 LDFLAGS  			=
-CFLAGS 			= $(DEFINE)  -Wall -pedantic -ansi -ggdb   #-O2   # pour optimiser
+CFLAGS 			= $(DEFINE)  -Wall -pedantic -ansi -ggdb -lm   #-O2   # pour optimiser
 INCLUDE_DIR 		= -I/usr/include -Isrc -I"C:\Program Files (x86)\PDCurses-SO" -I/usr/include/SDL -I"G:\alex\A_CLASSER\LIF7-DeveloppementApp\SDL-1.2.14\include\SDL"
 
 OBJ_DIR 		= bin
