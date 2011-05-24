@@ -7,7 +7,7 @@
 #include "DesSurvivants.h"
 #include "DesZombies.h"
 
-typedef struct 
+typedef struct
 {
 	Terrain ter;
 	Auto oto;
@@ -17,12 +17,16 @@ typedef struct
 
 /** Initialise une structure Jeu*/
 void jeuInit(Jeu *);
+
 /** Renvoie la structure Terrain contenue dans Jeu*/
 Terrain *jeuGetTerrainPtr(Jeu *);
+
 /** Renvoie la structure Auto contenue dans Jeu*/
 Auto *jeuGetAutoPtr(Jeu *);
+
 /** Renvoie la structure Terrain contenue dans Jeu en constante*/
 const Terrain *jeuGetConstTerrainPtr(const Jeu *);
+
 /** Renvoie la structure Auto contenue dans Jeu en constante*/
 const Auto *jeuGetConstAutoPtr(const Jeu *);
 

@@ -18,9 +18,6 @@ void dSurviInit(DesSurvivants*, Terrain *);
 /**Libere le tableau de survivants*/
 void dsurviLibere(DesSurvivants *);
 
-/**Supprime le survivant passe en parametre*/
-void SupprimeSurvi(DesSurvivants *dsurvis, Survivant survi);
-
 /**Test si tous les survivants sont dans la voiture et les met dans l'etat sauvé*/
 void dSurviSauve (DesSurvivants *);
 
