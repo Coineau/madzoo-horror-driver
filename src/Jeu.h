@@ -24,11 +24,17 @@ Terrain *jeuGetTerrainPtr(Jeu *);
 /** Renvoie la structure Auto contenue dans Jeu*/
 Auto *jeuGetAutoPtr(Jeu *);
 
+/** Renvoie la structure DesZombies contenue dans Jeu*/
+DesZombies *jeuGetdZombPtr(Jeu *);
+
 /** Renvoie la structure Terrain contenue dans Jeu en constante*/
 const Terrain *jeuGetConstTerrainPtr(const Jeu *);
 
 /** Renvoie la structure Auto contenue dans Jeu en constante*/
 const Auto *jeuGetConstAutoPtr(const Jeu *);
+
+/**Renvoie la structuere DesZombies contenue dans Jeu en constante*/
+const DesZombies *jeuGetConstdZombPtr(const Jeu *);
 
 /** Renvoie une lettre en fonction de la touche pressee par l'utilisateur*/
 void jeuActionClavier(Jeu *j, const char);

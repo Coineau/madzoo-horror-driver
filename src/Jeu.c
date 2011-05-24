@@ -20,6 +20,11 @@ Auto *jeuGetAutoPtr(Jeu *pJeu)
 	return &(pJeu->oto);
 }
 
+DesZombies *jeuGetdZombPtr(Jeu * pJeu)
+{
+	return &(pJeu->dzombies);
+}
+
 const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 {
 	return &(pJeu->ter);
@@ -28,6 +33,11 @@ const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 const Auto *jeuGetConstAutoPtr(const Jeu *pJeu)
 {
 	return &(pJeu->oto);
+}
+
+const DesZombies *jeuGetConstdZombPtr(const Jeu * pJeu)
+{
+	return &(pJeu->dzombies);
 }
 
 void jeuActionClavier(Jeu *pJeu, const char touche)
@@ -46,9 +56,11 @@ void jeuActionClavier(Jeu *pJeu, const char touche)
 		case 'b' :
 				autoBas(&(pJeu->oto), &(pJeu->ter));
 				break;
+		default:
+				break;
 	}
-    collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
-    dZombieDeplacer(&(pJeu->dzombies) ,autoGetX(&(pJeu->oto)) ,autoGetY(&(pJeu->oto)) ,&(pJeu->ter));
+	collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
+	dZombieDeplacer(&(pJeu->dzombies) ,autoGetX(&(pJeu->oto)) ,autoGetY(&(pJeu->oto)) ,&(pJeu->ter));
 	collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 }
 

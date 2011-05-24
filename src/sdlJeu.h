@@ -24,5 +24,6 @@ void sdljeuInit(sdlJeu *);
 void sdljeuBoucle(sdlJeu *);
 void sdljeuLibere(sdlJeu *);
 void sdljeuDetruit(sdlJeu *);
+Uint32 sdljeudZDeplaceAuto(Uint32 intervalle,void *parametre,sdlJeu *pSdlJeu);
 
 #endif

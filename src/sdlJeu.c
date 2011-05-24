@@ -136,12 +136,19 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 
 void sdljeuBoucle(sdlJeu *pSdlJeu)
 {
+	/*SDL_TimerID timer;*/
 	SDL_Event event;
 	int continue_boucle = 1;
-
+	int tempsActuel=0; 
+	int tempsPrecedent=0; 
+	tempsActuel = SDL_GetTicks();
 	sdljeuAff(pSdlJeu);
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
-
+	
+	SDL_EnableKeyRepeat(100, 200);
+	/* timer = SDL_AddTimer(150, sdljeudZDeplaceAuto,pSdlJeu ); *//* Démarrage du Timer */
+	
+	
 	/* tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
 	{
@@ -169,10 +176,15 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 				case SDLK_RIGHT:
 					jeuActionClavier( &(pSdlJeu->jeu), 'd');
 					break;
-				default: break;
+				default: 	
+						break;
 				}
 			}
-
+			if (tempsActuel - tempsPrecedent > 100) /* Si 100 ms se sont écoulées depuis le dernier tour de boucle */
+			{
+				jeuActionClavier( &(pSdlJeu->jeu), 'O');
+				tempsPrecedent = tempsActuel; /* Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
+			}
 		}
 
 		/* on affiche le jeu sur le buffer caché */
@@ -231,3 +243,11 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 	/* Blit the surface */
 	SDL_BlitSurface( source, NULL, destination, &offset );
 }
+
+
+Uint32 sdljeudZDeplaceAuto(Uint32 intervalle,void *parametre,sdlJeu *pSdlJeu)
+{	
+	dZombieDeplacer(jeuGetdZombPtr(&(pSdlJeu->jeu)),autoGetX(jeuGetConstAutoPtr(&(pSdlJeu->jeu))),autoGetY(jeuGetConstAutoPtr(&(pSdlJeu->jeu))), jeuGetTerrainPtr(&(pSdlJeu->jeu)));
+	return intervalle;
+}
+	
