@@ -28,18 +28,6 @@ void dsurviLibere(DesSurvivants *dsurvis)
     free(dsurvis->tabS);
 }
 
-/*void SupprimeSurvi(DesSurvivants *dsurvis, Survivant survi)
-{
-        int n = GetNbS(dsurvis)-1;
-        Survivant sTemp = dsurvis->tabS[n];
-        dsurvis->tabS[n]=survi;
-        survi=sTemp;
-        free (dsurvis->tabS[n]);
-        SetNbS(dsurvis,n);
-}*/
-
-
-
 void dSurviSauve (DesSurvivants *dsurvis)
 {
     int i;
