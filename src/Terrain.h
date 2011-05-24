@@ -4,19 +4,19 @@
 typedef struct
 {
         /**Largeur du terrain*/
-        int dimx;        
+        int dimx;
         /**Hauteur du terrain*/
-        int dimy;        
+        int dimy;
         /**Tableau 2D referant les elements du terrain*/
-        char **tab;        
+        char **tab;
         /**Nombre de survivants*/
-        int nbS;        
+        int nbS;
         /**Nombre de zombies*/
         int nbZ;
 } Terrain;
 
 /**Initialise le terrain en important la structure terrain d'un fichier texte*/
-void terInit(Terrain *);
+void terInit(Terrain *,int);
 
 /**Libere le terrain*/
 void terLibere(Terrain *);
