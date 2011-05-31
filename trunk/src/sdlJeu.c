@@ -14,7 +14,13 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 {
 	Jeu *pJeu;
 	int dimx, dimy, tempsActuel;
-	char HUD[50]=" ";
+	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
+	char* HUD= (char*)malloc( dimx * sizeof(char*));
+	int x=0;
+	for (x; x<dimx;x++)
+	{
+		HUD[x]=" ";
+	}
 	SDL_Color textColor= { 238, 238,0 };
 	SDL_Color bgColorBlack= {0,0,0};
 	
@@ -75,13 +81,18 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 void sdljeuAff(sdlJeu *pSdlJeu)
 {
 	Jeu *pJeu;
-	int x,y,tempsActuel;
-	char HUD[50]=" ";
+	int x,y,tempsActuel,dimx;
 	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
 	const Auto *pAuto = jeuGetConstAutoPtr(&(pSdlJeu->jeu));
+	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
+	char* HUD= (char*)malloc( dimx * sizeof(char*));
+	int i=0;
+	for (i; i<dimx;i++)
+	{
+		HUD[i]=" ";
+	}
 	SDL_Color textColor= { 238, 238,0 };
 	SDL_Color bgColorBlack= {0,0,0};
-	
 	pJeu = &(pSdlJeu->jeu);
 
 	/** Remplir l'écran */
@@ -141,7 +152,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	int continue_boucle = 1;
 	int tempsActuel=0; 
 	int tempsPrecedent=0; 
-	tempsActuel = SDL_GetTicks();
+
 	sdljeuAff(pSdlJeu);
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
 	
@@ -151,7 +162,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	
 	/* tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
-	{
+	{		tempsActuel = SDL_GetTicks();
 		/* tant qu'il y a des evenements à traiter : cette boucle n'est pas bloquante */
 		while ( SDL_PollEvent( &event ) )
 		{
@@ -180,10 +191,12 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 						break;
 				}
 			}
-			if (tempsActuel - tempsPrecedent > 100) /* Si 100 ms se sont écoulées depuis le dernier tour de boucle */
-			{
+			else {
+				if (tempsActuel - tempsPrecedent > 100) /* Si 100 ms se sont écoulées depuis le dernier tour de boucle */
+				{
 				jeuActionClavier( &(pSdlJeu->jeu), 'O');
 				tempsPrecedent = tempsActuel; /* Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
+				}
 			}
 		}
 
