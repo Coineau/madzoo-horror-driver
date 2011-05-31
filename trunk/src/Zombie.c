@@ -108,6 +108,11 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
 				terSetXY(pTer, Xz+1, Yz, 'z');
 
             }
+             else
+            {
+                zombieDeplacementAleat(pZon,pTer);
+            }
+
         }
         else
         {
@@ -117,6 +122,11 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz-1, Yz, 'z');
             }
+             else
+            {
+                zombieDeplacementAleat(pZon,pTer);
+            }
+
         }
     }
     else
@@ -129,6 +139,11 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz,Yz+1, 'z');
             }
+             else
+            {
+                zombieDeplacementAleat(pZon,pTer);
+            }
+
 
         }
         else
@@ -139,6 +154,11 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz, Yz-1, 'z');
              }
+              else
+            {
+                zombieDeplacementAleat(pZon,pTer);
+            }
+
         }
     }
 }
