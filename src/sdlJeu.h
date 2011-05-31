@@ -17,6 +17,7 @@ typedef struct
 	SDL_Surface* surface_survivant;
 	SDL_Surface* surface_heli;
 	SDL_Surface* surface_HUD;
+	SDL_Surface* surface_sol;
 	TTF_Font* surface_police;
 } sdlJeu;
 
