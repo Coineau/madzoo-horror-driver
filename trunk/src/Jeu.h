@@ -39,6 +39,9 @@ const DesZombies *jeuGetConstdZombPtr(const Jeu *);
 /** Renvoie une lettre en fonction de la touche pressee par l'utilisateur*/
 void jeuActionClavier(Jeu *j, const char);
 
+/**Gere le déplacement des zombies*/
+void jeuDeplaceZombies(Jeu *j);
+
 /** Gère les collisions entre un Survivant ou un Zombie ou l'Heliport et l'Auto*/
 void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *pdzombies);
 
