@@ -60,9 +60,20 @@ void jeuActionClavier(Jeu *pJeu, const char touche)
 				break;
 	}
 	collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
-	dZombieDeplacer(&(pJeu->dzombies) ,autoGetX(&(pJeu->oto)) ,autoGetY(&(pJeu->oto)) ,&(pJeu->ter));
+
+}
+
+void jeuDeplaceZombies(Jeu *pJeu)
+{
+	int autoX;
+	int autoY;
+	autoX=autoGetX(&(pJeu->oto));
+	autoY=autoGetY(&(pJeu->oto));
+	
+	dZombieDeplacer(&(pJeu->dzombies) ,autoX,autoY,&(pJeu->ter));
 	collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 }
+
 
 
 

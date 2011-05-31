@@ -166,7 +166,6 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 
 void sdljeuBoucle(sdlJeu *pSdlJeu)
 {
-	/*SDL_TimerID timer;*/
 	SDL_Event event;
 	int continue_boucle = 1;
 	int tempsActuel=0; 
@@ -176,14 +175,12 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
 	
 	SDL_EnableKeyRepeat(100, 200);
-	/* timer = SDL_AddTimer(150, sdljeudZDeplaceAuto,pSdlJeu ); *//* Démarrage du Timer */
-	
+
 	
 	/* tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
-	{		tempsActuel = SDL_GetTicks();
-		/* tant qu'il y a des evenements à traiter : cette boucle n'est pas bloquante */
-		while ( SDL_PollEvent( &event ) )
+	{	/* tant qu'il y a des evenements à traiter : cette boucle n'est pas bloquante */
+		while ( SDL_PollEvent( &event) ) 
 		{
 			/* Si l'utilisateur a cliqué sur la croix de fermeture */
 			if ( event.type == SDL_QUIT )
@@ -210,15 +207,17 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 						break;
 				}
 			}
-			else {
-				if (tempsActuel - tempsPrecedent > 100) /* Si 100 ms se sont écoulées depuis le dernier tour de boucle */
-				{
-				jeuActionClavier( &(pSdlJeu->jeu), 'O');
-				tempsPrecedent = tempsActuel; /* Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
-				}
-			}
+			
 		}
+		
 
+		tempsActuel = SDL_GetTicks();
+		if (tempsActuel - tempsPrecedent > 500) /** Si 100 ms se sont écoulées depuis le dernier tour de boucle */
+				{
+				jeuDeplaceZombies(&(pSdlJeu->jeu));
+				tempsPrecedent = tempsActuel; /** Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
+				}
+		
 		/* on affiche le jeu sur le buffer caché */
 		sdljeuAff(pSdlJeu);
 
@@ -275,11 +274,3 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 	/* Blit the surface */
 	SDL_BlitSurface( source, NULL, destination, &offset );
 }
-
-
-Uint32 sdljeudZDeplaceAuto(Uint32 intervalle,void *parametre,sdlJeu *pSdlJeu)
-{	
-	dZombieDeplacer(jeuGetdZombPtr(&(pSdlJeu->jeu)),autoGetX(jeuGetConstAutoPtr(&(pSdlJeu->jeu))),autoGetY(jeuGetConstAutoPtr(&(pSdlJeu->jeu))), jeuGetTerrainPtr(&(pSdlJeu->jeu)));
-	return intervalle;
-}
-	
