@@ -38,6 +38,12 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "MHD v0.5", NULL );
 
+	
+	pSdlJeu->surface_sol = SDL_load_image("data/sol.bmp");
+	if (pSdlJeu->surface_sol==NULL)
+		pSdlJeu->surface_sol = SDL_load_image("../data/sol.bmp");
+	
+	assert( pSdlJeu->surface_auto!=NULL);
 	pSdlJeu->surface_auto = SDL_load_image("data/auto.bmp");
 	if (pSdlJeu->surface_auto==NULL)
 		pSdlJeu->surface_auto = SDL_load_image("../data/auto.bmp");
@@ -113,9 +119,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	SDL_Color bgColorBlack= {0,0,0};
 
 
-	/** Remplir l'écran */
-	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0x00, 0x00, 0xFF ) );
-	
+	/** Remplir l'écran */	
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y)
 			if (terGetXY(pTer,x,y)=='#')
@@ -139,6 +143,10 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 						if(terGetXY(pTer,x,y)=='H')
 						{
 						SDL_apply_surface(  pSdlJeu->surface_heli, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
+						}
+						else
+						{
+							SDL_apply_surface( pSdlJeu->surface_sol, pSdlJeu->surface_ecran, x*TAILLE_SPRITE,(y+1)*TAILLE_SPRITE);
 						}
 					}
 				}
@@ -212,7 +220,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 		
 
 		tempsActuel = SDL_GetTicks();
-		if (tempsActuel - tempsPrecedent > 500) /** Si 100 ms se sont écoulées depuis le dernier tour de boucle */
+		if (tempsActuel - tempsPrecedent > 350) /** Si 100 ms se sont écoulées depuis le dernier tour de boucle */
 				{
 				jeuDeplaceZombies(&(pSdlJeu->jeu));
 				tempsPrecedent = tempsActuel; /** Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
