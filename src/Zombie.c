@@ -108,10 +108,6 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
 				terSetXY(pTer, Xz+1, Yz, 'z');
 
             }
-            else
-            {
-                zombieDeplacementAleat(pZon,pTer);
-            }
         }
         else
         {
@@ -120,10 +116,6 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 zombieSetX(pZon,Xz-1);
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz-1, Yz, 'z');
-            }
-            else
-            {
-                zombieDeplacementAleat(pZon,pTer);
             }
         }
     }
@@ -137,10 +129,6 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz,Yz+1, 'z');
             }
-            else
-            {
-                zombieDeplacementAleat(pZon,pTer);
-            }
 
         }
         else
@@ -151,20 +139,16 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz, Yz-1, 'z');
              }
-             else
-            {
-                zombieDeplacementAleat(pZon,pTer);
-            }
         }
     }
 }
 
 void zombieDeplacementAleat(Zombie * pZon,Terrain *pTer)
 {
-    int dir;
-    int i;
-    int sommesol;
-    char tabdir[4];
+    int z;
+    int y;
+    int s;
+    char i[4];
     int r;
     int Xz;
     int Yz;
@@ -175,56 +159,54 @@ void zombieDeplacementAleat(Zombie * pZon,Terrain *pTer)
 
     if(testDeplacementZombie(pTer ,Xz,Yz-1))
     {
-        tabdir[0]=1;
+        i[0]=1;
     }
     else
     {
-         tabdir[0]=0;
+         i[0]=0;
     }
 
     if(testDeplacementZombie(pTer ,Xz-1,Yz))
     {
-        tabdir[1]=1;
+        i[1]=1;
     }
     else
     {
-        tabdir[1]=0;
+        i[1]=0;
     }
     if(testDeplacementZombie(pTer ,Xz,Yz+1))
     {
-        tabdir[2]=1;
+        i[2]=1;
     }
     else
     {
-        tabdir[2]=0;
+        i[2]=0;
     }
     if(testDeplacementZombie(pTer ,Xz+1,Yz))
     {
-        tabdir[3]=1;
+        i[3]=1;
     }
     else
     {
-        tabdir[3]=0;
+        i[3]=0;
     }
 
-    sommesol = 0 ;
-    for(i = 0 ; i <4 ; i++)
+    s = 0 ;
+    for(y = 0 ; y <4 ; y++)
     {
-        sommesol = sommesol + tabdir[i];
+        s = s + i[y];
     }
-    if(sommesol!=0)
-    {
-    r = rand()%sommesol;
 
-    i=0 ;
-    dir = 0;
-    while(i != 4)
+    r = rand()%s;
+
+    y =0 ;
+    while(y != 4)
     {
-        if(tabdir[i] == 1)
+        if(i[y] == 1)
         {
             if(r == 0)
             {
-                dir = i;
+                z = y;
                 r--;
             }
             else
@@ -233,11 +215,11 @@ void zombieDeplacementAleat(Zombie * pZon,Terrain *pTer)
             }
 
         }
-        i++;
+        y++;
 
     }
 
-	switch(dir)
+	switch(z)
 	{
         case 0 :
 				zombieSetY(pZon,Yz-1);
@@ -261,8 +243,6 @@ void zombieDeplacementAleat(Zombie * pZon,Terrain *pTer)
 				break;
         default : break;
 	}
-    }
-
 
 
 }

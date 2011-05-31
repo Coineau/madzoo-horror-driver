@@ -3,37 +3,38 @@
 #include <malloc.h>
 #include <assert.h>
 
-void terInit(Terrain *pTer,int niv)
+void terInit(Terrain *pTer)
 {
-	int x,y,i,j;
+	int x,y;
 
-	char terrain_defaut[20][20] ;
+	const char terrain_defaut[20][20] = {
+		"H               #   ",
+		"        ##      #   ",
+		"       ###   ####   ",
+		"##              ####",
+		"##      ### #      #",
+		"   z      ###       ",
+		"       z ##  z##    ",
+		"         ###        ",
+		"###            ## ##",
+		"              ### ##",
+		"##      ###        #",
+		"   z      ####      ",
+		"    ###  ##  z##    ",
+		"    ###  ###        ",
+		"###            #### ",
+		"        ##      #   ",
+		"    ##  ##      #   ",
+		"    #  #####  ###   ",
+		"##        #     ## #",
+		"##   o    ##       #",
+	};
 
+	pTer->dimx = 20;
+	pTer->dimy = 20;
 
-    FILE* fichier = NULL;
-    char chaine[100] ;
-    char niveau[100];
-    sprintf(niveau,"data/niveau/niveau%d.txt",niv);
-    fichier = fopen(niveau, "r");
-
-    if (fichier != NULL)
-    {
-        fgets(chaine, 100, fichier);
-        sscanf(chaine, "%d %d %d %d",&(pTer->dimx), &(pTer->dimy),&(pTer->nbS),&(pTer->nbZ));
-
-        for (i=0; i<pTer->dimy;i++)
-        {
-            fgets(chaine, 100, fichier);
-            for (j=0; j<pTer->dimx;j++)
-            {
-                terrain_defaut[i][j]=chaine[j];
-            }
-        }
-
-
-        fclose(fichier);
-    }
-
+	pTer->nbS=1;
+	pTer->nbZ=5;
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
 		pTer->tab[y] = (char *)malloc(sizeof(char)*pTer->dimx);

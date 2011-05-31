@@ -14,13 +14,14 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 {
 	Jeu *pJeu;
 	int dimx, dimy, tempsActuel;
-	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
+	char HUD[20*32]=" ";
+	/*dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
 	char* HUD= (char*)malloc( dimx * sizeof(char*));
 	int x=0;
 	for (x; x<dimx;x++)
 	{
 		HUD[x]=" ";
-	}
+	}*/
 	SDL_Color textColor= { 238, 238,0 };
 	SDL_Color bgColorBlack= {0,0,0};
 	
@@ -82,18 +83,35 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 {
 	Jeu *pJeu;
 	int x,y,tempsActuel,dimx;
-	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
-	const Auto *pAuto = jeuGetConstAutoPtr(&(pSdlJeu->jeu));
+	const Terrain *pTer ;
+	const Auto *pAuto;
+	char HUD[20*32]=" ";
+	int i,j;
+	
+	
+	i=0;
+	j=0;
+	pJeu = &(pSdlJeu->jeu);
 	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
-	char* HUD= (char*)malloc( dimx * sizeof(char*));
-	int i=0;
+	pTer= jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
+	pAuto= jeuGetConstAutoPtr(&(pSdlJeu->jeu));
+	/*HUD= (char**)malloc( dimx * sizeof(char*));
+	
+	
 	for (i; i<dimx;i++)
 	{
-		HUD[i]=" ";
+		HUD[i] = (char *)malloc(sizeof(char)*dimx);
 	}
+	
+	for (j; j<dimx;j++)
+	{
+		HUD[j]=" ";
+	}*/
+	
+	
 	SDL_Color textColor= { 238, 238,0 };
 	SDL_Color bgColorBlack= {0,0,0};
-	pJeu = &(pSdlJeu->jeu);
+
 
 	/** Remplir l'écran */
 	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0x00, 0x00, 0xFF ) );
@@ -135,7 +153,8 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 			
 	tempsActuel = SDL_GetTicks()/10;
 	
-	sprintf(HUD, "PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
+	
+	sprintf(HUD,"PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
 	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, textColor, bgColorBlack);
 	
 	SDL_apply_surface( pSdlJeu->surface_HUD, pSdlJeu->surface_ecran, 0,0);

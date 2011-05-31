@@ -23,10 +23,8 @@ void dZombieLibere(DesZombies *pdzon);
 /**suprime un zombie dans le tableau dinamique  */
 void SupprimeZombie(DesZombies *pdzon,int autoX,int autoY,Terrain* pTer);
 
-/** Deplacement des zombies */
 void dZombieDeplacer(DesZombies *pdzon, int autoX , int autoY,Terrain * pTer);
 
-/**Recupere un zombie en fonction des coordoner de la voiture */
 int dzombieGetzomb(const DesZombies *pdzon,int Xz ,int Yz);
 
 /**Recupere le nombre de zombie*/
@@ -35,10 +33,12 @@ int dzombieGetnbZ(const DesZombies* pdzon);
 /**Modifie la valeur du nombre de zombie */
 void dzombieSetnbZ(DesZombies* pdzon,int n);
 
+
 /** Recupere le nombre de zombie restant */
 int dzombieGetzomrest(const Zombie*);
 
+
+
 /**Modifie la valeur du nombre de zombie restant*/
 void dzombieSetzomrest(Zombie*,int y);
-
 #endif

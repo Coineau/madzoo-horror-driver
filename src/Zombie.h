@@ -44,17 +44,14 @@ void zombieSupr(Zombie *, Terrain* pTer);
 /** DEPLACEMENT DU ZOMBIE !! **/
 
 
-/** Teste si la position du futur deplacement du zombie est valide ( sans mur ,ni de survivant ,ni de zombie , ni heliport )*/
+/** teste si la position du futur deplacement du zombie est valide ( sans mur ,ni de survivant ,ni de zombie )*/
 int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz);
 
-/** Test la distance entre le zombie et la voiture pour choisire si il va sur la voiture ou se deplace alleatoirement */
 void zombieDeplacementChoix(Zombie * pZon,Terrain *pTer,int Xa,int  Ya);
 
-/** Deplace le zombie vers la voiture si il est a un distance d < 4 de la voiture .
-    Si il est bloquer renvoi sur  zombieDeplacementAleat . */
 void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya);
 
-/**Deplacement aleatoire du zombie */
+/**Deplacement du zombie en fonction de l'auto*/
 void zombieDeplacementAleat(Zombie *,Terrain*);
 
 
