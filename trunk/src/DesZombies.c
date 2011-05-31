@@ -44,14 +44,6 @@ void dZombieLibere(DesZombies * pdzon)
 	free(pdzon);
 }
 
-/*void AjouterZombie(DesZombies * pdzon, terrain *pTer)
-{
-	int  =0;
-	pdzon->zombies[i] = (Zombie*)malloc(sizeof(Zombie));
-	zombieInit(pdzon->zombies[i] , x, y);
-	pdzon->nbz=pdzon->nbz + 1;
-	pdzon->zomrest=pdzon->zomrest + 1;
-}*/
 
 void SupprimeZombie(DesZombies *pdzon ,int autoX ,int autoY , Terrain * pTer)
 {
@@ -112,4 +104,3 @@ void dzombieSetnbZ(DesZombies *pdzon, int nbzi)
 {
 	pdzon->nbz=nbzi;
 }
-
