@@ -21,6 +21,7 @@ void dSurviInit(DesSurvivants *dsurvis, Terrain *pTer)
             }
         }
     }
+    void SetNbSurviSauv(dsurvis,0);
 }
 
 void dsurviLibere(DesSurvivants *dsurvis)
@@ -61,4 +62,15 @@ void SetNbS (DesSurvivants *dsurvis, const int n)
 int GetNbS (DesSurvivants *dsurvis)
 {
     return dsurvis->nbS;
+}
+
+
+int GetNbSurviSauv(DesSurvivants *dsurvis)
+{
+    return dsurvis->nbSurviSauv;
+}
+
+void SetNbSurviSauv(DesSurvivants *dsurvis, const int n)
+{
+    dsurvis->nbSurviSauv=n;
 }
