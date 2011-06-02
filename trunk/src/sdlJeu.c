@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "sdlJeu.h"
 #include <SDL/SDL_ttf.h>
+#include <SDL/SDL_mixer.h>
 
 const int TAILLE_SPRITE=32;
 
