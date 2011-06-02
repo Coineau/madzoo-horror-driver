@@ -40,6 +40,19 @@ void dSurviSauve (DesSurvivants *dsurvis)
     }
 }
 
+int dSurviTestTousSauve (DesSurvivants *dsurvis)
+{
+    int i;
+    for (i=0;i<(GetNbS(dsurvis));i++)
+    {
+        if (surviGetEtat(&(dsurvis->tabS[i]))!=2)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 Survivant* dGetSurvi(DesSurvivants *dsurvis, const int x, const int y)
 {
     int i;

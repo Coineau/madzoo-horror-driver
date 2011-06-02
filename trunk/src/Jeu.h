@@ -13,6 +13,7 @@ typedef struct
 	Auto oto;
 	DesSurvivants dsurvis;
 	DesZombies dzombies;
+	int niv;
 } Jeu;
 
 /** Initialise une structure Jeu*/
@@ -44,5 +45,9 @@ void jeuDeplaceZombies(Jeu *j);
 
 /** Gère les collisions entre un Survivant ou un Zombie ou l'Heliport et l'Auto*/
 void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *pdzombies);
+
+/**Renvoie 2 si la voiture n'a plus de Pdv, 1 si tous les survivants sont sauves et 0 sinon*/
+int JeuTestFinNiveau (Jeu *pJeu);
+
 
 #endif

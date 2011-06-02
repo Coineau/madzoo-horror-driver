@@ -18,8 +18,11 @@ void dSurviInit(DesSurvivants*, Terrain *);
 /**Libere le tableau de survivants*/
 void dsurviLibere(DesSurvivants *);
 
-/**Test si tous les survivants sont dans la voiture et les met dans l'etat sauvé*/
+/**Passe les survivants de l'etat dans la voiture a l'etat sauve*/
 void dSurviSauve (DesSurvivants *);
+
+/**Renvoie 1 si tous les survivants sont sauves 0 sinon*/
+int dSurviTestTousSauve (DesSurvivants *);
 
 /**Renvoie le survivant dont les coordonnees sont passees en parametre*/
 Survivant* dGetSurvi(DesSurvivants *, const int x, const int y);
