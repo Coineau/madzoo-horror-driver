@@ -29,7 +29,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 
 	assert(   SDL_Init( SDL_INIT_EVERYTHING )!= -1 );
 	
-	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)
+	if(Mix_OpenAudio(11025, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)
 	{
 		printf("%s", Mix_GetError());
 	}
@@ -91,9 +91,9 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	
 	
 	/**Chargement des musiques*/
-	pSdlJeu->musique=Mix_LoadMUS("data/musique/intro.wav");
+	pSdlJeu->musique=Mix_LoadMUS("data/musique/bgmusic.wav");
 	if (pSdlJeu->musique==NULL)
-		pSdlJeu->musique=Mix_LoadMUS("../data/musique/intro.wav");
+		pSdlJeu->musique=Mix_LoadMUS("../data/musique/bgmusic.wav");
 	assert( pSdlJeu->musique!=NULL);
 }
 
@@ -200,7 +200,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	SDL_EnableKeyRepeat(100, 200);
 
 	
-	/*Mix_PlayMusic(pSdlJeu->musique, -1);*/
+	Mix_PlayMusic(pSdlJeu->musique, -1);
 	
 	/** tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
