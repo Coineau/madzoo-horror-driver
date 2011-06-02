@@ -119,13 +119,13 @@ void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *
 
 int JeuTestFinNiveau (Jeu *pJeu)
 {
-    if (dSurviTestTousSauve(&(pJeu->dsurvis))==1)
-    {
-        return 1;
-    }
     if (autoGetPdv(&(pJeu->oto))==0)
     {
         return 2;
+    }
+    if (dSurviTestTousSauve(&(pJeu->dsurvis))==1)
+    {
+        return 1;
     }
     return 0;
 }
