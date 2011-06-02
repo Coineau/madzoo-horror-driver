@@ -23,13 +23,19 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	{
 		HUD[x]=" ";
 	}*/
-	SDL_Color textColor= { 238, 238,0 };
-	SDL_Color bgColorBlack= {0,0,0};
 	
 	pJeu = &(pSdlJeu->jeu);
 	jeuInit(pJeu);
 
 	assert(   SDL_Init( SDL_INIT_EVERYTHING )!= -1 );
+	
+	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)
+	{
+		printf("%s", Mix_GetError());
+	}
+	
+	SDL_Color textColor= { 238, 238,0 };
+	SDL_Color bgColorBlack= {0,0,0};
 
 	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
 	dimy = getDimY( jeuGetConstTerrainPtr(pJeu) );
@@ -39,6 +45,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "MHD v0.5", NULL );
 
+	/**Chargement des surfaces*/
 	
 	pSdlJeu->surface_sol = SDL_load_image("data/sol.bmp");
 	if (pSdlJeu->surface_sol==NULL)
@@ -81,7 +88,13 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	sprintf(HUD, "PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
 
 	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, textColor, bgColorBlack);
-
+	
+	
+	/**Chargement des musiques*/
+	pSdlJeu->musique=Mix_LoadMUS("data/musique/intro.wav");
+	if (pSdlJeu->musique==NULL)
+		pSdlJeu->musique=Mix_LoadMUS("../data/musique/intro.wav");
+	assert( pSdlJeu->musique!=NULL);
 }
 
 
@@ -119,7 +132,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	SDL_Color textColor= { 238, 238,0 };
 	SDL_Color bgColorBlack= {0,0,0};
 
-
+	
 	/** Remplir l'écran */	
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y)
@@ -183,8 +196,11 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	sdljeuAff(pSdlJeu);
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
 	
+	
 	SDL_EnableKeyRepeat(100, 200);
 
+	
+	/*Mix_PlayMusic(pSdlJeu->musique, -1);*/
 	
 	/** tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
@@ -193,9 +209,10 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 		{
 			/** Si l'utilisateur a cliqué sur la croix de fermeture */
 			if ( event.type == SDL_QUIT )
+				/*Mix_CloseAudio();*/
 				continue_boucle = 0;
 
-			/* Si l'utilisateur a appuyé sur une touche */
+			/** Si l'utilisateur a appuyé sur une touche */
 			if ( event.type == SDL_KEYDOWN )
 			{
 				switch ( event.key.keysym.sym )
@@ -240,6 +257,7 @@ void sdljeuDetruit( sdlJeu *pSdlJeu)
 {
 	SDL_FreeSurface( pSdlJeu->surface_auto );
 	SDL_FreeSurface( pSdlJeu->surface_mur );
+	Mix_FreeMusic(pSdlJeu->musique);
 	SDL_Quit();
 }
 
