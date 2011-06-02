@@ -95,6 +95,12 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	if (pSdlJeu->musique==NULL)
 		pSdlJeu->musique=Mix_LoadMUS("../data/musique/bgmusic.wav");
 	assert( pSdlJeu->musique!=NULL);
+	
+	/**Chargement des sons*/
+	pSdlJeu->deplace=Mix_LoadWAV("data/musique/move.wav");
+	if(pSdlJeu->deplace==NULL)
+		pSdlJeu->deplace=Mix_LoadWAV("../data/musique/move.wav");
+	assert( pSdlJeu->deplace!=NULL);
 }
 
 
@@ -199,7 +205,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	
 	SDL_EnableKeyRepeat(100, 200);
 
-	
+	Mix_VolumeChunk(pSdlJeu->deplace, MIX_MAX_VOLUME);
 	Mix_PlayMusic(pSdlJeu->musique, -1);
 	
 	/** tant que ce n'est pas la fin ... */
@@ -209,7 +215,6 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 		{
 			/** Si l'utilisateur a cliqué sur la croix de fermeture */
 			if ( event.type == SDL_QUIT )
-				/*Mix_CloseAudio();*/
 				continue_boucle = 0;
 
 			/** Si l'utilisateur a appuyé sur une touche */
@@ -219,6 +224,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 				{
 				case SDLK_UP:
 					jeuActionClavier( &(pSdlJeu->jeu), 'h');
+					Mix_PlayChannel(1, pSdlJeu->deplace,0);
 					break;
 				case SDLK_DOWN:
 					jeuActionClavier( &(pSdlJeu->jeu), 'b');
