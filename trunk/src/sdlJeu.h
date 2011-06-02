@@ -3,13 +3,14 @@
 #define _SDLJEU_H
 
 #include <SDL/SDL_ttf.h>
+#include <SDL/SDL_mixer.h>
 #include "Jeu.h"
 
 
 typedef struct 
 {
 	Jeu jeu;
-	
+	Mix_Music *musique;
 	SDL_Surface* surface_ecran;
 	SDL_Surface* surface_auto;
 	SDL_Surface* surface_mur;
@@ -26,6 +27,5 @@ void sdljeuInit(sdlJeu *);
 void sdljeuBoucle(sdlJeu *);
 void sdljeuLibere(sdlJeu *);
 void sdljeuDetruit(sdlJeu *);
-Uint32 sdljeudZDeplaceAuto(Uint32 intervalle,void *parametre,sdlJeu *pSdlJeu);
 
 #endif
