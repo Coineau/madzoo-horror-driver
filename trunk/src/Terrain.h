@@ -16,7 +16,7 @@ typedef struct
 } Terrain;
 
 /**Initialise le terrain en important la structure terrain d'un fichier texte*/
-void terInit(Terrain *);
+void terInit(Terrain *,int);
 
 /**Libere le terrain*/
 void terLibere(Terrain *);
