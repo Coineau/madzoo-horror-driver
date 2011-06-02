@@ -26,7 +26,7 @@ ifeq ($(JEU)$(OS),graphiqueWIN32)
 	LIBS = -L"G:\alex\A_CLASSER\LIF7-DeveloppementApp\SDL-1.2.14\lib" -lmingw32 -lSDLmain -lSDL.dll
 endif
 ifeq ($(JEU)$(OS),graphiqueLINUX)
-	LIBS = -lSDL -lSDL_ttf
+	LIBS = -lSDL -lSDL_ttf -lSDL_mixer
 endif
 
 
