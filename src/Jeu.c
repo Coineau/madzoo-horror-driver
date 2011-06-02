@@ -4,8 +4,9 @@
 
 void jeuInit(Jeu *pJeu)
 {
+	pJeu->niv=1;
 	autoInit(&(pJeu->oto));
-	terInit(&(pJeu->ter),1);
+	terInit(&(pJeu->ter),pJeu->niv);
 	dSurviInit(&(pJeu->dsurvis),&(pJeu->ter));
 	dZombieInit(&(pJeu->dzombies),&(pJeu->ter));
 }
@@ -69,7 +70,7 @@ void jeuDeplaceZombies(Jeu *pJeu)
 	int autoY;
 	autoX=autoGetX(&(pJeu->oto));
 	autoY=autoGetY(&(pJeu->oto));
-	
+
 	dZombieDeplacer(&(pJeu->dzombies) ,autoX,autoY,&(pJeu->ter));
 	collision(&(pJeu->ter), &(pJeu->dsurvis), &(pJeu->oto), &(pJeu->dzombies));
 }
@@ -101,7 +102,6 @@ void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *
 		case 'z' :
 				if(autoPdV>0)
 				{
-					/* terSetXY(pTer, autoX, autoY, ' '); */
 					SupprimeZombie(pdzombies,autoX,autoY,pTer);
 					autoSetPdv(pauto,autoPdV-1);
 				}
@@ -115,4 +115,17 @@ void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *
 				}
 				break;
 	}
+}
+
+int JeuTestFinNiveau (Jeu *pJeu)
+{
+    if (dSurviTestTousSauve(&(pJeu->dsurvis))==1)
+    {
+        return 1;
+    }
+    if (autoGetPdv(&(pJeu->oto))==0)
+    {
+        return 2;
+    }
+    return 0;
 }
