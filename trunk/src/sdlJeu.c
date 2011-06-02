@@ -185,12 +185,12 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	SDL_EnableKeyRepeat(100, 200);
 
 	
-	/* tant que ce n'est pas la fin ... */
+	/** tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
-	{	/* tant qu'il y a des evenements à traiter : cette boucle n'est pas bloquante */
+	{	/** tant qu'il y a des evenements à traiter : cette boucle n'est pas bloquante */
 		while ( SDL_PollEvent( &event) ) 
 		{
-			/* Si l'utilisateur a cliqué sur la croix de fermeture */
+			/** Si l'utilisateur a cliqué sur la croix de fermeture */
 			if ( event.type == SDL_QUIT )
 				continue_boucle = 0;
 
