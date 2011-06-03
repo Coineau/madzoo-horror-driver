@@ -205,7 +205,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	
 	SDL_EnableKeyRepeat(100, 200);
 
-	Mix_VolumeChunk(pSdlJeu->deplace, MIX_MAX_VOLUME);
+	Mix_VolumeChunk(pSdlJeu->deplace, MIX_MAX_VOLUME/3);
 	Mix_PlayMusic(pSdlJeu->musique, -1);
 	
 	/** tant que ce n'est pas la fin ... */
@@ -228,12 +228,15 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 					break;
 				case SDLK_DOWN:
 					jeuActionClavier( &(pSdlJeu->jeu), 'b');
+					Mix_PlayChannel(1, pSdlJeu->deplace,0);
 					break;
 				case SDLK_LEFT:
 					jeuActionClavier( &(pSdlJeu->jeu), 'g');
+					Mix_PlayChannel(1, pSdlJeu->deplace,0);
 					break;
 				case SDLK_RIGHT:
 					jeuActionClavier( &(pSdlJeu->jeu), 'd');
+					Mix_PlayChannel(1, pSdlJeu->deplace,0);
 					break;
 				default: 	
 						break;
