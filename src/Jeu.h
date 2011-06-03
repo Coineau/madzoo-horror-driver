@@ -19,6 +19,9 @@ typedef struct
 /** Initialise une structure Jeu*/
 void jeuInit(Jeu *);
 
+/**Libere la structure Jeu*/
+void JeuLibere(Jeu *pJeu);
+
 /** Renvoie la structure Terrain contenue dans Jeu*/
 Terrain *jeuGetTerrainPtr(Jeu *);
 

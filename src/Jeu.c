@@ -4,11 +4,18 @@
 
 void jeuInit(Jeu *pJeu)
 {
-	pJeu->niv=1;
+	pJeu->niv=2;
 	autoInit(&(pJeu->oto));
 	terInit(&(pJeu->ter),pJeu->niv);
 	dSurviInit(&(pJeu->dsurvis),&(pJeu->ter));
 	dZombieInit(&(pJeu->dzombies),&(pJeu->ter));
+}
+
+void JeuLibere(Jeu *pJeu)
+{
+    terLibere(&(pJeu->ter));
+    dsurviLibere(&(pJeu->dsurvis));
+    dZombieLibere(&(pJeu->dzombies));
 }
 
 Terrain *jeuGetTerrainPtr(Jeu *pJeu)
