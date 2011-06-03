@@ -12,14 +12,17 @@ typedef struct
     MenuFonction fonction_commande;
 } MenuLigne;
 
-typedef struct Menu
+typedef struct
 {
-    MenuLigne ligne[32];
+    MenuLigne lignes[32];
     int nb_lignes;
 }Menu;
 
-void menuInit(Menu* m);
-void menuAjouterLigne(Menu* m)
-
+void jouer();
+void Quitter();
+void menuInit(Menu m);
+void menuAjouterLigne(Menu m, char txt[64],MenuFonction fonct);
+void menuLoop(Menu m);
+void menuLibere();
 
 #endif
