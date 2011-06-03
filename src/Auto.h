@@ -4,27 +4,27 @@
 
 #include "Terrain.h"
 
-typedef struct 
+typedef struct
 {
 	/**Coordonnées du joueur*/
 	int x,y;
-		
+
 	/** PV restants*/
 	int pdv;
-	
+
 	/** PV initiaux*/
 	int pdvmax;
-	
+
 	/** Nombre de places occupées dans l'auto*/
 	int nbSurviDansAuto;
-	
+
 	/** Nombre de places total*/
 	int nbPlaces;
 
 } Auto;
 
 /** Initialise une structure Auto*/
-void autoInit(Auto *);
+void autoInit(Auto *, Terrain *);
 
 /** Les quatres fonctions suivantes déplacent le joueur*/
 void autoGauche(Auto *, const Terrain *);

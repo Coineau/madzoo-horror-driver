@@ -20,7 +20,7 @@ ifeq ($(JEU)$(OS),texteWIN32)
 	LIBS = "C:\Program Files (x86)\PDCurses-SO\win32\pdcurses.a"
 endif
 ifeq ($(JEU)$(OS),texteLINUX)
-	LIBS = -lncurses
+	LIBS = -lncurses -lm
 endif
 ifeq ($(JEU)$(OS),graphiqueWIN32)
 	LIBS = -L"G:\alex\A_CLASSER\LIF7-DeveloppementApp\SDL-1.2.14\lib" -lmingw32 -lSDLmain -lSDL.dll
