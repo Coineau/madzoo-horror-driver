@@ -7,19 +7,19 @@
 
 void zombieInit(Zombie *pZon ,int cx ,int cy)
 {
-	pZon->x=cx;
-	pZon->y=cy;
-	pZon->pdv=1;
+        pZon->x=cx;
+        pZon->y=cy;
+        pZon->pdv=1;
 }
 
 int zombieGetX(const Zombie* pZon)
 {
-	return pZon->x;
+        return pZon->x;
 }
 
 int zombieGetY(const Zombie* pZon)
 {
-	return pZon->y;
+        return pZon->y;
 }
 
 void zombieSetX(Zombie* pZon,int cx)
@@ -35,12 +35,12 @@ void zombieSetY(Zombie* pZon,int cy)
 
 int zombieGetPdv(const Zombie * pZon)
 {
-	return pZon->pdv;
+        return pZon->pdv;
 }
 
 void zombieSetPdv(Zombie * pZon, int pv)
 {
-	pZon->pdv=pv;
+        pZon->pdv=pv;
 }
 
 void zombieSupr(Zombie *pZon,Terrain* pTer)
@@ -104,15 +104,14 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
              if(testDeplacementZombie(pTer ,Xz+1,Yz))
             {
                 zombieSetX(pZon,Xz+1);
-				terSetXY(pTer, Xz, Yz, ' ');
-				terSetXY(pTer, Xz+1, Yz, 'z');
+                                terSetXY(pTer, Xz, Yz, ' ');
+                                terSetXY(pTer, Xz+1, Yz, 'z');
 
             }
-             else
+            else
             {
                 zombieDeplacementAleat(pZon,pTer);
             }
-
         }
         else
         {
@@ -122,11 +121,10 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz-1, Yz, 'z');
             }
-             else
+            else
             {
                 zombieDeplacementAleat(pZon,pTer);
             }
-
         }
     }
     else
@@ -139,11 +137,10 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz,Yz+1, 'z');
             }
-             else
+            else
             {
                 zombieDeplacementAleat(pZon,pTer);
             }
-
 
         }
         else
@@ -154,21 +151,20 @@ void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya)
                 terSetXY(pTer, Xz, Yz, ' ');
                 terSetXY(pTer, Xz, Yz-1, 'z');
              }
-              else
+             else
             {
                 zombieDeplacementAleat(pZon,pTer);
             }
-
         }
     }
 }
 
 void zombieDeplacementAleat(Zombie * pZon,Terrain *pTer)
 {
-    int z;
-    int y;
-    int s;
-    char i[4];
+    int dir;
+    int i;
+    int sommesol;
+    char tabdir[4];
     int r;
     int Xz;
     int Yz;
@@ -179,54 +175,56 @@ void zombieDeplacementAleat(Zombie * pZon,Terrain *pTer)
 
     if(testDeplacementZombie(pTer ,Xz,Yz-1))
     {
-        i[0]=1;
+        tabdir[0]=1;
     }
     else
     {
-         i[0]=0;
+         tabdir[0]=0;
     }
 
     if(testDeplacementZombie(pTer ,Xz-1,Yz))
     {
-        i[1]=1;
+        tabdir[1]=1;
     }
     else
     {
-        i[1]=0;
+        tabdir[1]=0;
     }
     if(testDeplacementZombie(pTer ,Xz,Yz+1))
     {
-        i[2]=1;
+        tabdir[2]=1;
     }
     else
     {
-        i[2]=0;
+        tabdir[2]=0;
     }
     if(testDeplacementZombie(pTer ,Xz+1,Yz))
     {
-        i[3]=1;
+        tabdir[3]=1;
     }
     else
     {
-        i[3]=0;
+        tabdir[3]=0;
     }
 
-    s = 0 ;
-    for(y = 0 ; y <4 ; y++)
+    sommesol = 0 ;
+    for(i = 0 ; i <4 ; i++)
     {
-        s = s + i[y];
+        sommesol = sommesol + tabdir[i];
     }
-
-    r = rand()%s;
-
-    y =0 ;
-    while(y != 4)
+    if(sommesol!=0)
     {
-        if(i[y] == 1)
+    r = rand()%sommesol;
+
+    i=0 ;
+    dir = 0;
+    while(i != 4)
+    {
+        if(tabdir[i] == 1)
         {
             if(r == 0)
             {
-                z = y;
+                dir = i;
                 r--;
             }
             else
@@ -235,37 +233,36 @@ void zombieDeplacementAleat(Zombie * pZon,Terrain *pTer)
             }
 
         }
-        y++;
+        i++;
 
     }
 
-	switch(z)
-	{
+        switch(dir)
+        {
         case 0 :
-				zombieSetY(pZon,Yz-1);
-				terSetXY(pTer, Xz, Yz, ' ');
-				terSetXY(pTer, Xz, Yz-1, 'z');
-				break;
-		case 1 :
-				zombieSetX(pZon,Xz-1);
-				terSetXY(pTer, Xz, Yz, ' ');
-				terSetXY(pTer, Xz-1, Yz, 'z');
-				break;
-		case 2 :
-				zombieSetY(pZon,Yz+1);
-				terSetXY(pTer, Xz, Yz, ' ');
-				terSetXY(pTer, Xz,Yz+1, 'z');
-				break;
-		case 3 :
-				zombieSetX(pZon,Xz+1);
-				terSetXY(pTer, Xz, Yz, ' ');
-				terSetXY(pTer, Xz+1, Yz, 'z');
-				break;
+                                zombieSetY(pZon,Yz-1);
+                                terSetXY(pTer, Xz, Yz, ' ');
+                                terSetXY(pTer, Xz, Yz-1, 'z');
+                                break;
+                case 1 :
+                                zombieSetX(pZon,Xz-1);
+                                terSetXY(pTer, Xz, Yz, ' ');
+                                terSetXY(pTer, Xz-1, Yz, 'z');
+                                break;
+                case 2 :
+                                zombieSetY(pZon,Yz+1);
+                                terSetXY(pTer, Xz, Yz, ' ');
+                                terSetXY(pTer, Xz,Yz+1, 'z');
+                                break;
+                case 3 :
+                                zombieSetX(pZon,Xz+1);
+                                terSetXY(pTer, Xz, Yz, ' ');
+                                terSetXY(pTer, Xz+1, Yz, 'z');
+                                break;
         default : break;
-	}
+        }
+    }
+
 
 
 }
-
-
-

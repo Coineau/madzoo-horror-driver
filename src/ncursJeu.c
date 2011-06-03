@@ -67,15 +67,19 @@ void ncursBoucle(Jeu *pJeu)
 		{
 			case KEY_LEFT:
 				jeuActionClavier( pJeu, 'g');
+				jeuDeplaceZombies(pJeu);
 				break;
 			case KEY_RIGHT:
 				jeuActionClavier( pJeu, 'd');
+				jeuDeplaceZombies(pJeu);
 				break;
 			case KEY_UP:
 				jeuActionClavier( pJeu, 'h');
+				jeuDeplaceZombies(pJeu);
 				break;
 			case KEY_DOWN:
 				jeuActionClavier( pJeu, 'b');
+				jeuDeplaceZombies(pJeu);
 				break;
 			case 27: /* ECHAP */
 				continue_boucle = 0;
