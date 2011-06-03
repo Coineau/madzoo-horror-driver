@@ -5,8 +5,8 @@
 void jeuInit(Jeu *pJeu)
 {
 	pJeu->niv=2;
-	autoInit(&(pJeu->oto));
 	terInit(&(pJeu->ter),pJeu->niv);
+	autoInit(&(pJeu->oto),&(pJeu->ter));
 	dSurviInit(&(pJeu->dsurvis),&(pJeu->ter));
 	dZombieInit(&(pJeu->dzombies),&(pJeu->ter));
 }

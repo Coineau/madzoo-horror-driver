@@ -3,9 +3,22 @@
 #include <malloc.h>
 #include <assert.h>
 
-void autoInit(Auto *pauto)
+void autoInit(Auto *pauto, Terrain *pTer)
 {
-	pauto->x=pauto->y=0;
+    int i,j;
+	int DimX = getDimX(pTer);
+	int DimY = getDimY(pTer);
+	for(i=0; i < DimX ; i++)
+	{
+		for(j=0; j <DimY; j++)
+		{
+			if(terEstPositionHeli(pTer,i,j) == 1)
+			{
+			    	pauto->x=i;
+			    	pauto->y=j;
+			}
+		}
+	}
 	pauto->pdv=2;
 	pauto->pdvmax=2;
 	pauto->nbSurviDansAuto=0;
