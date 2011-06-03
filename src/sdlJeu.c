@@ -28,6 +28,14 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	jeuInit(pJeu);
 
 	assert(   SDL_Init( SDL_INIT_EVERYTHING )!= -1 );
+
+	pSdlJeu->surface_icone = SDL_LoadBMP("data/icone.bmp");
+	if (pSdlJeu->surface_icone==NULL)
+	pSdlJeu->surface_icone = SDL_LoadBMP("../data/icone.bmp");
+	assert( pSdlJeu->surface_icone!=NULL);
+	
+	SDL_WM_SetIcon(pSdlJeu->surface_icone, NULL);
+	
 	
 	if(Mix_OpenAudio(11025, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)
 	{
@@ -263,8 +271,17 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 
 void sdljeuDetruit( sdlJeu *pSdlJeu)
 {
+	SDL_FreeSurface( pSdlJeu->surface_zombie);
 	SDL_FreeSurface( pSdlJeu->surface_auto );
 	SDL_FreeSurface( pSdlJeu->surface_mur );
+	SDL_FreeSurface( pSdlJeu->surface_auto);
+	SDL_FreeSurface( pSdlJeu->surface_mur);
+        SDL_FreeSurface( pSdlJeu->surface_titre);
+	SDL_FreeSurface( pSdlJeu->surface_zombie);
+	SDL_FreeSurface( pSdlJeu->surface_survivant);
+	SDL_FreeSurface( pSdlJeu->surface_heli);
+	SDL_FreeSurface( pSdlJeu->surface_HUD);
+	SDL_FreeSurface( pSdlJeu->surface_sol);
 	Mix_FreeMusic(pSdlJeu->musique);
 	SDL_Quit();
 }

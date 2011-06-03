@@ -12,6 +12,7 @@ typedef struct
 	Jeu jeu;
 	Mix_Music *musique;
 	Mix_Chunk *deplace;
+	SDL_Surface* surface_icone;
 	SDL_Surface* surface_ecran;
 	SDL_Surface* surface_auto;
 	SDL_Surface* surface_mur;

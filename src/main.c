@@ -6,6 +6,7 @@
 
 #ifdef JEU_SDL
 #include "sdlJeu.h"
+#include "sdlMenu.h"
 #endif
 
 
@@ -20,6 +21,10 @@ int main ( int argc, char** argv )
 
 #ifdef JEU_SDL
 	sdlJeu sj;
+	/*sdlMenu sm;
+	sdlMenuInit(&sm);
+	sdlMenuBoucle(&sm);
+	sdlMenuDetruit(&sm);*/
 	sdljeuInit( &sj );
 	sdljeuBoucle( &sj );
 	sdljeuDetruit( &sj );
