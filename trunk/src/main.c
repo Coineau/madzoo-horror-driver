@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #ifdef JEU_NCURSES
-#include "ncursJeu.h"
+#include "menu.h"
 #endif
 
 #ifdef JEU_SDL
@@ -13,11 +13,15 @@
 int main ( int argc, char** argv )
 {
 
-/*#ifdef JEU_NCURSES
- 	Jeu jeu;
- 	jeuInit(&jeu);
-	ncursBoucle(&jeu);
-#endif*/
+#ifdef JEU_NCURSES
+    Menu m;
+    menuInit(m);
+    menuAjouterLigne(m,"Quitter",Quitter);
+    menuAjouterLigne(m,"Jouer",jouer);
+    //menuAjouterLigne(m,"Credit",credit);
+    menuLoop(m);
+    menuRun();
+#endif
 
 #ifdef JEU_SDL
 	sdlJeu sj;
