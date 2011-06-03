@@ -25,6 +25,7 @@ typedef struct
 } sdlJeu;
 
 void sdljeuInit(sdlJeu *);
+void sdljeuAff(sdlJeu *);
 void sdljeuBoucle(sdlJeu *);
 void sdljeuLibere(sdlJeu *);
 void sdljeuDetruit(sdlJeu *);
