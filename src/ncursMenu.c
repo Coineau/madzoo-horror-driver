@@ -1,34 +1,83 @@
 #include <stdio.h>
-#include "menu.h"
+#include <string.h>
+#include <stdlib.h>
 
-void menuAff()
+#include "ncursMenu.h"
+
+void jouer()
 {
-    printf("\n MENU \n");
-    printf("1 : Jouer \n");
-    printf("2 : Credit \n");
-    printf("3 : QUITTER \n");
-
+    printf("fonction jouer\n");
+    fflush(stdout);
 }
 
-void menuRun()
+void Quitter()
 {
-char ch;
-do
-{
-menuAff();
-scanf("%c", &ch);
-switch(ch)
-{
-case 1 : Jeu jeu;
-         jeuInit(&jeu);
-         ncursBoucle(&jeu); break;
-case 2 : printf("credit\n"); break;
-case 3 : printf("quit a faire\n"); break;
-default: printf("Erreur\n"); break;
-}
-} while(ch<1 || ch>3);
+    printf("fin\n");
+    exit(0);
 }
 
+void menuInit(Menu m)
+{
+    m.nb_lignes=0;
+}
 
+void menuAjouterLigne(Menu m, char txt[64], MenuFonction fonct)
+{
+    strcpy(m.lignes[m.nb_lignes].texte, txt);
+    m.lignes[m.nb_lignes].fonction_commande = fonct;
+    m.nb_lignes++;
+}
 
+void menuLibere(Menu m)
+{
+    m.nb_lignes=0;
+}
 
+void menuAff(const Menu m)
+{
+    int i;
+    printf("\n\nMenu");
+    for(i=0;i<m.nb_lignes;i++)
+    {
+        printf("%d : %s\n",i,m.lignes[i].texte);
+    }
+    printf("Votre choix?\n");
+    fflush(stdout);
+}
+
+int menuQuestion(const Menu m)
+{
+    int cm;
+    char dum[32];
+    bool ok = false;
+    do
+    {
+        if(scanf("%d",&cm)!=1)
+        {
+            scanf("%s",dum);
+        }
+        if((cm<0)||(cm>=m.nb_lignes))
+        {
+            printf ("Erreur choix menu\n");
+        }
+        else
+        {
+            ok=true;
+        }
+        fflush(stdout);
+    }while(!ok);
+    printf("\n");
+    fflush(stdout);
+    return cm;
+}
+
+void menuLoop(Menu m)
+{
+    int cm;
+    while(1)
+    {
+        menuAff(m);
+        cm = menuQuestion(m);
+        m.lignes[cm].fonction_commande();
+    }
+}

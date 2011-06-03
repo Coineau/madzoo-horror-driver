@@ -7,7 +7,7 @@ JEU	= graphique
 OS	= LINUX
 
 ifeq ($(JEU),texte)
-	SRCS = Auto.c Terrain.c Jeu.c ncursJeu.c main.c Survivant.c DesSurvivants.c DesZombies.c Zombie.c
+	SRCS = Auto.c Terrain.c Jeu.c ncursJeu.c ncursMenu.c main.c Survivant.c DesSurvivants.c DesZombies.c Zombie.c
 	FINAL_TARGET = mhd_txt
 	DEFINE = -D$(OS) -DJEU_NCURSES
 else

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #ifdef JEU_NCURSES
-#include "menu.h"
+#include "ncursMenu.h"
 #endif
 
 #ifdef JEU_SDL
@@ -13,37 +13,37 @@
 int main ( int argc, char** argv )
 {
 
-/*#ifdef JEU_NCURSES
+#ifdef JEU_NCURSES
     Menu m;
     menuInit(m);
     menuAjouterLigne(m,"Quitter",Quitter);
     menuAjouterLigne(m,"Jouer",jouer);
-    menuAjouterLigne(m,"Credit",credit);
+    /*menuAjouterLigne(m,"Credit",credit);*/
     menuLoop(m);
-    menuRun();
-#endif*/
+#endif
+
 
 #ifdef JEU_SDL
-	sdlJeu sj;
-	sdlMenu sm;
-	
-	sdlMenuInit(&sm);
-	do
-	{
-		sdlMenuBoucle(&sm);
-		if(sm.changerfenetre==1)
-		{
-			sdljeuInit( &sj );
-			sdljeuBoucle( &sj );
-			if(sj.findepartie==2)
-			{
-				sdljeuDetruit( &sj );
-				sm.changerfenetre=0;
-			}
-		}
-	}while(sm.changerfenetre==0);
-	sdlMenuDetruit(&sm);
-	
+        sdlJeu sj;
+        sdlMenu sm;
+
+        sdlMenuInit(&sm);
+        do
+        {
+                sdlMenuBoucle(&sm);
+                if(sm.changerfenetre==1)
+                {
+                        sdljeuInit( &sj );
+                        sdljeuBoucle( &sj );
+                        if(sj.findepartie==2)
+                        {
+                                sdljeuDetruit( &sj );
+                                sm.changerfenetre=0;
+                        }
+                }
+        }while(sm.changerfenetre==0);
+        sdlMenuDetruit(&sm);
+
 
 #endif
 
