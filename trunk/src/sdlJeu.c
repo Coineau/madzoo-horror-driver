@@ -43,15 +43,15 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	dimy = (dimy+2) * TAILLE_SPRITE;
 	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_SWSURFACE );
 	assert( pSdlJeu->surface_ecran!=NULL);
-	SDL_WM_SetCaption( "MHD v0.5", NULL );
+	SDL_WM_SetCaption( "MHD v1.0", NULL );
 
 	/**Chargement des surfaces*/
 	
 	pSdlJeu->surface_sol = SDL_load_image("data/sol.bmp");
 	if (pSdlJeu->surface_sol==NULL)
 		pSdlJeu->surface_sol = SDL_load_image("../data/sol.bmp");
+	assert( pSdlJeu->surface_sol!=NULL);
 	
-	assert( pSdlJeu->surface_auto!=NULL);
 	pSdlJeu->surface_auto = SDL_load_image("data/auto.bmp");
 	if (pSdlJeu->surface_auto==NULL)
 		pSdlJeu->surface_auto = SDL_load_image("../data/auto.bmp");
@@ -71,7 +71,6 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	if (pSdlJeu->surface_heli==NULL)
 		pSdlJeu->surface_heli = SDL_load_image("../data/Heliport.bmp");
 	assert( pSdlJeu->surface_heli!=NULL);
-
 
 	pSdlJeu->surface_mur = SDL_load_image("data/mur.bmp");
 	if (pSdlJeu->surface_mur==NULL)
