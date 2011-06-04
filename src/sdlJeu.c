@@ -213,26 +213,42 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 				case SDLK_UP:
 					jeuActionClavier( &(pSdlJeu->jeu), 'h');
 					Mix_PlayChannel(1, pSdlJeu->deplace,0);
+					if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
+					{
+						continue_boucle=0;
+					}
 					break;
+					
 				case SDLK_DOWN:
 					jeuActionClavier( &(pSdlJeu->jeu), 'b');
 					Mix_PlayChannel(1, pSdlJeu->deplace,0);
+					if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
+					{
+						continue_boucle=0;
+					}
 					break;
+					
 				case SDLK_LEFT:
 					jeuActionClavier( &(pSdlJeu->jeu), 'g');
 					Mix_PlayChannel(1, pSdlJeu->deplace,0);
+					if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
+					{
+						continue_boucle=0;
+					}
 					break;
+					
 				case SDLK_RIGHT:
 					jeuActionClavier( &(pSdlJeu->jeu), 'd');
 					Mix_PlayChannel(1, pSdlJeu->deplace,0);
+					if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
+					{
+						continue_boucle=0;
+					}
 					break;
+					
 				default: 	
 						break;
 				}
-			}
-			if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
-			{
-				continue_boucle=0;
 			}
 		}
 
@@ -242,6 +258,10 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 				jeuDeplaceZombies(&(pSdlJeu->jeu));
 				tempsPrecedent = tempsActuel; /** Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
 				}
+		if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
+		{
+			continue_boucle=0;
+		}
 		
 		/** On affiche le jeu sur le buffer caché */
 		sdljeuAff(pSdlJeu);
