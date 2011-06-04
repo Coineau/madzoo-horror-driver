@@ -255,7 +255,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 			}
 			pSdlJeu->findepartie=JeuTestFinNiveau(&(pSdlJeu->jeu));
 			if(pSdlJeu->findepartie!=0)
-			{continue_boucle==0;}
+			{continue_boucle=0;}
 		}
 
 		tempsActuel = SDL_GetTicks();
@@ -265,10 +265,10 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 				tempsPrecedent = tempsActuel; /** Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
 				}
 		
-		/* on affiche le jeu sur le buffer caché */
+		/** On affiche le jeu sur le buffer caché */
 		sdljeuAff(pSdlJeu);
 
-		/* on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans a boucle) */
+		/** On permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans a boucle) */
 		SDL_Flip( pSdlJeu->surface_ecran );
 	}
 }

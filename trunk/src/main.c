@@ -17,7 +17,7 @@ int main ( int argc, char** argv )
     Menu m;
     menuInit(m);
     menuAjouterLigne(m,"Quitter",Quitter);
-    menuAjouterLigne(m,"Jouer",jouer);*/
+    menuAjouterLigne(m,"Jouer",jouer);
     /*menuAjouterLigne(m,"Credit",credit);*/
     menuLoop(m);
 #endif
@@ -35,10 +35,10 @@ int main ( int argc, char** argv )
                 {
                         sdljeuInit( &sj );
                         sdljeuBoucle( &sj );
-                        if(sj.findepartie!=0)
+                       if(sj.findepartie!=0)
                         {
+				sm.changerfenetre=0;
                                 sdljeuDetruit( &sj );
-                                sm.changerfenetre=0;
                         }
                 }
         }while(sm.changerfenetre==0);
