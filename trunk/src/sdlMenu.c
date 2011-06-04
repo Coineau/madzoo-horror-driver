@@ -70,28 +70,28 @@ void sdlMenuInit(sdlMenu *pSdlMenu)
 	if(pSdlMenu->deplace==NULL)
 		pSdlMenu->deplace=Mix_LoadWAV("../data/menu/musique/deplace.wav");
 	assert( pSdlMenu->deplace!=NULL);*/
+	
+	/**Determination de la position des bouttons*/
+	pSdlMenu->positionFond.x = 0;
+	pSdlMenu->positionFond.y = 0;
+	pSdlMenu->positionJouer.x = 96;
+	pSdlMenu->positionJouer.y = 128;
+	pSdlMenu->positionQuitter.x = 96;
+	pSdlMenu->positionQuitter.y = 384;
 }
 
 
 
 void sdlMenuAff(sdlMenu *pSdlMenu)
 {
-	SDL_Rect positionFond;
-	SDL_Rect positionJouer;
-	SDL_Rect positionQuitter;
-	positionFond.x = 0;
-	positionFond.y = 0;
-	positionJouer.x = 96;
-	positionJouer.y = 128;
-	positionQuitter.x = 96;
-	positionQuitter.y = 384;
+
 
 	/** Remplir l'écran */	
-	SDL_BlitSurface(pSdlMenu->surface_bg, NULL, pSdlMenu->surface_ecran, &positionFond);
+	SDL_BlitSurface(pSdlMenu->surface_bg, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionFond));
 	
 	/** Placer  les bouttons*/
-	SDL_BlitSurface(pSdlMenu->surface_jouer, NULL, pSdlMenu->surface_ecran, &positionJouer);
-	SDL_BlitSurface(pSdlMenu->surface_quitter, NULL, pSdlMenu->surface_ecran, &positionQuitter);
+	SDL_BlitSurface(pSdlMenu->surface_jouer, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionJouer));
+	SDL_BlitSurface(pSdlMenu->surface_quitter, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionQuitter));
 
 	
 }
@@ -116,7 +116,21 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu)
 		while ( SDL_PollEvent( &event) ) 
 		{
 			if ( event.type == SDL_QUIT )
-				continue_boucle = 0;
+				{continue_boucle = 0;}
+			
+			if (event.type==SDL_MOUSEBUTTONUP)
+				if((event.button.x>pSdlMenu->positionJouer.x)&&(event.button.x<(pSdlMenu->positionJouer.x)+127)&&(event.button.x<(pSdlMenu->positionJouer.y)+63)&&(event.button.y>pSdlMenu->positionJouer.y))
+				{
+					pSdlMenu->changerfenetre=1;
+					continue_boucle=0;
+				}
+				else
+				{
+					if((event.button.x==pSdlMenu->positionQuitter.x)&&(event.button.x<(pSdlMenu->positionQuitter.x)+127)&&(event.button.x<(pSdlMenu->positionQuitter.y)+63)&&(event.button.y==pSdlMenu->positionQuitter.y))
+					{
+						continue_boucle=0;
+					}
+				}
 		}	
 	}
 	
@@ -125,13 +139,6 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu)
 	/*Mix_VolumeChunk(pSdlMenu->deplace, MIX_MAX_VOLUME/3);
 	Mix_PlayMusic(pSdlMenu->musiquemenu, -1);*/
 	
-	
-		
-		/* on affiche le jeu sur le buffer caché */
-		sdlMenuAff(pSdlMenu);
-
-		/* on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans a boucle) */
-		SDL_Flip( pSdlMenu->surface_ecran );
 }
 
 
