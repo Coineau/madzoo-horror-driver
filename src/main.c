@@ -17,11 +17,11 @@ int main ( int argc, char** argv )
     Menu m;
     menuInit(m);
     menuAjouterLigne(m,"Quitter",Quitter);
-    menuAjouterLigne(m,"Jouer",jouer);
+    menuAjouterLigne(m,"Jouer",jouer);*/
     /*menuAjouterLigne(m,"Credit",credit);*/
     menuLoop(m);
 #endif
-
+	
 
 #ifdef JEU_SDL
         sdlJeu sj;
@@ -35,7 +35,7 @@ int main ( int argc, char** argv )
                 {
                         sdljeuInit( &sj );
                         sdljeuBoucle( &sj );
-                        if(sj.findepartie==2)
+                        if(sj.findepartie!=0)
                         {
                                 sdljeuDetruit( &sj );
                                 sm.changerfenetre=0;

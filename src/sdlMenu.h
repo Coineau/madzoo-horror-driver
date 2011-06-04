@@ -7,8 +7,12 @@
 
 typedef struct 
 {
+	int changerfenetre;
 	Mix_Music *musiquemenu;
 	Mix_Chunk *deplace;
+	SDL_Rect positionFond;
+	SDL_Rect positionJouer;
+	SDL_Rect positionQuitter;
 	SDL_Surface* surface_icone;
 	SDL_Surface* surface_ecran;
 	SDL_Surface* surface_titre;

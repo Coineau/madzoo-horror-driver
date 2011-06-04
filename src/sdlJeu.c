@@ -85,9 +85,13 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_mur = SDL_load_image("../data/mur.bmp");
 	assert( pSdlJeu->surface_mur!=NULL);
 
+	/**Initialisation de la police et du HUD*/
 	TTF_Init();
-	pSdlJeu->surface_police=TTF_OpenFont( "/usr/share/fonts/truetype/msttcorefonts/Courier_New.ttf", 28 );
 	
+	pSdlJeu->surface_police=TTF_OpenFont( "data/jeu/Courier_New.ttf", 28 );
+	if (pSdlJeu->surface_police==NULL)
+		pSdlJeu->surface_police=TTF_OpenFont( "../data/jeu/Courier_New.ttf", 28 );
+	assert(pSdlJeu->surface_police!=NULL);
 	
 	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", textColor, bgColorBlack ); 
 	tempsActuel = SDL_GetTicks()/10;
@@ -249,9 +253,10 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 						break;
 				}
 			}
-			
+			pSdlJeu->findepartie=JeuTestFinNiveau(&(pSdlJeu->jeu));
+			if(pSdlJeu->findepartie!=0)
+			{continue_boucle==0;}
 		}
-		
 
 		tempsActuel = SDL_GetTicks();
 		if (tempsActuel - tempsPrecedent > 350) /** Si 100 ms se sont écoulées depuis le dernier tour de boucle */
