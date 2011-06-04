@@ -1,6 +1,7 @@
 #ifndef _SDLMENU_H
 #define _SDLMENU_H
 
+#include "sdlJeu.h"
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_mixer.h>
 
@@ -24,7 +25,7 @@ typedef struct
 
 void sdlMenuInit(sdlMenu *);
 void sdlMenuAff(sdlMenu *);
-void sdlMenuBoucle(sdlMenu *);
+void sdlMenuBoucle(sdlMenu *, sdlJeu *);
 void sdlMenuLibere(sdlMenu *);
 void sdlMenuDetruit(sdlMenu *);
 
