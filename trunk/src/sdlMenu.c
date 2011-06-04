@@ -118,20 +118,22 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu)
 				break;
 			
 			case SDL_MOUSEBUTTONUP:
-				if((event.button.x>pSdlMenu->positionJouer.x)&&(event.button.x<(pSdlMenu->positionJouer.x)+127)&&(event.button.x<(pSdlMenu->positionJouer.y)+63)&&(event.button.y>pSdlMenu->positionJouer.y))
+				if((event.button.x>pSdlMenu->positionQuitter.x)&&(event.button.x<(pSdlMenu->positionQuitter.x)+127)&&(event.button.y<(pSdlMenu->positionQuitter.y)+63)&&(event.button.y>pSdlMenu->positionQuitter.y))
+				{
+						continue_boucle=0;
+				}
+				
+				if((event.button.x>pSdlMenu->positionJouer.x)&&(event.button.x<(pSdlMenu->positionJouer.x)+127)&&(event.button.y<(pSdlMenu->positionJouer.y)+63)&&(event.button.y>pSdlMenu->positionJouer.y))
 				{
 					sdljeuInit( pSdlJeu );
 					sdljeuBoucle( pSdlJeu );
 					sdlMenuAff(pSdlMenu);
 					SDL_Flip( pSdlMenu->surface_ecran );
+					Mix_PlayMusic(pSdlMenu->musiquemenu, -1);
 					sdljeuDetruit( pSdlJeu);
 
 				}
 				
-				if((event.button.x>pSdlMenu->positionQuitter.x)&&(event.button.x<(pSdlMenu->positionQuitter.x)+127)&&(event.button.x<(pSdlMenu->positionQuitter.y)+63)&&(event.button.y>pSdlMenu->positionQuitter.y))
-				{
-						continue_boucle=0;
-				}
 				
 				break;
 			
