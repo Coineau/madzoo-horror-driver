@@ -9,7 +9,6 @@
 
 typedef struct 
 {
-	int findepartie;
 	Jeu jeu;
 	Mix_Music *musique;
 	Mix_Chunk *deplace;
