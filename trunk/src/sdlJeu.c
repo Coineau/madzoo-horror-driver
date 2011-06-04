@@ -85,7 +85,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_mur = SDL_load_image("../data/mur.bmp");
 	assert( pSdlJeu->surface_mur!=NULL);
 
-	/**Initialisation de la police et du HUD*/
+	/**Initialisation de la police, du titre et du HUD*/
 	TTF_Init();
 	
 	pSdlJeu->surface_police=TTF_OpenFont( "data/jeu/Courier_New.ttf", 28 );
@@ -94,6 +94,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	assert(pSdlJeu->surface_police!=NULL);
 	
 	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", textColor, bgColorBlack ); 
+	
 	tempsActuel = SDL_GetTicks()/10;
 	
 	sprintf(HUD, "PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
@@ -216,7 +217,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	
 	SDL_EnableKeyRepeat(100, 200);
 
-	Mix_VolumeChunk(pSdlJeu->deplace, MIX_MAX_VOLUME/3);
+	Mix_VolumeChunk(pSdlJeu->deplace, MIX_MAX_VOLUME/10);
 	Mix_PlayMusic(pSdlJeu->musique, -1);
 	
 	/** tant que ce n'est pas la fin ... */
@@ -288,6 +289,7 @@ void sdljeuDetruit( sdlJeu *pSdlJeu)
 	SDL_FreeSurface( pSdlJeu->surface_HUD);
 	SDL_FreeSurface( pSdlJeu->surface_sol);
 	Mix_FreeMusic(pSdlJeu->musique);
+	Mix_CloseAudio();
 	SDL_Quit();
 }
 

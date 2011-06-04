@@ -1,6 +1,7 @@
 
 #include <assert.h>
 #include "sdlMenu.h"
+#include "sdlJeu.h"
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_mixer.h>
 
@@ -18,6 +19,8 @@ void sdlMenuInit(sdlMenu *pSdlMenu)
 	{
 		printf("%s", Mix_GetError());
 	}*/
+	
+	pSdlMenu->changerfenetre=0;
 	
 	pSdlMenu->surface_icone = SDL_LoadBMP("data/icone.bmp");
 	if (pSdlMenu->surface_icone==NULL)
@@ -101,7 +104,7 @@ void sdlMenuAff(sdlMenu *pSdlMenu)
 
 
 
-void sdlMenuBoucle(sdlMenu *pSdlMenu)
+void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu)
 {
 	SDL_Event event;
 	int continue_boucle = 1;
@@ -119,18 +122,27 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu)
 				{continue_boucle = 0;}
 			
 			if (event.type==SDL_MOUSEBUTTONUP)
-				if((event.button.x>pSdlMenu->positionJouer.x)&&(event.button.x<(pSdlMenu->positionJouer.x)+127)&&(event.button.x<(pSdlMenu->positionJouer.y)+63)&&(event.button.y>pSdlMenu->positionJouer.y))
+			{	if((event.button.x>pSdlMenu->positionJouer.x)&&(event.button.x<(pSdlMenu->positionJouer.x)+127)&&(event.button.x<(pSdlMenu->positionJouer.y)+63)&&(event.button.y>pSdlMenu->positionJouer.y))
 				{
-					pSdlMenu->changerfenetre=1;
+					sdljeuInit( pSdlJeu );
+					sdljeuBoucle( pSdlJeu );
+					if(pSdlJeu->findepartie!=0)
+					{
+						pSdlMenu->changerfenetre=0;
+						sdljeuDetruit( pSdlJeu );
+					}
+			
 					continue_boucle=0;
 				}
 				else
 				{
-					if((event.button.x==pSdlMenu->positionQuitter.x)&&(event.button.x<(pSdlMenu->positionQuitter.x)+127)&&(event.button.x<(pSdlMenu->positionQuitter.y)+63)&&(event.button.y==pSdlMenu->positionQuitter.y))
+					if((event.button.x>pSdlMenu->positionQuitter.x)&&(event.button.x<(pSdlMenu->positionQuitter.x)+127)&&(event.button.x<(pSdlMenu->positionQuitter.y)+63)&&(event.button.y>pSdlMenu->positionQuitter.y))
 					{
+						pSdlMenu->changerfenetre=2;
 						continue_boucle=0;
 					}
 				}
+			}
 		}	
 	}
 	
