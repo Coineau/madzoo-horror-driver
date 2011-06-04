@@ -14,15 +14,7 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 void sdljeuInit(sdlJeu *pSdlJeu)
 {
 	Jeu *pJeu;
-	int dimx, dimy, tempsActuel;
-	char HUD[20*32]=" ";
-	/*dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
-	char* HUD= (char*)malloc( dimx * sizeof(char*));
-	int x=0;
-	for (x; x<dimx;x++)
-	{
-		HUD[x]=" ";
-	}*/
+	int dimx,dimy;
 	
 	pJeu = &(pSdlJeu->jeu);
 	jeuInit(pJeu);
@@ -37,10 +29,10 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	SDL_WM_SetIcon(pSdlJeu->surface_icone, NULL);
 	
 	
-	if(Mix_OpenAudio(11025, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)
+	/*if(Mix_OpenAudio(11025, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)
 	{
 		printf("%s", Mix_GetError());
-	}
+	}*/
 	
 	SDL_Color textColor= { 238, 238,0 };
 	SDL_Color bgColorBlack= {0,0,0};
@@ -85,7 +77,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_mur = SDL_load_image("../data/mur.bmp");
 	assert( pSdlJeu->surface_mur!=NULL);
 
-	/**Initialisation de la police, du titre et du HUD*/
+	/**Initialisation de la police*/
 	TTF_Init();
 	
 	pSdlJeu->surface_police=TTF_OpenFont( "data/jeu/Courier_New.ttf", 28 );
@@ -93,13 +85,8 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_police=TTF_OpenFont( "../data/jeu/Courier_New.ttf", 28 );
 	assert(pSdlJeu->surface_police!=NULL);
 	
+	/**Initialisation du titre*/
 	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", textColor, bgColorBlack ); 
-	
-	tempsActuel = SDL_GetTicks()/10;
-	
-	sprintf(HUD, "PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
-
-	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, textColor, bgColorBlack);
 	
 	
 	/**Chargement des musiques*/
@@ -133,18 +120,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
 	pTer= jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
 	pAuto= jeuGetConstAutoPtr(&(pSdlJeu->jeu));
-	/*HUD= (char**)malloc( dimx * sizeof(char*));
 	
-	
-	for (i; i<dimx;i++)
-	{
-		HUD[i] = (char *)malloc(sizeof(char)*dimx);
-	}
-	
-	for (j; j<dimx;j++)
-	{
-		HUD[j]=" ";
-	}*/
 	
 	
 	SDL_Color textColor= { 238, 238,0 };
@@ -178,7 +154,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 						}
 						else
 						{
-							SDL_apply_surface( pSdlJeu->surface_sol, pSdlJeu->surface_ecran, x*TAILLE_SPRITE,(y+1)*TAILLE_SPRITE);
+						SDL_apply_surface( pSdlJeu->surface_sol, pSdlJeu->surface_ecran, x*TAILLE_SPRITE,(y+1)*TAILLE_SPRITE);
 						}
 					}
 				}
@@ -254,9 +230,10 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 						break;
 				}
 			}
-			pSdlJeu->findepartie=JeuTestFinNiveau(&(pSdlJeu->jeu));
-			if(pSdlJeu->findepartie!=0)
-			{continue_boucle=0;}
+			if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
+			{
+				continue_boucle=0;
+			}
 		}
 
 		tempsActuel = SDL_GetTicks();
@@ -280,17 +257,18 @@ void sdljeuDetruit( sdlJeu *pSdlJeu)
 	SDL_FreeSurface( pSdlJeu->surface_zombie);
 	SDL_FreeSurface( pSdlJeu->surface_auto );
 	SDL_FreeSurface( pSdlJeu->surface_mur );
-	SDL_FreeSurface( pSdlJeu->surface_auto);
-	SDL_FreeSurface( pSdlJeu->surface_mur);
         SDL_FreeSurface( pSdlJeu->surface_titre);
-	SDL_FreeSurface( pSdlJeu->surface_zombie);
 	SDL_FreeSurface( pSdlJeu->surface_survivant);
 	SDL_FreeSurface( pSdlJeu->surface_heli);
-	SDL_FreeSurface( pSdlJeu->surface_HUD);
 	SDL_FreeSurface( pSdlJeu->surface_sol);
+	SDL_FreeSurface(pSdlJeu->surface_ecran);
+
+	TTF_CloseFont(pSdlJeu->surface_police);
+	Mix_HaltChannel(-1);
+	Mix_FreeChunk(pSdlJeu->deplace);
 	Mix_FreeMusic(pSdlJeu->musique);
-	Mix_CloseAudio();
-	SDL_Quit();
+	TTF_Quit();
+	/*SDL_Quit();*/
 }
 
 

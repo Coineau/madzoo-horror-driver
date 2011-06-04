@@ -24,15 +24,22 @@ int main ( int argc, char** argv )
 	
 
 #ifdef JEU_SDL
-        sdlMenu sm;
+       sdlMenu sm;
 	sdlJeu sj;
-
+	
+	
+	/**Jeu avec menu*/
         sdlMenuInit(&sm);
-	while (sm.changerfenetre==0)
-	{
-		sdlMenuBoucle(&sm, &sj);
-        }
-        sdlMenuDetruit(&sm);
+	sdlMenuBoucle(&sm, &sj);
+        sdlMenuDetruit(&sm, &sj);
+	
+	
+	
+	/**Jeu sans menu*/
+	/*sdlJeu sj;
+	sdljeuInit( &sj);
+	sdljeuBoucle( &sj );
+	sdljeuDetruit( &sj);*/
 
 
 #endif
