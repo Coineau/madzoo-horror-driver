@@ -5,9 +5,9 @@
 
 void terInit(Terrain *pTer,int niv)
 {
-        int x,y,i,j;
+    int x,y,i,j;
 
-        char terrain_defaut[20][20] ;
+    char terrain_defaut[20][20] ;
 
 
     FILE* fichier = NULL;
