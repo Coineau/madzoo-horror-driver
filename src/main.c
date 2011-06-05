@@ -2,6 +2,7 @@
 
 #ifdef JEU_NCURSES
 #include "ncursMenu.h"
+#include "ncursJeu.h"
 #endif
 
 #ifdef JEU_SDL
@@ -14,12 +15,9 @@ int main ( int argc, char** argv )
 {
 
 #ifdef JEU_NCURSES
-    Menu m;
-    menuInit(m);
-    menuAjouterLigne(m,"Quitter",Quitter);
-    menuAjouterLigne(m,"Jouer",jouer);
-    /*menuAjouterLigne(m,"Credit",credit);*/
-    menuLoop(m);
+MenuNcurs();
+
+
 #endif
 	
 
