@@ -49,10 +49,10 @@ void sdlMenuInit(sdlMenu *pSdlMenu)
 		pSdlMenu->surface_jouer = SDL_LoadBMP("../data/menu/img/jouer.bmp");
 	assert( pSdlMenu->surface_jouer!=NULL);
 	
-	/*pSdlMenu->surface_credits = SDL_load_image("data/menu/img/credits.bmp");
+	pSdlMenu->surface_credits = SDL_load_image("data/menu/img/credits.bmp");
 	if (pSdlMenu->surface_credits==NULL)
 		pSdlMenu->surface_credits = SDL_load_image("../data/menu/img/credits.bmp");
-	assert( pSdlMenu->surface_credits!=NULL);*/
+	assert( pSdlMenu->surface_credits!=NULL);
 	
 	pSdlMenu->surface_quitter = SDL_LoadBMP("data/menu/img/quitter.bmp");
 	if (pSdlMenu->surface_quitter==NULL)
@@ -72,6 +72,8 @@ void sdlMenuInit(sdlMenu *pSdlMenu)
 	pSdlMenu->positionFond.y = 0;
 	pSdlMenu->positionJouer.x = 96;
 	pSdlMenu->positionJouer.y = 128;
+	pSdlMenu->positionCredits.x=96;
+	pSdlMenu->positionCredits.y=256;
 	pSdlMenu->positionQuitter.x = 96;
 	pSdlMenu->positionQuitter.y = 384;
 }
@@ -88,6 +90,7 @@ void sdlMenuAff(sdlMenu *pSdlMenu)
 	/** Placer  les bouttons*/
 	SDL_BlitSurface(pSdlMenu->surface_jouer, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionJouer));
 	SDL_BlitSurface(pSdlMenu->surface_quitter, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionQuitter));
+	SDL_BlitSurface(pSdlMenu->surface_credits, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionCredits));
 
 	
 }
@@ -156,7 +159,7 @@ void sdlMenuDetruit( sdlMenu *pSdlMenu, sdlJeu *pSdlJeu)
 	SDL_FreeSurface( pSdlMenu->surface_bg);
 	/*SDL_FreeSurface( pSdlMenu->surface_titre);*/
 	SDL_FreeSurface( pSdlMenu->surface_jouer);
-	/*SDL_FreeSurface( pSdlMenu->surface_credits);*/
+	SDL_FreeSurface( pSdlMenu->surface_credits);
         SDL_FreeSurface( pSdlMenu->surface_quitter);
 	Mix_FreeMusic(pSdlMenu->musiquemenu);
 	Mix_CloseAudio();

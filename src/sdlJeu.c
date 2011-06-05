@@ -29,11 +29,6 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	SDL_WM_SetIcon(pSdlJeu->surface_icone, NULL);
 	
 	
-	/*if(Mix_OpenAudio(11025, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)
-	{
-		printf("%s", Mix_GetError());
-	}*/
-	
 	SDL_Color textColor= { 238, 238,0 };
 	SDL_Color bgColorBlack= {0,0,0};
 
