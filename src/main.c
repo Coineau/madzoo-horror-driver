@@ -8,6 +8,7 @@
 #ifdef JEU_SDL
 #include "sdlJeu.h"
 #include "sdlMenu.h"
+#include "sdlCredits.h"
 #endif
 
 
@@ -22,13 +23,14 @@ MenuNcurs();
 	
 
 #ifdef JEU_SDL
-       sdlMenu sm;
+	sdlMenu sm;
 	sdlJeu sj;
+	sdlCredits sc;
 	
 	
 	/**Jeu avec menu*/
         sdlMenuInit(&sm);
-	sdlMenuBoucle(&sm, &sj);
+	sdlMenuBoucle(&sm, &sj, &sc);
         sdlMenuDetruit(&sm, &sj);
 	
 	

@@ -1,8 +1,8 @@
 CC 			= gcc
 LD 			= gcc
 
-JEU	= texte
-#JEU	= graphique
+#JEU	= texte
+JEU	= graphique
 #OS	= WIN32
 OS	= LINUX
 
@@ -11,7 +11,7 @@ ifeq ($(JEU),texte)
 	FINAL_TARGET = mhd_txt
 	DEFINE = -D$(OS) -DJEU_NCURSES
 else
-	SRCS = Auto.c Terrain.c Jeu.c sdlJeu.c sdlMenu.c main.c Survivant.c DesSurvivants.c DesZombies.c Zombie.c
+	SRCS = Auto.c Terrain.c Jeu.c sdlCredits.c sdlJeu.c sdlMenu.c main.c Survivant.c DesSurvivants.c DesZombies.c Zombie.c
 	FINAL_TARGET = mhd_gfx
 	DEFINE = -D$(OS) -DJEU_SDL
 endif

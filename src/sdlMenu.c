@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "sdlMenu.h"
 #include "sdlJeu.h"
+#include "sdlCredits.h"
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_mixer.h>
 
@@ -28,7 +29,7 @@ void sdlMenuInit(sdlMenu *pSdlMenu)
 	SDL_WM_SetIcon(pSdlMenu->surface_icone, NULL);
 	
 
-	pSdlMenu->surface_ecran = SDL_SetVideoMode( 640, 640, 32, SDL_SWSURFACE );
+	pSdlMenu->surface_ecran = SDL_SetVideoMode( 704, 704, 32, SDL_SWSURFACE );
 	assert( pSdlMenu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "MHD v1.0", NULL );
 
@@ -100,7 +101,7 @@ void sdlMenuAff(sdlMenu *pSdlMenu)
 
 
 
-void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu)
+void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits)
 {
 	SDL_Event event;
 	int continue_boucle = 1;
@@ -124,6 +125,16 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu)
 				if((event.button.x>pSdlMenu->positionQuitter.x)&&(event.button.x<(pSdlMenu->positionQuitter.x)+127)&&(event.button.y<(pSdlMenu->positionQuitter.y)+63)&&(event.button.y>pSdlMenu->positionQuitter.y))
 				{
 						continue_boucle=0;
+				}
+				
+				if((event.button.x>pSdlMenu->positionCredits.x)&&(event.button.x<(pSdlMenu->positionCredits.x)+127)&&(event.button.y<(pSdlMenu->positionCredits.y)+63)&&(event.button.y>pSdlMenu->positionCredits.y))
+				{
+					sdlCreditsInit(pSdlCredits);
+					sdlCreditsBoucle(pSdlCredits);
+					sdlMenuAff(pSdlMenu);
+					SDL_Flip (pSdlMenu->surface_ecran);
+					Mix_PlayMusic(pSdlMenu->musiquemenu,-1);
+					sdlCreditsDetruit(pSdlCredits);
 				}
 				
 				if((event.button.x>pSdlMenu->positionJouer.x)&&(event.button.x<(pSdlMenu->positionJouer.x)+127)&&(event.button.y<(pSdlMenu->positionJouer.y)+63)&&(event.button.y>pSdlMenu->positionJouer.y))
