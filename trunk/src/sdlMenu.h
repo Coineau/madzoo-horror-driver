@@ -12,6 +12,7 @@ typedef struct
 	Mix_Music *musiquemenu;
 	SDL_Rect positionFond;
 	SDL_Rect positionJouer;
+	SDL_Rect positionCredits;
 	SDL_Rect positionQuitter;
 	SDL_Surface* surface_icone;
 	SDL_Surface* surface_ecran;
