@@ -137,7 +137,7 @@ int JeuTestFinNiveau (Jeu *pJeu)
     return 0;
 }
 
-void JeuSauvegarde (Jeu *pJeu)
+/*void JeuSauvegardePartie (Jeu *pJeu)
 {
     int i,j;
     FILE* fichier = NULL;
@@ -159,3 +159,29 @@ void JeuSauvegarde (Jeu *pJeu)
     fclose(fichier);
     }
 }
+
+void JeuSauvegardeScores (Jeu *pJeu)
+{
+    int S,s1,s2,s3;
+    FILE* fichier = NULL;
+    fichier = fopen("scores.txt", "r+");
+    if (fichier != NULL)
+    {
+        fscanf(fichier, "%d %d %d", &s1, &s2, &s3);
+        if (S>=s1)
+        {
+            fprintf(fichier, "%d %d %d", S, s1, s2);
+        }
+        else if (S>=s2 && S<s1)
+            {
+                fprintf(fichier, "%d %d %d", s1, S, s2);
+            }
+            else if (S>=s3 && S<s2)
+                {
+                    fprintf(fichier, "%d %d %d", s1, s2, S);
+                }
+
+        fclose(fichier);
+    }
+
+}*/

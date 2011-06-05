@@ -53,7 +53,7 @@ void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *
 int JeuTestFinNiveau (Jeu *pJeu);
 
 /**Ecrie le fichier de sauvegarde de la partie en cours*/
-void JeuSauvegarde (Jeu *pJeu);
+void JeuSauvegardePartie (Jeu *pJeu);
 
 
 #endif
