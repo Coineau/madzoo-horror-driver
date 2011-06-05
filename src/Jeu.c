@@ -4,7 +4,7 @@
 
 void jeuInit(Jeu *pJeu)
 {
-	pJeu->niv=2;
+	pJeu->niv=1;
 	terInit(&(pJeu->ter),pJeu->niv);
 	autoInit(&(pJeu->oto),&(pJeu->ter));
 	dSurviInit(&(pJeu->dsurvis),&(pJeu->ter));
@@ -135,4 +135,27 @@ int JeuTestFinNiveau (Jeu *pJeu)
         return 1;
     }
     return 0;
+}
+
+void JeuSauvegarde (Jeu *pJeu)
+{
+    int i,j;
+    FILE* fichier = NULL;
+    fichier = fopen("sauvegarde.txt", "w+");
+    if (fichier != NULL)
+    {
+        fprintf(fichier, "%d ", getDimX(&(pJeu->ter)));
+        fprintf(fichier, "%d ", getDimY(&(pJeu->ter)));
+        fprintf(fichier, "%d ", dSurviRestant(&(pJeu->dsurvis)));
+        fprintf(fichier, "%d\n", dzombieGetnbZ(&(pJeu->dzombies)));
+        for (i=0; i<getDimY(&(pJeu->ter));i++)
+        {
+            for (j=0; j<getDimY(&(pJeu->ter));j++)
+            {
+                fprintf(fichier, "%c ", terGetXY(&(pJeu->ter),i,j));
+            }
+            fputs("\n", fichier);
+        }
+    fclose(fichier);
+    }
 }

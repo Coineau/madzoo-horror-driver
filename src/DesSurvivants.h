@@ -24,6 +24,9 @@ void dSurviSauve (DesSurvivants *);
 /**Renvoie 1 si tous les survivants sont sauves 0 sinon*/
 int dSurviTestTousSauve (DesSurvivants *);
 
+/**Renvoie le nombre de survivants non sauve*/
+int dSurviRestant (DesSurvivants *dsurvis);
+
 /**Renvoie le survivant dont les coordonnees sont passees en parametre*/
 Survivant* dGetSurvi(DesSurvivants *, const int x, const int y);
 

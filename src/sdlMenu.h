@@ -7,7 +7,7 @@
 #include <SDL/SDL_mixer.h>
 
 
-typedef struct 
+typedef struct
 {
 	int changerfenetre;
 	Mix_Music *musiquemenu;

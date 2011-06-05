@@ -52,5 +52,8 @@ void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *
 /**Renvoie 2 si la voiture n'a plus de Pdv, 1 si tous les survivants sont sauves et 0 sinon*/
 int JeuTestFinNiveau (Jeu *pJeu);
 
+/**Ecrie le fichier de sauvegarde de la partie en cours*/
+void JeuSauvegarde (Jeu *pJeu);
+
 
 #endif
