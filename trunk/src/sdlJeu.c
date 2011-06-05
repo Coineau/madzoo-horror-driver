@@ -47,34 +47,34 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 
 	/**Chargement des surfaces*/
 	
-	pSdlJeu->surface_sol = SDL_load_image("data/sol.bmp");
+	pSdlJeu->surface_sol = SDL_load_image("data/jeu/img/sol.bmp");
 	if (pSdlJeu->surface_sol==NULL)
-		pSdlJeu->surface_sol = SDL_load_image("../data/sol.bmp");
+		pSdlJeu->surface_sol = SDL_load_image("../data/jeu/img/sol.bmp");
 	assert( pSdlJeu->surface_sol!=NULL);
 	
-	pSdlJeu->surface_auto = SDL_load_image("data/auto.bmp");
+	pSdlJeu->surface_auto = SDL_load_image("data/jeu/img/auto.bmp");
 	if (pSdlJeu->surface_auto==NULL)
-		pSdlJeu->surface_auto = SDL_load_image("../data/auto.bmp");
+		pSdlJeu->surface_auto = SDL_load_image("../data/jeu/img/auto.bmp");
 	assert( pSdlJeu->surface_auto!=NULL);
 	
-	pSdlJeu->surface_zombie = SDL_load_image("data/zombie.bmp");
+	pSdlJeu->surface_zombie = SDL_load_image("data/jeu/img/zombie.bmp");
 	if (pSdlJeu->surface_zombie==NULL)
-		pSdlJeu->surface_zombie = SDL_load_image("../data/zombie.bmp");
+		pSdlJeu->surface_zombie = SDL_load_image("../data/jeu/img/zombie.bmp");
 	assert( pSdlJeu->surface_zombie!=NULL);
 
-	pSdlJeu->surface_survivant = SDL_load_image("data/survivant.bmp");
+	pSdlJeu->surface_survivant = SDL_load_image("data/jeu/img/survivant.bmp");
 	if (pSdlJeu->surface_survivant==NULL)
-		pSdlJeu->surface_survivant = SDL_load_image("../data/survivant.bmp");
+		pSdlJeu->surface_survivant = SDL_load_image("../data/jeu/img/survivant.bmp");
 	assert( pSdlJeu->surface_survivant!=NULL);
 	
-	pSdlJeu->surface_heli = SDL_load_image("data/Heliport.bmp");
+	pSdlJeu->surface_heli = SDL_load_image("data/jeu/img/Heliport.bmp");
 	if (pSdlJeu->surface_heli==NULL)
-		pSdlJeu->surface_heli = SDL_load_image("../data/Heliport.bmp");
+		pSdlJeu->surface_heli = SDL_load_image("../data/jeu/img/Heliport.bmp");
 	assert( pSdlJeu->surface_heli!=NULL);
 
-	pSdlJeu->surface_mur = SDL_load_image("data/mur.bmp");
+	pSdlJeu->surface_mur = SDL_load_image("data/jeu/img/mur.bmp");
 	if (pSdlJeu->surface_mur==NULL)
-		pSdlJeu->surface_mur = SDL_load_image("../data/mur.bmp");
+		pSdlJeu->surface_mur = SDL_load_image("../data/jeu/img/mur.bmp");
 	assert( pSdlJeu->surface_mur!=NULL);
 
 	/**Initialisation de la police*/
@@ -90,15 +90,15 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	
 	
 	/**Chargement des musiques*/
-	pSdlJeu->musique=Mix_LoadMUS("data/musique/bgmusic.wav");
+	pSdlJeu->musique=Mix_LoadMUS("data/jeu/musique/bgmusic.wav");
 	if (pSdlJeu->musique==NULL)
-		pSdlJeu->musique=Mix_LoadMUS("../data/musique/bgmusic.wav");
+		pSdlJeu->musique=Mix_LoadMUS("../data/jeu/musique/bgmusic.wav");
 	assert( pSdlJeu->musique!=NULL);
 	
 	/**Chargement des sons*/
-	pSdlJeu->deplace=Mix_LoadWAV("data/musique/move.wav");
+	pSdlJeu->deplace=Mix_LoadWAV("data/jeu/musique/move.wav");
 	if(pSdlJeu->deplace==NULL)
-		pSdlJeu->deplace=Mix_LoadWAV("../data/musique/move.wav");
+		pSdlJeu->deplace=Mix_LoadWAV("../data/jeu/musique/move.wav");
 	assert( pSdlJeu->deplace!=NULL);
 }
 
@@ -288,7 +288,6 @@ void sdljeuDetruit( sdlJeu *pSdlJeu)
 	Mix_FreeChunk(pSdlJeu->deplace);
 	Mix_FreeMusic(pSdlJeu->musique);
 	TTF_Quit();
-	/*SDL_Quit();*/
 }
 
 
