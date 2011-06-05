@@ -68,21 +68,34 @@ void ncursBoucle(Jeu *pJeu)
 			case KEY_LEFT:
 				jeuActionClavier( pJeu, 'g');
 				jeuDeplaceZombies(pJeu);
+				if(JeuTestFinNiveau(pJeu)!=0)
+					{
+						continue_boucle=0;
+					}
 				break;
 			case KEY_RIGHT:
 				jeuActionClavier( pJeu, 'd');
 				jeuDeplaceZombies(pJeu);
+				if(JeuTestFinNiveau(pJeu)!=0)
+					{
+						continue_boucle=0;
+					}
 				break;
 			case KEY_UP:
 				jeuActionClavier( pJeu, 'h');
 				jeuDeplaceZombies(pJeu);
-				break;
+				if(JeuTestFinNiveau(pJeu)!=0)
+					{
+						continue_boucle=0;
+					}
+				break; 
 			case KEY_DOWN:
 				jeuActionClavier( pJeu, 'b');
 				jeuDeplaceZombies(pJeu);
-				break;
-			case 27: /* ECHAP */
-				continue_boucle = 0;
+				if(JeuTestFinNiveau(pJeu)!=0)
+					{
+						continue_boucle=0;
+					}
 				break;
 		}
 	} while (continue_boucle==1);

@@ -10,7 +10,7 @@ void jouer()
     Jeu jeu;
     jeuInit(&jeu);
     ncursBoucle(&jeu);
-    JeuLibere(&*pJeu)
+    JeuLibere(&jeu);
     
 }
 
