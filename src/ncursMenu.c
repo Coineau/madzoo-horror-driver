@@ -5,12 +5,10 @@
 #include "ncursMenu.h"
 
 void jouer()
-{
-    printf("YOU WILL SUFFER");
+{ 
     Jeu jeu;
     jeuInit(&jeu);
     ncursBoucle(&jeu);
-    JeuLibere(&jeu);
     
 }
 
@@ -25,13 +23,14 @@ void Quitter()
 void MenuNcurs()
 {
     char ch ;
+    int av = 0 ;
     printf(" MADZOO HORROR DRIVER \n");
-    do
+    while(av != 1)
     {
 		printf("\n\nMenu");
 		AfficherChoixMenu();
 		scanf("%c",&ch);
-        if(ch <'a' || ch> 'c')
+        if(ch <'a' || ch> 'd')
         {
             printf ("Erreur choix menu\n");
         }
@@ -42,18 +41,20 @@ void MenuNcurs()
 				case 'a' :		
 							jouer();
 							break;
-                case 'b' :		
-							printf("2: -CREDIT- \n");
+				case 'b' :		
+							printf("b: -Instructions- \n");
 							break;
-				case 'c' :		
-							Quitter();
+                case 'c' :
+							printf("c: -CREDIT- \n");
 							break;
-				default : break;
+				case 'd' :	
+							av = 1;
+							break;
 			}
         }
-        while( ((ch = getchar()) != '\n') && ch != EOF)
-        {}
-    }while(ch!=3);
+        while( ((ch = getchar()) != '\n') && ch != EOF);
+    }
+    Quitter();
 }
 
 
@@ -61,6 +62,7 @@ void AfficherChoixMenu()
 {
 	printf("\n");
 	printf("a: -JOUER- \n");
-	printf("b: -CREDIT- \n");
-	printf("c: -QUITTER- \n");
+	printf("b: -INSTRUCTIONS- \n");
+	printf("c: -CREDIT- \n");
+	printf("d: -QUITTER- \n");
 }
