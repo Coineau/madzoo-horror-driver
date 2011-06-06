@@ -35,7 +35,7 @@ void sdlMenuInit(sdlMenu *pSdlMenu)
 	assert( pSdlMenu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "MHD v1.0", NULL );
 
-	/**Chargement des surfaces*/
+	/*Chargement des surfaces*/
 
 	pSdlMenu->surface_bg = SDL_LoadBMP("data/menu/img/bg.bmp");
 	if (pSdlMenu->surface_bg==NULL)
@@ -149,9 +149,15 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 					{
 						if(ptypefin==1)
 						{(pSdlMenu->niveau)++;}
-						sdlFinInit(pSdlFin);
-						sdlFinBoucle(pSdlFin,ptypefin);
-						sdlFinDetruit(pSdlFin);
+						
+						if((pSdlMenu->niveau>5)&&(ptypefin==1))
+						{}
+						else
+						{
+							sdlFinInit(pSdlFin);
+							sdlFinBoucle(pSdlFin,ptypefin,pSdlMenu->niveau);
+							sdlFinDetruit(pSdlFin);
+						}
 					}
 					}while((ptypefin==1)&&(pSdlMenu->niveau!=6));
 					sdlMenuAff(pSdlMenu);
