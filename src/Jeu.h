@@ -9,10 +9,15 @@
 
 typedef struct
 {
+	/**Structure Terrain*/
 	Terrain ter;
+	/**Structure Auto*/
 	Auto oto;
+	/**Structure DesSurvivants*/
 	DesSurvivants dsurvis;
+	/**Structure DesZombies*/
 	DesZombies dzombies;
+	/**Numero du niveau*/
 	int niv;
 } Jeu;
 
@@ -52,8 +57,14 @@ void collision(Terrain *pTer, DesSurvivants *pdsurvis, Auto *pauto, DesZombies *
 /**Renvoie 2 si la voiture n'a plus de Pdv, 1 si tous les survivants sont sauves et 0 sinon*/
 int JeuTestFinNiveau (Jeu *pJeu);
 
-/**Ecrie le fichier de sauvegarde de la partie en cours*/
+/*
+//Ecrie le fichier de sauvegarde de la partie en cours
 void JeuSauvegardePartie (Jeu *pJeu);
+
+
+//Compare le score courant au 3 meilleurs scores et l'enregistre au besoin
+void JeuSauvegardeScores (Jeu *pJeu);
+*/
 
 
 #endif

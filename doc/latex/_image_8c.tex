@@ -1,0 +1,227 @@
+\hypertarget{_image_8c}{
+\section{Référence du fichier Image.c}
+\label{_image_8c}\index{Image.c@{Image.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$assert.h$>$}\par
+{\ttfamily \#include \char`\"{}Image.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Pixel.h\char`\"{}}\par
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_image_8c_a6b5e5418a0e62b455b2e50210775cd0b}{imInit} (\hyperlink{structs_image}{Image} $\ast$im, int dimx, int dimy)
+\item 
+void \hyperlink{_image_8c_a5931290abc22d365ae351381c594613f}{imLibere} (\hyperlink{structs_image}{Image} $\ast$im)
+\item 
+\hyperlink{structs_image}{Image} $\ast$ \hyperlink{_image_8c_a9a91b54dbb066e5d191fb6f23316c7f4}{imCreer} (int dimx, int dimy)
+\item 
+void \hyperlink{_image_8c_acf3867531d803daad076cf18d2a14935}{imDetruire} (\hyperlink{structs_image}{Image} $\ast$pim)
+\item 
+\hyperlink{structs_pixel}{Pixel} \hyperlink{_image_8c_a1cb04a46ed83be9a0c49b3b884c91d62}{getPix} (const \hyperlink{structs_image}{Image} $\ast$im, const int x, const int y)
+\item 
+void \hyperlink{_image_8c_a0c6db798fcbeae56ad66d8b8e1878c9f}{setPix} (\hyperlink{structs_image}{Image} $\ast$im, const int x, const int y, \hyperlink{structs_pixel}{Pixel} $\ast$couleur)
+\item 
+void \hyperlink{_image_8c_aceb1000b04837bd0e18b270989f655c2}{imDessineRect} (\hyperlink{structs_image}{Image} $\ast$im, \hyperlink{structs_pixel}{Pixel} $\ast$couleur, const int Xmin, const int Ymin, const int Xmax, const int Ymax)
+\item 
+void \hyperlink{_image_8c_a46add6c577b38d2169511938c1d677ef}{imEffacer} (\hyperlink{structs_image}{Image} $\ast$im, \hyperlink{structs_pixel}{Pixel} $\ast$couleur)
+\item 
+void \hyperlink{_image_8c_a20b9ad35b6db7bd09d7452574d04dd50}{imSauver} (const \hyperlink{structs_image}{Image} $\ast$pIm, const char filename\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{_image_8c_a0a1f0b9be4b910e1cfc2648cfa9e38fd}{imOuvrir} (\hyperlink{structs_image}{Image} $\ast$pIm, const char filename\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{_image_8c_afadf8ab43119d304c72e201d0d95164d}{imPrintf} (const \hyperlink{structs_image}{Image} $\ast$pIm)
+\item 
+void \hyperlink{_image_8c_a8d4964490fb1a67b590ce77acd78031f}{imTestRegression} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{_image_8c_a1cb04a46ed83be9a0c49b3b884c91d62}{
+\index{Image.c@{Image.c}!getPix@{getPix}}
+\index{getPix@{getPix}!Image.c@{Image.c}}
+\subsubsection[{getPix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pixel} getPix (const {\bf Image} $\ast$ {\em im}, \/  const int {\em x}, \/  const int {\em y})}}
+\label{_image_8c_a1cb04a46ed83be9a0c49b3b884c91d62}
+Libere le tableau de pixel en appelant imLibere puis détruit la structure image 
+
+Définition à la ligne 36 du fichier Image.c.
+
+
+
+Référencé par imPrintf(), imSauver(), imTestRegression(), et setPix().
+
+\hypertarget{_image_8c_a9a91b54dbb066e5d191fb6f23316c7f4}{
+\index{Image.c@{Image.c}!imCreer@{imCreer}}
+\index{imCreer@{imCreer}!Image.c@{Image.c}}
+\subsubsection[{imCreer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Image}$\ast$ imCreer (int {\em dimx}, \/  int {\em dimy})}}
+\label{_image_8c_a9a91b54dbb066e5d191fb6f23316c7f4}
+Libère la mémoire du tableau de pixels et met les champs dimx et dimy de la structure à 0 
+
+Définition à la ligne 23 du fichier Image.c.
+
+
+
+Références imInit().
+
+
+
+Référencé par imTestRegression().
+
+\hypertarget{_image_8c_aceb1000b04837bd0e18b270989f655c2}{
+\index{Image.c@{Image.c}!imDessineRect@{imDessineRect}}
+\index{imDessineRect@{imDessineRect}!Image.c@{Image.c}}
+\subsubsection[{imDessineRect}]{\setlength{\rightskip}{0pt plus 5cm}void imDessineRect ({\bf Image} $\ast$ {\em im}, \/  {\bf Pixel} $\ast$ {\em couleur}, \/  const int {\em Xmin}, \/  const int {\em Ymin}, \/  const int {\em Xmax}, \/  const int {\em Ymax})}}
+\label{_image_8c_aceb1000b04837bd0e18b270989f655c2}
+setPix modifie le pixel de coord (x,y) 
+
+Définition à la ligne 60 du fichier Image.c.
+
+
+
+Références setPix().
+
+
+
+Référencé par imEffacer(), imTestRegression(), et main().
+
+\hypertarget{_image_8c_acf3867531d803daad076cf18d2a14935}{
+\index{Image.c@{Image.c}!imDetruire@{imDetruire}}
+\index{imDetruire@{imDetruire}!Image.c@{Image.c}}
+\subsubsection[{imDetruire}]{\setlength{\rightskip}{0pt plus 5cm}void imDetruire ({\bf Image} $\ast$ {\em pim})}}
+\label{_image_8c_acf3867531d803daad076cf18d2a14935}
+imCreer alloue dans le tas une structure Image puis l'initialise avec imInit =$>$ 2 lignes 
+
+Définition à la ligne 30 du fichier Image.c.
+
+
+
+Références imLibere().
+
+
+
+Référencé par imTestRegression().
+
+\hypertarget{_image_8c_a46add6c577b38d2169511938c1d677ef}{
+\index{Image.c@{Image.c}!imEffacer@{imEffacer}}
+\index{imEffacer@{imEffacer}!Image.c@{Image.c}}
+\subsubsection[{imEffacer}]{\setlength{\rightskip}{0pt plus 5cm}void imEffacer ({\bf Image} $\ast$ {\em im}, \/  {\bf Pixel} $\ast$ {\em couleur})}}
+\label{_image_8c_a46add6c577b38d2169511938c1d677ef}
+dessine un rectangle de couleur dans l'image en utilisant setPix 
+
+Définition à la ligne 75 du fichier Image.c.
+
+
+
+Références imDessineRect().
+
+
+
+Référencé par imTestRegression(), et main().
+
+\hypertarget{_image_8c_a6b5e5418a0e62b455b2e50210775cd0b}{
+\index{Image.c@{Image.c}!imInit@{imInit}}
+\index{imInit@{imInit}!Image.c@{Image.c}}
+\subsubsection[{imInit}]{\setlength{\rightskip}{0pt plus 5cm}void imInit ({\bf Image} $\ast$ {\em im}, \/  int {\em dimx}, \/  int {\em dimy})}}
+\label{_image_8c_a6b5e5418a0e62b455b2e50210775cd0b}
+
+
+Définition à la ligne 7 du fichier Image.c.
+
+
+
+Référencé par imCreer(), imOuvrir(), imTestRegression(), et main().
+
+\hypertarget{_image_8c_a5931290abc22d365ae351381c594613f}{
+\index{Image.c@{Image.c}!imLibere@{imLibere}}
+\index{imLibere@{imLibere}!Image.c@{Image.c}}
+\subsubsection[{imLibere}]{\setlength{\rightskip}{0pt plus 5cm}void imLibere ({\bf Image} $\ast$ {\em im})}}
+\label{_image_8c_a5931290abc22d365ae351381c594613f}
+imInit initialise dimx et dimy (après vérification) de la structure Image puis alloue le tableau de pixel dans le tas 
+
+Définition à la ligne 16 du fichier Image.c.
+
+
+
+Référencé par imDetruire(), imTestRegression(), et main().
+
+\hypertarget{_image_8c_a0a1f0b9be4b910e1cfc2648cfa9e38fd}{
+\index{Image.c@{Image.c}!imOuvrir@{imOuvrir}}
+\index{imOuvrir@{imOuvrir}!Image.c@{Image.c}}
+\subsubsection[{imOuvrir}]{\setlength{\rightskip}{0pt plus 5cm}void imOuvrir ({\bf Image} $\ast$ {\em pIm}, \/  const char {\em filename}\mbox{[}$\,$\mbox{]})}}
+\label{_image_8c_a0a1f0b9be4b910e1cfc2648cfa9e38fd}
+sauvegarde l'image 
+
+Définition à la ligne 106 du fichier Image.c.
+
+
+
+Références sPixel::b, sImage::dimx, sImage::dimy, sPixel::g, imInit(), sPixel::r, et setPix().
+
+
+
+Référencé par main().
+
+\hypertarget{_image_8c_afadf8ab43119d304c72e201d0d95164d}{
+\index{Image.c@{Image.c}!imPrintf@{imPrintf}}
+\index{imPrintf@{imPrintf}!Image.c@{Image.c}}
+\subsubsection[{imPrintf}]{\setlength{\rightskip}{0pt plus 5cm}void imPrintf (const {\bf Image} $\ast$ {\em pIm})}}
+\label{_image_8c_afadf8ab43119d304c72e201d0d95164d}
+ouvre l'image 
+
+Définition à la ligne 132 du fichier Image.c.
+
+
+
+Références sPixel::b, sImage::dimx, sImage::dimy, sPixel::g, getPix(), et sPixel::r.
+
+\hypertarget{_image_8c_a20b9ad35b6db7bd09d7452574d04dd50}{
+\index{Image.c@{Image.c}!imSauver@{imSauver}}
+\index{imSauver@{imSauver}!Image.c@{Image.c}}
+\subsubsection[{imSauver}]{\setlength{\rightskip}{0pt plus 5cm}void imSauver (const {\bf Image} $\ast$ {\em pIm}, \/  const char {\em filename}\mbox{[}$\,$\mbox{]})}}
+\label{_image_8c_a20b9ad35b6db7bd09d7452574d04dd50}
+efface l'image en appelant imDessineRectangle avec le bon rectangle 
+
+Définition à la ligne 80 du fichier Image.c.
+
+
+
+Références sPixel::b, sImage::dimx, sImage::dimy, sPixel::g, getPix(), et sPixel::r.
+
+
+
+Référencé par main().
+
+\hypertarget{_image_8c_a8d4964490fb1a67b590ce77acd78031f}{
+\index{Image.c@{Image.c}!imTestRegression@{imTestRegression}}
+\index{imTestRegression@{imTestRegression}!Image.c@{Image.c}}
+\subsubsection[{imTestRegression}]{\setlength{\rightskip}{0pt plus 5cm}void imTestRegression ()}}
+\label{_image_8c_a8d4964490fb1a67b590ce77acd78031f}
+affiche les composantes r, g, b de chaque pixel de l'image 
+
+Définition à la ligne 150 du fichier Image.c.
+
+
+
+Références sPixel::b, sImage::dimx, sImage::dimy, sPixel::g, getPix(), imCreer(), imDessineRect(), imDetruire(), imEffacer(), imInit(), imLibere(), sImage::pix, sPixel::r, et setPix().
+
+
+
+Référencé par main().
+
+\hypertarget{_image_8c_a0c6db798fcbeae56ad66d8b8e1878c9f}{
+\index{Image.c@{Image.c}!setPix@{setPix}}
+\index{setPix@{setPix}!Image.c@{Image.c}}
+\subsubsection[{setPix}]{\setlength{\rightskip}{0pt plus 5cm}void setPix ({\bf Image} $\ast$ {\em im}, \/  const int {\em x}, \/  const int {\em y}, \/  {\bf Pixel} $\ast$ {\em couleur})}}
+\label{_image_8c_a0c6db798fcbeae56ad66d8b8e1878c9f}
+getPix récupère le pixel de coordonnée (x,y) en vérifiant leur validité 
+
+Définition à la ligne 44 du fichier Image.c.
+
+
+
+Références sPixel::b, sImage::dimx, sPixel::g, getPix(), et sPixel::r.
+
+
+
+Référencé par imDessineRect(), imOuvrir(), imTestRegression(), et main().
+

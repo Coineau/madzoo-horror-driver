@@ -41,7 +41,7 @@ void zombieSetPdv(Zombie *, int);
 void zombieSupr(Zombie *, Terrain* pTer);
 
 
-/** DEPLACEMENT DU ZOMBIE !! **/
+/* DEPLACEMENT DU ZOMBIE !! */
 
 
 /** teste si la position du futur deplacement du zombie est valide ( sans mur ,ni de survivant ,ni de zombie, ni heliport )*/
