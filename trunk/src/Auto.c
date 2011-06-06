@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <assert.h>
+#include <math.h>
 
 void autoInit(Auto *pauto, Terrain *pTer)
 {
@@ -19,10 +20,9 @@ void autoInit(Auto *pauto, Terrain *pTer)
 			}
 		}
 	}
-	pauto->pdv=2;
-	pauto->pdvmax=2;
+	pauto->pdv=pauto->pdvmax=floor(terGetnbZ(pTer)/2);
 	pauto->nbSurviDansAuto=0;
-	pauto->nbPlaces=1;
+	pauto->nbPlaces=floor(terGetnbZ(pTer)/4);
 }
 
 
