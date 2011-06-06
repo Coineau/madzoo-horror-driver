@@ -17,7 +17,7 @@ void sdlMenuInit(sdlMenu *pSdlMenu)
 	assert(   SDL_Init( SDL_INIT_EVERYTHING )!= -1 );
 
 	pSdlMenu->niveau=1;
-	
+
 	if(Mix_OpenAudio(11025, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)
 	{
 		printf("%s", Mix_GetError());
@@ -110,7 +110,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 	SDL_Event event;
 	int continue_boucle = 1;
 	int ptypefin;
-	
+
 
 	sdlMenuAff(pSdlMenu);
 	assert( SDL_Flip( pSdlMenu->surface_ecran )!=-1 );
@@ -126,7 +126,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 			case SDL_QUIT :
 				continue_boucle = 0;
 				break;
-			
+
 			case SDL_MOUSEBUTTONUP:
 
 
@@ -151,7 +151,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 					{
 						if(ptypefin==1)
 						{(pSdlMenu->niveau)++;}
-						
+
 						sdlFinInit(pSdlFin);
 						sdlFinBoucle(pSdlFin,ptypefin,pSdlMenu->niveau);
 						sdlFinDetruit(pSdlFin);
@@ -163,7 +163,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 					SDL_Flip (pSdlMenu->surface_ecran);
 					Mix_PlayMusic(pSdlMenu->musiquemenu,-1);
 				}
-				
+
 				if((event.button.x>pSdlMenu->positionQuitter.x)&&(event.button.x<(pSdlMenu->positionQuitter.x)+127)&&(event.button.y<(pSdlMenu->positionQuitter.y)+63)&&(event.button.y>pSdlMenu->positionQuitter.y))
 				{
 						continue_boucle=0;
