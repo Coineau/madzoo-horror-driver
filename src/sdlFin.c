@@ -21,7 +21,7 @@ void sdlFinInit(sdlFin *pSdlFin)
 	assert( pSdlFin->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "MHD v1.0", NULL );
 
-	/**Chargement des surfaces*/
+	/*Chargement des surfaces*/
 	
 	pSdlFin->surface_bgdefaite = SDL_LoadBMP("data/jeu/img/bgdefaite.bmp");
 	if (pSdlFin->surface_bgdefaite==NULL)
@@ -33,9 +33,13 @@ void sdlFinInit(sdlFin *pSdlFin)
 		pSdlFin->surface_bgvictoire = SDL_LoadBMP("../data/jeu/img/bgvictoire.bmp");
 	assert( pSdlFin->surface_bgvictoire!=NULL);
 	
+	pSdlFin->surface_bgfindejeu = SDL_LoadBMP("data/jeu/img/bgfindejeu.bmp");
+	if (pSdlFin->surface_bgfindejeu==NULL)
+		pSdlFin->surface_bgfindejeu = SDL_LoadBMP("../data/jeu/img/bgfindejeu.bmp");
+	assert( pSdlFin->surface_bgfindejeu!=NULL);	
 	
 	
-	/**Chargement des musiques*/
+	/*Chargement des musiques*/
 	/*pSdlFin->musiquedefaite=Mix_LoadMUS("data/jeu/musique/musiquedefaite.wav");
 	if (pSdlFin->musiquedefaite==NULL)
 		pSdlFin->musiquedefaite=Mix_LoadMUS("../data/jeu/musique/musiquedefaite.wav");
@@ -52,27 +56,32 @@ void sdlFinInit(sdlFin *pSdlFin)
 	pSdlFin->positionFond.y = 0;
 	
 }
-void sdlFinAff(sdlFin* pSdlFin, int typefin)
+void sdlFinAff(sdlFin* pSdlFin, int typefin, int niveau)
 {
-	if(typefin==1)
-	/** Remplir l'écran victoire */	
-	{SDL_BlitSurface(pSdlFin->surface_bgvictoire, NULL, pSdlFin->surface_ecran, &(pSdlFin->positionFond));}
+	if(typefin==2)
+	/* Remplir avec l'écran de defaite */	
+	{SDL_BlitSurface(pSdlFin->surface_bgdefaite, NULL, pSdlFin->surface_ecran, &(pSdlFin->positionFond));}
+	
 	else 
 	{
-		if(typefin==2)
-		{SDL_BlitSurface(pSdlFin->surface_bgdefaite, NULL, pSdlFin->surface_ecran, &(pSdlFin->positionFond));}
+		if((typefin==1)&&(niveau>5))
+		/*Remplir avec l'écran de fin du jeu*/
+		{SDL_BlitSurface(pSdlFin->surface_bgfindejeu, NULL, pSdlFin->surface_ecran, &(pSdlFin->positionFond));}
+		else
+		/*Remplir avec l'ecran de victoire*/
+		{SDL_BlitSurface(pSdlFin->surface_bgvictoire, NULL, pSdlFin->surface_ecran, &(pSdlFin->positionFond));}
 	}
 }
 	
 	
 	
 	
-void sdlFinBoucle(sdlFin* pSdlFin,int typefin)
+void sdlFinBoucle(sdlFin* pSdlFin,int typefin, int niveau)
 {
 	SDL_Event event;
 	int continue_boucle = 1;
 	
-	sdlFinAff(pSdlFin, typefin);
+	sdlFinAff(pSdlFin, typefin, niveau);
 	assert( SDL_Flip( pSdlFin->surface_ecran )!=-1 );
 	/*if (typefin==1)
 	{
@@ -102,7 +111,7 @@ void sdlFinBoucle(sdlFin* pSdlFin,int typefin)
 
 	
 	/** On affiche le jeu sur le buffer caché */
-	sdlFinAff(pSdlFin, typefin);
+	sdlFinAff(pSdlFin, typefin, niveau);
 
 	/** On permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans a boucle) */
 	SDL_Flip( pSdlFin->surface_ecran );
@@ -113,6 +122,7 @@ void sdlFinDetruit(sdlFin *pSdlFin)
 {
 	SDL_FreeSurface (pSdlFin->surface_bgdefaite);
 	SDL_FreeSurface (pSdlFin->surface_bgvictoire);
+	SDL_FreeSurface (pSdlFin->surface_bgfindejeu);
 	SDL_FreeSurface (pSdlFin->surface_ecran);
 	SDL_FreeSurface (pSdlFin->surface_icone);
 	/*Mix_FreeMusic (pSdlFin->musiquevictoire);
