@@ -150,14 +150,9 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 						if(ptypefin==1)
 						{(pSdlMenu->niveau)++;}
 						
-						if((pSdlMenu->niveau>5)&&(ptypefin==1))
-						{}
-						else
-						{
-							sdlFinInit(pSdlFin);
-							sdlFinBoucle(pSdlFin,ptypefin,pSdlMenu->niveau);
-							sdlFinDetruit(pSdlFin);
-						}
+						sdlFinInit(pSdlFin);
+						sdlFinBoucle(pSdlFin,ptypefin,pSdlMenu->niveau);
+						sdlFinDetruit(pSdlFin);
 					}
 					}while((ptypefin==1)&&(pSdlMenu->niveau!=6));
 					sdlMenuAff(pSdlMenu);
