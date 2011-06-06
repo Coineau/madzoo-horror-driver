@@ -29,7 +29,7 @@ void ncursAff( WINDOW* win, const Jeu *pJeu,int niv)
 
 	wmove( win, autoGetY(pAuto), autoGetX(pAuto));
 
-	mvwprintw(win,row,(col/2)-1,"MHD lvl %d", niv);
+	mvwprintw(win,row,(col/2)-6,"MHD-niveau %d", niv);
 
 }
 
@@ -52,7 +52,7 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 	win = newwin( getDimY(jeuGetConstTerrainPtr(pJeu))+1, getDimX(jeuGetConstTerrainPtr(pJeu)), 10, 5 );
 	keypad(win, TRUE);		/* pour que les flèches soient traitées (il faut le faire après création de la fenêtre) */
 
-	/* halfdelay(10 ); /*
+	halfdelay(10 );
 	/* notimeout(win,true); */
 	/* wtimeout( win, 500 ); */
 	/* nodelay(win,true); */
@@ -94,7 +94,7 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 					{
 						continue_boucle=0;
 					}
-				break; 
+				break;
 			case KEY_DOWN:
 				jeuActionClavier( pJeu, 'b');
 				jeuDeplaceZombies(pJeu);
@@ -124,5 +124,5 @@ void ncursFinJeu(Jeu *pJeu , int niveau)
 						ncursBoucle(pJeu , niveau + 1);
 					}
 }
-						
-						
+
+
