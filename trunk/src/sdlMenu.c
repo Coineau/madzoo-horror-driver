@@ -105,7 +105,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits)
 {
 	SDL_Event event;
 	int continue_boucle = 1;
-
+	int niveau=1;
 	sdlMenuAff(pSdlMenu);
 	assert( SDL_Flip( pSdlMenu->surface_ecran )!=-1 );
 
@@ -140,7 +140,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits)
 				if((event.button.x>pSdlMenu->positionJouer.x)&&(event.button.x<(pSdlMenu->positionJouer.x)+127)&&(event.button.y<(pSdlMenu->positionJouer.y)+63)&&(event.button.y>pSdlMenu->positionJouer.y))
 				{
 					sdljeuInit( pSdlJeu );
-					sdljeuBoucle( pSdlJeu );
+					sdljeuBoucle( pSdlJeu, niveau);
 					sdlMenuAff(pSdlMenu);
 					SDL_Flip( pSdlMenu->surface_ecran );
 					Mix_PlayMusic(pSdlMenu->musiquemenu, -1);

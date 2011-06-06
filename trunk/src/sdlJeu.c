@@ -1,6 +1,7 @@
 
 #include <assert.h>
 #include "sdlJeu.h"
+#include "sdlFin.h"
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_mixer.h>
 
@@ -11,13 +12,13 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 
 
 
-void sdljeuInit(sdlJeu *pSdlJeu)
+void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 {
 	Jeu *pJeu;
 	int dimx,dimy;
 	
 	pJeu = &(pSdlJeu->jeu);
-	jeuInit(pJeu);
+	jeuInit(pJeu,niveau);
 
 	assert(   SDL_Init( SDL_INIT_EVERYTHING )!= -1 );
 
@@ -72,6 +73,17 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_mur = SDL_load_image("../data/jeu/img/mur.bmp");
 	assert( pSdlJeu->surface_mur!=NULL);
 
+	pSdlJeu->surface_defaite = SDL_load_image("data/jeu/img/bgdefaite.bmp");
+	if (pSdlJeu->surface_defaite==NULL)
+		pSdlJeu->surface_defaite = SDL_load_image("../data/jeu/img/bgdefaite.bmp");
+	assert( pSdlJeu->surface_defaite!=NULL);
+	
+	pSdlJeu->surface_mur = SDL_load_image("data/jeu/img/bgvictoire.bmp");
+	if (pSdlJeu->surface_mur==NULL)
+		pSdlJeu->surface_mur = SDL_load_image("../data/jeu/img/bgvictoire.bmp");
+	assert( pSdlJeu->surface_mur!=NULL);
+
+	
 	/**Initialisation de la police*/
 	TTF_Init();
 	
@@ -165,7 +177,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	tempsActuel = SDL_GetTicks()/10;
 	
 	
-	sprintf(HUD,"PV : %d Passager : %d Temps : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
+	sprintf(HUD,"PV : %d Free slots : %d Time : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
 	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, textColor, bgColorBlack);
 	
 	SDL_apply_surface( pSdlJeu->surface_HUD, pSdlJeu->surface_ecran, 0,0);
@@ -175,7 +187,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 
 
 
-void sdljeuBoucle(sdlJeu *pSdlJeu)
+void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 {
 	SDL_Event event;
 	int continue_boucle = 1;
@@ -265,6 +277,17 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 		SDL_Flip( pSdlJeu->surface_ecran );
 	}
 }
+
+
+void sdljeuFindejeu(sdlJeu *pSdlJeu)
+{
+	int ptypefin;
+	ptypefin=JeuTestFinNiveau(&(pSdlJeu->jeu));
+
+}
+		
+
+
 
 
 void sdljeuDetruit( sdlJeu *pSdlJeu)
