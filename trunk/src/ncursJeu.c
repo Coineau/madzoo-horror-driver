@@ -29,7 +29,7 @@ void ncursAff( WINDOW* win, const Jeu *pJeu,int niv)
 
 	wmove( win, autoGetY(pAuto), autoGetX(pAuto));
 
-	mvwprintw(win,row,(col/2)-1,"MHD %d", niv);
+	mvwprintw(win,row,(col/2)-1,"MHD lvl %d", niv);
 
 }
 
