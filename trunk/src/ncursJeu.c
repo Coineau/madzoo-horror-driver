@@ -127,8 +127,15 @@ void ncursFinJeu(Jeu *pJeu , int niveau)
 					{
 						JeuLibere(pJeu);
 						endwin();
+						if(niveau <6)
+						{
 						printf("niveau %d \n", niveau);
 						ncursBoucle(pJeu , niveau + 1);
+						}
+						else
+						{  
+							printf(" vous avez gagnez ");
+						}
 					}
 }
 
