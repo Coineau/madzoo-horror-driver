@@ -187,7 +187,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 void sdlMenuDetruit( sdlMenu *pSdlMenu, sdlJeu *pSdlJeu)
 {
 	SDL_FreeSurface( pSdlMenu->surface_bg);
-	/*SDL_FreeSurface( pSdlMenu->surface_titre);*/
+	SDL_FreeSurface( pSdlMenu->surface_titre);
 	SDL_FreeSurface( pSdlMenu->surface_jouer);
 	SDL_FreeSurface( pSdlMenu->surface_credits);
         SDL_FreeSurface( pSdlMenu->surface_quitter);

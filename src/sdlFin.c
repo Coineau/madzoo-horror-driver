@@ -40,7 +40,7 @@ void sdlFinInit(sdlFin *pSdlFin)
 	
 	
 	/*Chargement des musiques*/
-	/*pSdlFin->musiquedefaite=Mix_LoadMUS("data/jeu/musique/musiquedefaite.wav");
+	pSdlFin->musiquedefaite=Mix_LoadMUS("data/jeu/musique/musiquedefaite.wav");
 	if (pSdlFin->musiquedefaite==NULL)
 		pSdlFin->musiquedefaite=Mix_LoadMUS("../data/jeu/musique/musiquedefaite.wav");
 	assert( pSdlFin->musiquedefaite!=NULL);
@@ -48,10 +48,15 @@ void sdlFinInit(sdlFin *pSdlFin)
 	pSdlFin->musiquevictoire=Mix_LoadMUS("data/jeu/musique/musiquevictoire.wav");
 	if (pSdlFin->musiquevictoire==NULL)
 		pSdlFin->musiquevictoire=Mix_LoadMUS("../data/jeu/musique/musiquevictoire.wav");
-	assert( pSdlFin->musiquevictoire!=NULL);*/
+	assert( pSdlFin->musiquevictoire!=NULL);
+	
+	pSdlFin->musiquefindejeu=Mix_LoadMUS("data/jeu/musique/musiquefindejeu.wav");
+	if (pSdlFin->musiquefindejeu==NULL)
+		pSdlFin->musiquefindejeu=Mix_LoadMUS("../data/jeu/musique/musiquefindejeu.wav");
+	assert( pSdlFin->musiquefindejeu!=NULL);
 	
 	
-	/**Determination de la position de l'image*/
+	/*Determination de la position de l'image*/
 	pSdlFin->positionFond.x = 0;
 	pSdlFin->positionFond.y = 0;
 	
@@ -83,14 +88,17 @@ void sdlFinBoucle(sdlFin* pSdlFin,int typefin, int niveau)
 	
 	sdlFinAff(pSdlFin, typefin, niveau);
 	assert( SDL_Flip( pSdlFin->surface_ecran )!=-1 );
-	/*if (typefin==1)
+	if (typefin==1)
 	{
-		Mix_PlayMusic(pSdlFin->musiquevictoire, -1);
+		if(niveau==6)
+		{Mix_PlayMusic(pSdlFin->musiquefindejeu, -1);}
+		else 
+		{Mix_PlayMusic(pSdlFin->musiquevictoire, -1);}
 	}
 	else
 	{
 		Mix_PlayMusic(pSdlFin->musiquedefaite, -1);
-	}*/
+	}
 	
 	while ( continue_boucle == 1 )
 	{
@@ -125,6 +133,7 @@ void sdlFinDetruit(sdlFin *pSdlFin)
 	SDL_FreeSurface (pSdlFin->surface_bgfindejeu);
 	SDL_FreeSurface (pSdlFin->surface_ecran);
 	SDL_FreeSurface (pSdlFin->surface_icone);
-	/*Mix_FreeMusic (pSdlFin->musiquevictoire);
-	Mix_FreeMusic (pSdlFin->musiquedefaite);*/
+	Mix_FreeMusic (pSdlFin->musiquevictoire);
+	Mix_FreeMusic (pSdlFin->musiquedefaite);
+	Mix_FreeMusic (pSdlFin->musiquefindejeu);
 }
