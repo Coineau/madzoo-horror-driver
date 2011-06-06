@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #ifdef WIN32
 #include <curses.h>
 #else
@@ -6,6 +7,7 @@
 #endif
 
 #include "Jeu.h"
+#include "ncursJeu.h"
 
 void ncursAff( WINDOW* win, const Jeu *pJeu)
 {
@@ -32,11 +34,13 @@ void ncursAff( WINDOW* win, const Jeu *pJeu)
 }
 
 
-void ncursBoucle(Jeu *pJeu)
+void ncursBoucle(Jeu *pJeu , int niveau)
 {
-	WINDOW *win;
+	WINDOW *win ;
+	int niv = niveau ;
 	int c;
 	int continue_boucle;
+	jeuInit(pJeu , niv);
 
 	initscr();		/* passe l'écran texte en mode NCurses */
 	clear();		/* efface l'écran */
@@ -68,7 +72,8 @@ void ncursBoucle(Jeu *pJeu)
 			case KEY_LEFT:
 				jeuActionClavier( pJeu, 'g');
 				jeuDeplaceZombies(pJeu);
-				if(JeuTestFinNiveau(pJeu)!=0)
+				ncursFinJeu(pJeu , niv);
+				if(JeuTestFinNiveau(pJeu) == 2)
 					{
 						continue_boucle=0;
 					}
@@ -76,7 +81,8 @@ void ncursBoucle(Jeu *pJeu)
 			case KEY_RIGHT:
 				jeuActionClavier( pJeu, 'd');
 				jeuDeplaceZombies(pJeu);
-				if(JeuTestFinNiveau(pJeu)!=0)
+				ncursFinJeu(pJeu , niv);
+				if(JeuTestFinNiveau(pJeu) == 2)
 					{
 						continue_boucle=0;
 					}
@@ -84,7 +90,8 @@ void ncursBoucle(Jeu *pJeu)
 			case KEY_UP:
 				jeuActionClavier( pJeu, 'h');
 				jeuDeplaceZombies(pJeu);
-				if(JeuTestFinNiveau(pJeu)!=0)
+				ncursFinJeu(pJeu , niv);
+				if(JeuTestFinNiveau(pJeu) == 2)
 					{
 						continue_boucle=0;
 					}
@@ -92,13 +99,31 @@ void ncursBoucle(Jeu *pJeu)
 			case KEY_DOWN:
 				jeuActionClavier( pJeu, 'b');
 				jeuDeplaceZombies(pJeu);
-				if(JeuTestFinNiveau(pJeu)!=0)
+				ncursFinJeu(pJeu , niv);
+				if(JeuTestFinNiveau(pJeu) == 2)
 					{
 						continue_boucle=0;
 					}
 				break;
 		}
 	} while (continue_boucle==1);
-
+	JeuLibere(pJeu);
 	endwin();
 }
+
+void ncursFinJeu(Jeu *pJeu , int niveau)
+{
+	if(JeuTestFinNiveau(pJeu) == 2)
+					{
+						printf("Perdu \n");
+					}
+	if(JeuTestFinNiveau(pJeu) == 1)
+					{
+						JeuLibere(pJeu);
+						endwin();
+						printf("niveau %d \n", niveau);
+						ncursBoucle(pJeu , niveau + 1);
+					}
+}
+						
+						

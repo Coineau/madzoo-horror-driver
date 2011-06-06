@@ -16,6 +16,7 @@ void JeuLibere(Jeu *pJeu)
     terLibere(&(pJeu->ter));
     dsurviLibere(&(pJeu->dsurvis));
     dZombieLibere(&(pJeu->dzombies));
+    
 }
 
 Terrain *jeuGetTerrainPtr(Jeu *pJeu)

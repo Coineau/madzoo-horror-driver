@@ -7,8 +7,7 @@
 void jouer()
 { 
     Jeu jeu;
-    jeuInit(&jeu);
-    ncursBoucle(&jeu);
+    ncursBoucle(&jeu,1);
     
 }
 
@@ -52,7 +51,9 @@ void MenuNcurs()
 							break;
 			}
         }
+        AfficherChoixMenu();
         while( ((ch = getchar()) != '\n') && ch != EOF);
+        AfficherChoixMenu();
     }
     Quitter();
 }
