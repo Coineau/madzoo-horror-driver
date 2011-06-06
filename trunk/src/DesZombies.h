@@ -14,31 +14,29 @@ typedef struct
 	int nbz;
 }DesZombies;
 
-/** initialisation d'un tebleau dinamique et placement des zombies en fonction du terrain */
+/** Initialisation d'un tebleau dinamique et placement des zombies en fonction du terrain */
 void dZombieInit(DesZombies *pdzon,Terrain *pTer);
 
-/**supprime tous les allocation de la structure zombie (fin du jeux , supresion de tous)*/
+/** Supprime tous les allocation de la structure zombie (fin du jeux , supresion de tous)*/
 void dZombieLibere(DesZombies *pdzon);
 
-/**suprime un zombie dans le tableau dinamique  */
+/** Suprime un zombie dans le tableau dinamique  */
 void SupprimeZombie(DesZombies *pdzon,int autoX,int autoY,Terrain* pTer);
 
+/** Deplace les zombies */
 void dZombieDeplacer(DesZombies *pdzon, int autoX , int autoY,Terrain * pTer);
 
+/** Recupere l'indice d'un zombie en fonction de ces coordonnées */
 int dzombieGetzomb(const DesZombies *pdzon,int Xz ,int Yz);
 
-/**Recupere le nombre de zombie*/
+/** Recupere le nombre de zombie*/
 int dzombieGetnbZ(const DesZombies* pdzon);
 
-/**Modifie la valeur du nombre de zombie */
+/** Modifie la valeur du nombre de zombie */
 void dzombieSetnbZ(DesZombies* pdzon,int n);
-
 
 /** Recupere le nombre de zombie restant */
 int dzombieGetzomrest(const Zombie*);
 
 
-
-/**Modifie la valeur du nombre de zombie restant*/
-void dzombieSetzomrest(Zombie*,int y);
 #endif

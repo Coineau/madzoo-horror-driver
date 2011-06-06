@@ -104,6 +104,12 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 						continue_boucle=0;
 					}
 				break;
+			case 'q' :
+				JeuLibere(pJeu);
+				endwin();
+				continue_boucle=0;
+				break;
+				
 		}
 	} while(continue_boucle==1);
 }

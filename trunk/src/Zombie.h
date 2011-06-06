@@ -10,17 +10,17 @@
 
 typedef struct
 {
-	/** Coordonées du zombie au temps T */
+	/** Coordonées du zombie */
 	int x,y;
 	/** Points de vie du zombie */
 	int pdv;
 }Zombie;
 
 /**Initialise une stucture zombie*/
-void zombieInit(Zombie *,int x,int y);
+void zombieInit(Zombie *,int ,int );
 
 /**Recupere la coordonnée x d'un zombie*/
-int zombieGetX(const Zombie*);
+int zombieGetX(const Zombie* );
 
 /**Recupere la coordonnée y d'un zombie*/
 int zombieGetY(const Zombie*);
@@ -44,11 +44,13 @@ void zombieSupr(Zombie *, Terrain* pTer);
 /** DEPLACEMENT DU ZOMBIE !! **/
 
 
-/** teste si la position du futur deplacement du zombie est valide ( sans mur ,ni de survivant ,ni de zombie )*/
+/** teste si la position du futur deplacement du zombie est valide ( sans mur ,ni de survivant ,ni de zombie, ni heliport )*/
 int testDeplacementZombie(Terrain* pTer ,int Xz,int  Yz);
 
+/** Deplacement du zombie alleatoirement */
 void zombieDeplacementChoix(Zombie * pZon,Terrain *pTer,int Xa,int  Ya);
 
+/** Deplacement du zombie vers le joueur ( si impossible lance zombieDeplacementChoix */
 void zombieDeplacementAgro(Zombie * pZon,Terrain *pTer,int Xa,int  Ya);
 
 /**Deplacement du zombie en fonction de l'auto*/
