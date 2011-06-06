@@ -42,10 +42,11 @@ void sdlMenuInit(sdlMenu *pSdlMenu)
 		pSdlMenu->surface_bg = SDL_LoadBMP("../data/menu/img/bg.bmp");
 	assert( pSdlMenu->surface_bg!=NULL);
 
-	/*pSdlMenu->surface_titre = SDL_load_image("data/menu/img/titre.bmp");
+	pSdlMenu->surface_titre = SDL_load_image("data/menu/img/titre.bmp");
 	if (pSdlMenu->surface_titre==NULL)
 		pSdlMenu->surface_titre = SDL_load_image("../data/menu/img/titre.bmp");
-	assert( pSdlMenu->surface_titre!=NULL);*/
+	assert( pSdlMenu->surface_titre!=NULL);
+	SDL_SetColorKey(pSdlMenu->surface_titre,  SDL_SRCCOLORKEY, SDL_MapRGB(pSdlMenu->surface_titre->format,255,255,255));
 
 	pSdlMenu->surface_jouer = SDL_LoadBMP("data/menu/img/jouer.bmp");
 	if (pSdlMenu->surface_jouer==NULL)
@@ -91,6 +92,7 @@ void sdlMenuAff(sdlMenu *pSdlMenu)
 	SDL_BlitSurface(pSdlMenu->surface_bg, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionFond));
 
 	/** Placer  les bouttons*/
+	SDL_BlitSurface(pSdlMenu->surface_titre, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionFond));
 	SDL_BlitSurface(pSdlMenu->surface_jouer, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionJouer));
 	SDL_BlitSurface(pSdlMenu->surface_quitter, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionQuitter));
 	SDL_BlitSurface(pSdlMenu->surface_credits, NULL, pSdlMenu->surface_ecran, &(pSdlMenu->positionCredits));
