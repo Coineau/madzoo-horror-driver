@@ -30,7 +30,7 @@ void ncursAff( WINDOW* win, const Jeu *pJeu,int niv)
 	wmove( win, autoGetY(pAuto), autoGetX(pAuto));
 
     mvwprintw(win,row,(col/2)-10,"PV %d|Passengers %d/%d ", autoGetPdv(pAuto),autoGetnbSurviDansAuto(pAuto),autoGetNbPlaces(pAuto));
-	mvwprintw(win,row+1,(col/2)-6,"MHD-niveau %d", niv);
+	mvwprintw(win,row+1,(col/2)-6,"MHD-level %d", niv);
 
 }
 
@@ -133,7 +133,7 @@ void ncursFinJeu(Jeu *pJeu , int niveau)
 						ncursBoucle(pJeu , niveau + 1);
 						}
 						else
-						{  
+						{
 							printf(" vous avez gagnez ");
 						}
 					}
