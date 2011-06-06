@@ -58,10 +58,10 @@ void MenuNcurs()
 
 void Instruction()
 {
-	printf("Bienvenue dans Madzoo Horror Driver\n");
-	printf("A l'aide des fleches directionnelles recuperer ");
-	printf("le panda et rammener le le plus vite possible "); 
-	printf("a l'heliport en evitant les zombies.");
+	printf("\nBienvenue dans Madzoo Horror Driver\n\n");
+	printf("A l'aide des fleches directionnelles recuperer\n ");
+	printf("le panda et rammener le le plus vite possible\n "); 
+	printf("a l'heliport en evitant les zombies.\n");
 }
 
 void Credit()
