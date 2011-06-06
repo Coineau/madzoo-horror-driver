@@ -10,6 +10,7 @@ typedef struct
 	SDL_Rect positionFond;
 	Mix_Music *musiquevictoire;
 	Mix_Music *musiquedefaite;
+	Mix_Music *musiquefindejeu;
 	SDL_Surface* surface_bgdefaite;
 	SDL_Surface* surface_bgvictoire;
 	SDL_Surface* surface_bgfindejeu;

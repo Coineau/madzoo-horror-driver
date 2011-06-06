@@ -13,7 +13,7 @@ typedef struct
 	int autoActuel;
 	SDL_Color bgColorBlack;
 	SDL_Color textColor;
-	Mix_Music *musique;
+	Mix_Music *musiquejeu;
 	Mix_Chunk *deplace;
 	SDL_Surface* surface_icone;
 	SDL_Surface* surface_ecran;

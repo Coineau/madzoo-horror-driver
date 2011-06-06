@@ -111,11 +111,11 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", pSdlJeu->textColor, pSdlJeu->bgColorBlack ); 
 	
 	
-	/*Chargement des musiques*/
-	pSdlJeu->musique=Mix_LoadMUS("data/jeu/musique/bgmusic.wav");
-	if (pSdlJeu->musique==NULL)
-		pSdlJeu->musique=Mix_LoadMUS("../data/jeu/musique/bgmusic.wav");
-	assert( pSdlJeu->musique!=NULL);
+	/*Chargement des musiquejeus*/
+	pSdlJeu->musiquejeu=Mix_LoadMUS("data/jeu/musique/musiquejeu.wav");
+	if (pSdlJeu->musiquejeu==NULL)
+		pSdlJeu->musiquejeu=Mix_LoadMUS("../data/jeu/musique/musiquejeu.wav");
+	assert( pSdlJeu->musiquejeu!=NULL);
 			
 	/*Chargement des sons*/
 	pSdlJeu->deplace=Mix_LoadWAV("data/jeu/musique/move.wav");
@@ -255,7 +255,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 	SDL_EnableKeyRepeat(100, 200);
 
 	Mix_VolumeChunk(pSdlJeu->deplace, MIX_MAX_VOLUME/10);
-	Mix_PlayMusic(pSdlJeu->musique, -1);
+	Mix_PlayMusic(pSdlJeu->musiquejeu, -1);
 	
 	/* tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
@@ -354,7 +354,7 @@ void sdljeuDetruit( sdlJeu *pSdlJeu)
 	SDL_FreeSurface(pSdlJeu->surface_icone);
 	Mix_HaltChannel(-1);
 	Mix_FreeChunk(pSdlJeu->deplace);
-	Mix_FreeMusic(pSdlJeu->musique);
+	Mix_FreeMusic(pSdlJeu->musiquejeu);
 	TTF_CloseFont( pSdlJeu->surface_police );
 	TTF_Quit();
 	JeuLibere(&(pSdlJeu->jeu));
