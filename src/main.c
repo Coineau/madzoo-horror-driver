@@ -26,11 +26,12 @@ MenuNcurs();
 	sdlMenu sm;
 	sdlJeu sj;
 	sdlCredits sc;
+	sdlFin sf;
 	
 	
 	/**Jeu avec menu*/
         sdlMenuInit(&sm);
-	sdlMenuBoucle(&sm, &sj, &sc);
+	sdlMenuBoucle(&sm, &sj, &sc,&sf);
         sdlMenuDetruit(&sm, &sj);
 	
 	
@@ -44,7 +45,7 @@ MenuNcurs();
 
 #endif
 
-	printf("Fin\n");
+	printf("Ferme avec succes\n");
 	return 0;
 }
 

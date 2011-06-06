@@ -9,6 +9,8 @@
 
 typedef struct 
 {
+	SDL_Color textColor;
+	SDL_Color bgColorBlack;
 	Jeu jeu;
 	Mix_Music *musique;
 	Mix_Chunk *deplace;
@@ -25,10 +27,9 @@ typedef struct
 	TTF_Font* surface_police;
 } sdlJeu;
 
-void sdljeuInit(sdlJeu *);
+void sdljeuInit(sdlJeu *,int);
 void sdljeuAff(sdlJeu *);
-void sdljeuBoucle(sdlJeu *);
-void sdljeuLibere(sdlJeu *);
+void sdljeuBoucle(sdlJeu *,int);
 void sdljeuDetruit(sdlJeu *);
 
 #endif

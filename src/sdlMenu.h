@@ -1,6 +1,6 @@
 #ifndef _SDLMENU_H
 #define _SDLMENU_H
-
+#include "sdlFin.h"
 #include "sdlJeu.h"
 #include "sdlCredits.h"
 #include <SDL/SDL_ttf.h>
@@ -9,7 +9,7 @@
 
 typedef struct
 {
-	int changerfenetre;
+	int niveau;
 	Mix_Music *musiquemenu;
 	SDL_Rect positionFond;
 	SDL_Rect positionJouer;
@@ -26,7 +26,7 @@ typedef struct
 
 void sdlMenuInit(sdlMenu *);
 void sdlMenuAff(sdlMenu *);
-void sdlMenuBoucle(sdlMenu *, sdlJeu *, sdlCredits *);
+void sdlMenuBoucle(sdlMenu *, sdlJeu *, sdlCredits *, sdlFin *);
 void sdlMenuDetruit(sdlMenu *, sdlJeu *);
 
 #endif

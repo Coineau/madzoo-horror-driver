@@ -14,13 +14,16 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 
 void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 {
+
 	Jeu *pJeu;
 	int dimx,dimy;
 	
 	pJeu = &(pSdlJeu->jeu);
 	jeuInit(pJeu,niveau);
-
+	
 	assert(   SDL_Init( SDL_INIT_EVERYTHING )!= -1 );
+	
+
 
 	pSdlJeu->surface_icone = SDL_LoadBMP("data/icone.bmp");
 	if (pSdlJeu->surface_icone==NULL)
@@ -30,9 +33,13 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	SDL_WM_SetIcon(pSdlJeu->surface_icone, NULL);
 	
 	
-	SDL_Color textColor= { 238, 238,0 };
-	SDL_Color bgColorBlack= {0,0,0};
-
+	pSdlJeu->textColor.r= 238;
+	pSdlJeu->textColor.g=238;
+	pSdlJeu->textColor.b=0;
+	pSdlJeu->bgColorBlack.r=0;
+	pSdlJeu->bgColorBlack.g=0;
+	pSdlJeu->bgColorBlack.b=0;
+	
 	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
 	dimy = getDimY( jeuGetConstTerrainPtr(pJeu) );
 	dimx = dimx * TAILLE_SPRITE;
@@ -73,16 +80,6 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 		pSdlJeu->surface_mur = SDL_load_image("../data/jeu/img/mur.bmp");
 	assert( pSdlJeu->surface_mur!=NULL);
 
-	pSdlJeu->surface_defaite = SDL_load_image("data/jeu/img/bgdefaite.bmp");
-	if (pSdlJeu->surface_defaite==NULL)
-		pSdlJeu->surface_defaite = SDL_load_image("../data/jeu/img/bgdefaite.bmp");
-	assert( pSdlJeu->surface_defaite!=NULL);
-	
-	pSdlJeu->surface_mur = SDL_load_image("data/jeu/img/bgvictoire.bmp");
-	if (pSdlJeu->surface_mur==NULL)
-		pSdlJeu->surface_mur = SDL_load_image("../data/jeu/img/bgvictoire.bmp");
-	assert( pSdlJeu->surface_mur!=NULL);
-
 	
 	/**Initialisation de la police*/
 	TTF_Init();
@@ -93,7 +90,7 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	assert(pSdlJeu->surface_police!=NULL);
 	
 	/**Initialisation du titre*/
-	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", textColor, bgColorBlack ); 
+	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", pSdlJeu->textColor, pSdlJeu->bgColorBlack ); 
 	
 	
 	/**Chargement des musiques*/
@@ -128,10 +125,6 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	pTer= jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
 	pAuto= jeuGetConstAutoPtr(&(pSdlJeu->jeu));
 	
-	
-	
-	SDL_Color textColor= { 238, 238,0 };
-	SDL_Color bgColorBlack= {0,0,0};
 
 	
 	/** Remplir l'écran */	
@@ -178,7 +171,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	
 	
 	sprintf(HUD,"PV : %d Free slots : %d Time : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
-	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, textColor, bgColorBlack);
+	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, pSdlJeu->textColor, pSdlJeu->bgColorBlack);
 	
 	SDL_apply_surface( pSdlJeu->surface_HUD, pSdlJeu->surface_ecran, 0,0);
 	
@@ -279,16 +272,6 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 }
 
 
-void sdljeuFindejeu(sdlJeu *pSdlJeu)
-{
-	int ptypefin;
-	ptypefin=JeuTestFinNiveau(&(pSdlJeu->jeu));
-
-}
-		
-
-
-
 
 void sdljeuDetruit( sdlJeu *pSdlJeu)
 {
@@ -306,6 +289,7 @@ void sdljeuDetruit( sdlJeu *pSdlJeu)
 	Mix_FreeChunk(pSdlJeu->deplace);
 	Mix_FreeMusic(pSdlJeu->musique);
 	TTF_Quit();
+	JeuLibere(&(pSdlJeu->jeu));
 }
 
 
