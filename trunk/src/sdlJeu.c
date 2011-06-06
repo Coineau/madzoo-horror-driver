@@ -97,7 +97,7 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	if (pSdlJeu->musique==NULL)
 		pSdlJeu->musique=Mix_LoadMUS("../data/jeu/musique/bgmusic.wav");
 	assert( pSdlJeu->musique!=NULL);
-	
+			
 	/**Chargement des sons*/
 	pSdlJeu->deplace=Mix_LoadWAV("data/jeu/musique/move.wav");
 	if(pSdlJeu->deplace==NULL)
@@ -169,7 +169,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	tempsActuel = SDL_GetTicks()/10;
 	
 	
-	sprintf(HUD,"PV : %d Free slots : %d Time : %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)), tempsActuel);
+	sprintf(HUD,"PV %d/%d | Passengers %d/%d | Time %d", autoGetPdv(jeuGetAutoPtr(pJeu)),autoGetPdvMax(jeuGetAutoPtr(pJeu)),autoGetnbSurviDansAuto(jeuGetAutoPtr(pJeu)),autoGetNbPlaces(jeuGetAutoPtr(pJeu)), tempsActuel);
 	pSdlJeu->surface_HUD = TTF_RenderText_Shaded( pSdlJeu->surface_police, HUD, pSdlJeu->textColor, pSdlJeu->bgColorBlack);
 	
 	SDL_apply_surface( pSdlJeu->surface_HUD, pSdlJeu->surface_ecran, 0,0);
