@@ -10,12 +10,17 @@
 typedef struct 
 {
 	Jeu jeu;
+	int autoActuel;
+	SDL_Color bgColorBlack;
 	SDL_Color textColor;
 	Mix_Music *musique;
 	Mix_Chunk *deplace;
 	SDL_Surface* surface_icone;
 	SDL_Surface* surface_ecran;
-	SDL_Surface* surface_auto;
+	SDL_Surface* surface_autoHaut;
+	SDL_Surface* surface_autoBas;
+	SDL_Surface* surface_autoGauche;
+	SDL_Surface* surface_autoDroite;
 	SDL_Surface* surface_mur;
         SDL_Surface* surface_titre;
 	SDL_Surface* surface_zombie;
