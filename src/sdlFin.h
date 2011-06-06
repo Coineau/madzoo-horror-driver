@@ -16,9 +16,13 @@ typedef struct
 	SDL_Surface* surface_ecran;
 } sdlFin;
 
+/**Initialise un ecran de fin*/
 void sdlFinInit(sdlFin *);
+/**Affiche l'ecran de fin*/
 void sdlFinAff(sdlFin*, int);
+/**Lance une boucle affichant un ecran de fin selectionne selon la victoire ou la défaite au cours du jeu*/
 void sdlFinBoucle(sdlFin*,int);
+/**Detruit la structure*/
 void sdlFinDetruit(sdlFin*);
 
 #endif

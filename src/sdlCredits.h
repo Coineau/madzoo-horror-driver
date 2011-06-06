@@ -14,9 +14,13 @@ typedef struct
 	SDL_Surface* surface_icone;
 } sdlCredits;
 
+/**Initialise les credits*/
 void sdlCreditsInit(sdlCredits *);
+/**Affiche l'ecran des credits*/
 void sdlCreditsAff(sdlCredits *);
+/**Lance une boucle affichant les credits jusqu'au clic de l'utilisateur*/
 void sdlCreditsBoucle(sdlCredits *);
+/**Detruit la structure*/
 void sdlCreditsDetruit(sdlCredits *);
 
 #endif

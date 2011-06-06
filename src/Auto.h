@@ -26,18 +26,23 @@ typedef struct
 /** Initialise une structure Auto*/
 void autoInit(Auto *, Terrain *);
 
-/** Les quatres fonctions suivantes déplacent le joueur*/
+/** Deplace le joueur à gauche*/
 void autoGauche(Auto *, const Terrain *);
+/** Deplace le joueur à droite*/
 void autoDroite(Auto *, const Terrain *);
+/** Deplace le joueuren haut*/
 void autoHaut(Auto *, const Terrain *);
+/** Deplace le joueur en bas*/
 void autoBas(Auto *, const Terrain *);
 
-/**Les deux fonctions suivantes récuperent la position du joueur*/
+/**Recupere la coordonnee X du joueur*/
 int autoGetX(const Auto *);
+/**Recupere la coordonnee Y du joueur*/
 int autoGetY(const Auto *);
 
-/**Les deux fonctions suivantes modifient la position du joueur*/
+/**Modifie la coordonne X du joueur*/
 void autoSetX(Auto *, const int x);
+/**Modifie la coordonne Y du joueur*/
 void autoSetY(Auto *, const int y);
 
 /**Récupère les PV du joueur*/
