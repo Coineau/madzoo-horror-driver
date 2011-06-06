@@ -22,8 +22,10 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	
 	assert(   SDL_Init( SDL_INIT_EVERYTHING )!= -1 );
 	
-
-
+	/*Initialise la position de l'auto vers le bas*/
+	pSdlJeu->autoActuel=4;
+	
+	/*Initialisation de l'icone*/
 	pSdlJeu->surface_icone = SDL_LoadBMP("data/icone.bmp");
 	if (pSdlJeu->surface_icone==NULL)
 	pSdlJeu->surface_icone = SDL_LoadBMP("../data/icone.bmp");
@@ -31,13 +33,15 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	
 	SDL_WM_SetIcon(pSdlJeu->surface_icone, NULL);
 	
-	
+	/*Initialisation des couleurs*/
 	pSdlJeu->textColor.r= 238;
 	pSdlJeu->textColor.g=238;
 	pSdlJeu->textColor.b=0;
 	pSdlJeu->bgColorBlack.r=0;
 	pSdlJeu->bgColorBlack.g=0;
 	pSdlJeu->bgColorBlack.b=0;
+	
+	/*Mise en place de l'ecran*/
 	
 	dimx = getDimX( jeuGetConstTerrainPtr(pJeu) );
 	dimy = getDimY( jeuGetConstTerrainPtr(pJeu) );
@@ -47,17 +51,32 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "MHD v1.0", NULL );
 
-	/**Chargement des surfaces*/
+	/*Chargement des surfaces*/
 	
 	pSdlJeu->surface_sol = SDL_load_image("data/jeu/img/sol.bmp");
 	if (pSdlJeu->surface_sol==NULL)
 		pSdlJeu->surface_sol = SDL_load_image("../data/jeu/img/sol.bmp");
 	assert( pSdlJeu->surface_sol!=NULL);
 	
-	pSdlJeu->surface_auto = SDL_load_image("data/jeu/img/auto.bmp");
-	if (pSdlJeu->surface_auto==NULL)
-		pSdlJeu->surface_auto = SDL_load_image("../data/jeu/img/auto.bmp");
-	assert( pSdlJeu->surface_auto!=NULL);
+	pSdlJeu->surface_autoHaut = SDL_load_image("data/jeu/img/autoHaut.bmp");
+	if (pSdlJeu->surface_autoHaut==NULL)
+		pSdlJeu->surface_autoHaut = SDL_load_image("../data/jeu/img/autoHaut.bmp");
+	assert( pSdlJeu->surface_autoHaut!=NULL);
+	
+	pSdlJeu->surface_autoBas = SDL_load_image("data/jeu/img/autoBas.bmp");
+	if (pSdlJeu->surface_autoBas==NULL)
+		pSdlJeu->surface_autoBas= SDL_load_image("../data/jeu/img/autoBas.bmp");
+	assert( pSdlJeu->surface_autoBas!=NULL);
+	
+	pSdlJeu->surface_autoGauche = SDL_load_image("data/jeu/img/autoGauche.bmp");
+	if (pSdlJeu->surface_autoGauche==NULL)
+		pSdlJeu->surface_autoGauche = SDL_load_image("../data/jeu/img/autogauche.bmp");
+	assert( pSdlJeu->surface_autoGauche!=NULL);
+	
+	pSdlJeu->surface_autoDroite = SDL_load_image("data/jeu/img/autoDroite.bmp");
+	if (pSdlJeu->surface_autoDroite==NULL)
+		pSdlJeu->surface_autoDroite = SDL_load_image("../data/jeu/img/autoDroite.bmp");
+	assert( pSdlJeu->surface_autoDroite!=NULL);
 	
 	pSdlJeu->surface_zombie = SDL_load_image("data/jeu/img/zombie.bmp");
 	if (pSdlJeu->surface_zombie==NULL)
@@ -80,7 +99,7 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	assert( pSdlJeu->surface_mur!=NULL);
 
 	
-	/**Initialisation de la police*/
+	/*Initialisation de la police*/
 	TTF_Init();
 	
 	pSdlJeu->surface_police=TTF_OpenFont( "data/jeu/Courier_New.ttf", 28 );
@@ -88,21 +107,32 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 		pSdlJeu->surface_police=TTF_OpenFont( "../data/jeu/Courier_New.ttf", 28 );
 	assert(pSdlJeu->surface_police!=NULL);
 	
-	/**Initialisation du titre*/
+	/*Initialisation du titre*/
 	pSdlJeu->surface_titre = TTF_RenderText_Shaded( pSdlJeu->surface_police, "Madzoo Horror Driver", pSdlJeu->textColor, pSdlJeu->bgColorBlack ); 
 	
 	
-	/**Chargement des musiques*/
+	/*Chargement des musiques*/
 	pSdlJeu->musique=Mix_LoadMUS("data/jeu/musique/bgmusic.wav");
 	if (pSdlJeu->musique==NULL)
 		pSdlJeu->musique=Mix_LoadMUS("../data/jeu/musique/bgmusic.wav");
 	assert( pSdlJeu->musique!=NULL);
 			
-	/**Chargement des sons*/
+	/*Chargement des sons*/
 	pSdlJeu->deplace=Mix_LoadWAV("data/jeu/musique/move.wav");
 	if(pSdlJeu->deplace==NULL)
 		pSdlJeu->deplace=Mix_LoadWAV("../data/jeu/musique/move.wav");
 	assert( pSdlJeu->deplace!=NULL);
+	
+	
+	/*Gestion de la transparence*/
+	SDL_SetColorKey(pSdlJeu->surface_zombie, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_zombie->format,125, 25, 125));
+	SDL_SetColorKey(pSdlJeu->surface_autoHaut, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoHaut->format,125, 25, 125));
+	SDL_SetColorKey(pSdlJeu->surface_autoBas, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoBas->format,125, 25, 125));
+	SDL_SetColorKey(pSdlJeu->surface_autoGauche, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoGauche->format,125, 25, 125));
+	SDL_SetColorKey(pSdlJeu->surface_autoDroite, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoDroite->format,125, 25, 125));
+	SDL_SetColorKey(pSdlJeu->surface_survivant, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_survivant->format,125, 25, 125));
+
+	
 }
 
 
@@ -126,45 +156,77 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	
 
 	
-	/** Remplir l'écran */	
+	/* Remplir l'écran */	
 	for (x=0;x<getDimX(pTer);++x)
+	{
 		for (y=0;y<getDimY(pTer);++y)
+		{
+		
 			if (terGetXY(pTer,x,y)=='#')
-			{
-				SDL_apply_surface(  pSdlJeu->surface_mur, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
-			}
-			else
-			{
-				if(terGetXY(pTer,x,y)=='z')
 				{
-					SDL_apply_surface(  pSdlJeu->surface_zombie, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
+					SDL_apply_surface(  pSdlJeu->surface_mur, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
 				}
-				else
-				{	
-					if(terGetXY(pTer,x,y)=='o')
-					{
-						SDL_apply_surface(  pSdlJeu->surface_survivant, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
-					}
-					else
-					{
-						if(terGetXY(pTer,x,y)=='H')
-						{
-						SDL_apply_surface(  pSdlJeu->surface_heli, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
-						}
-						else
-						{
-						SDL_apply_surface( pSdlJeu->surface_sol, pSdlJeu->surface_ecran, x*TAILLE_SPRITE,(y+1)*TAILLE_SPRITE);
-						}
-					}
-				}
-			}
-	/** Copier le sprite de Auto sur l'écran */
-	SDL_apply_surface(  pSdlJeu->surface_auto, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  (autoGetY(pAuto)+1)*TAILLE_SPRITE);
+                        else
+                        {
+                                if(terGetXY(pTer,x,y)=='z')
+                                {
+                                        SDL_apply_surface(  pSdlJeu->surface_zombie, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
+                                }
+                                else
+                                {       
+                                        if(terGetXY(pTer,x,y)=='o')
+                                        {
+                                                SDL_apply_surface(  pSdlJeu->surface_survivant, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
+                                        }
+                                        else
+                                        {
+                                                if(terGetXY(pTer,x,y)=='H')
+                                                {
+                                                SDL_apply_surface(  pSdlJeu->surface_heli, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, (y+1)*TAILLE_SPRITE);
+                                                }
+                                                else
+                                                {
+                                                SDL_apply_surface( pSdlJeu->surface_sol, pSdlJeu->surface_ecran, x*TAILLE_SPRITE,(y+1)*TAILLE_SPRITE);
+                                                }
+                                        }
+                                }
+                        }
 
-	/** Mettre le titre en bas de l'écran */
+		}
+	}
+	
+	/* Copier le sprite de Auto sur l'écran dans la bonne direction*/
+	switch(pSdlJeu->autoActuel)
+	{
+		case 1 :
+		{
+			SDL_apply_surface(  pSdlJeu->surface_autoHaut, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  (autoGetY(pAuto)+1)*TAILLE_SPRITE);
+			break;
+		}
+		
+		case 2 :
+		{
+			SDL_apply_surface(  pSdlJeu->surface_autoBas, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  (autoGetY(pAuto)+1)*TAILLE_SPRITE);
+			break;
+		}
+		
+		case 3 :
+		{
+			SDL_apply_surface(  pSdlJeu->surface_autoGauche, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  (autoGetY(pAuto)+1)*TAILLE_SPRITE);
+			break;
+		}
+		
+		case 4 :
+		{
+			SDL_apply_surface(  pSdlJeu->surface_autoDroite, pSdlJeu->surface_ecran, autoGetX(pAuto)*TAILLE_SPRITE,  (autoGetY(pAuto)+1)*TAILLE_SPRITE);
+			break;
+		}
+	}
+
+	/* Mettre le titre en bas de l'écran */
 	SDL_apply_surface( pSdlJeu->surface_titre, pSdlJeu->surface_ecran, ((getDimX(pTer)/2)-5)*TAILLE_SPRITE,(getDimY(pTer)+1)*TAILLE_SPRITE);
 	
-	/** Gere le HUD */
+	/* Gere le HUD */
 			
 	tempsActuel = SDL_GetTicks()/10;
 	
@@ -195,16 +257,16 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 	Mix_VolumeChunk(pSdlJeu->deplace, MIX_MAX_VOLUME/10);
 	Mix_PlayMusic(pSdlJeu->musique, -1);
 	
-	/** tant que ce n'est pas la fin ... */
+	/* tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
-	{	/** tant qu'il y a des evenements à traiter : cette boucle n'est pas bloquante */
+	{	/* tant qu'il y a des evenements à traiter : cette boucle n'est pas bloquante */
 		while ( SDL_PollEvent( &event) ) 
 		{
-			/** Si l'utilisateur a cliqué sur la croix de fermeture */
+			/* Si l'utilisateur a cliqué sur la croix de fermeture */
 			if ( event.type == SDL_QUIT )
 				continue_boucle = 0;
 
-			/** Si l'utilisateur a appuyé sur une touche */
+			/* Si l'utilisateur a appuyé sur une touche */
 			if ( event.type == SDL_KEYDOWN )
 			{
 				switch ( event.key.keysym.sym )
@@ -212,6 +274,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 				case SDLK_UP:
 					jeuActionClavier( &(pSdlJeu->jeu), 'h');
 					Mix_PlayChannel(1, pSdlJeu->deplace,0);
+					pSdlJeu->autoActuel=1;
 					if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
 					{
 						continue_boucle=0;
@@ -221,6 +284,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 				case SDLK_DOWN:
 					jeuActionClavier( &(pSdlJeu->jeu), 'b');
 					Mix_PlayChannel(1, pSdlJeu->deplace,0);
+					pSdlJeu->autoActuel=2;
 					if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
 					{
 						continue_boucle=0;
@@ -230,6 +294,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 				case SDLK_LEFT:
 					jeuActionClavier( &(pSdlJeu->jeu), 'g');
 					Mix_PlayChannel(1, pSdlJeu->deplace,0);
+					pSdlJeu->autoActuel=3;
 					if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
 					{
 						continue_boucle=0;
@@ -239,6 +304,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 				case SDLK_RIGHT:
 					jeuActionClavier( &(pSdlJeu->jeu), 'd');
 					Mix_PlayChannel(1, pSdlJeu->deplace,0);
+					pSdlJeu->autoActuel=4;
 					if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
 					{
 						continue_boucle=0;
@@ -252,20 +318,20 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 		}
 
 		tempsActuel = SDL_GetTicks();
-		if (tempsActuel - tempsPrecedent > 350) /** Si 100 ms se sont écoulées depuis le dernier tour de boucle */
+		if (tempsActuel - tempsPrecedent > 300) /* Si 300 ms se sont écoulées depuis le dernier tour de boucle */
 				{
 				jeuDeplaceZombies(&(pSdlJeu->jeu));
-				tempsPrecedent = tempsActuel; /** Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
+				tempsPrecedent = tempsActuel; /* Le temps "actuel" devient le temps "precedent" pour nos futurs calculs */
 				}
 		if(JeuTestFinNiveau(&(pSdlJeu->jeu))!=0)
 		{
 			continue_boucle=0;
 		}
 		
-		/** On affiche le jeu sur le buffer caché */
+		/* On affiche le jeu sur le buffer caché */
 		sdljeuAff(pSdlJeu);
 
-		/** On permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans a boucle) */
+		/* On permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans a boucle) */
 		SDL_Flip( pSdlJeu->surface_ecran );
 	}
 }
@@ -275,7 +341,10 @@ void sdljeuBoucle(sdlJeu *pSdlJeu,int niveau)
 void sdljeuDetruit( sdlJeu *pSdlJeu)
 {
 	SDL_FreeSurface( pSdlJeu->surface_zombie);
-	SDL_FreeSurface( pSdlJeu->surface_auto );
+	SDL_FreeSurface( pSdlJeu->surface_autoHaut );
+	SDL_FreeSurface( pSdlJeu->surface_autoBas);
+	SDL_FreeSurface( pSdlJeu->surface_autoGauche);
+	SDL_FreeSurface( pSdlJeu->surface_autoDroite);
 	SDL_FreeSurface( pSdlJeu->surface_mur );
         SDL_FreeSurface( pSdlJeu->surface_titre);
 	SDL_FreeSurface( pSdlJeu->surface_survivant);
