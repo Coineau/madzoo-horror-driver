@@ -156,7 +156,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 					}
 					}while((ptypefin==1)&&(pSdlMenu->niveau!=6));
 					if(pSdlMenu->niveau==6)
-					{pSdlMenu->niveau=1);}
+					{pSdlMenu->niveau=1;}
 					sdlMenuAff(pSdlMenu);
 					SDL_Flip (pSdlMenu->surface_ecran);
 					Mix_PlayMusic(pSdlMenu->musiquemenu,-1);
