@@ -102,6 +102,8 @@ void sdlCreditsBoucle(sdlCredits *pSdlCredits)
 void sdlCreditsDetruit( sdlCredits *pSdlCredits)
 {
 	SDL_FreeSurface( pSdlCredits->surface_bg);
+	SDL_FreeSurface( pSdlCredits->surface_ecran);
+	SDL_FreeSurface( pSdlCredits->surface_icone);
 	Mix_FreeMusic(pSdlCredits->musiquecredits);
 
 }

@@ -123,7 +123,7 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 		{
 			case SDL_QUIT :
 				continue_boucle = 0;
-				break;*
+				break;
 			
 			case SDL_MOUSEBUTTONUP:
 
@@ -150,12 +150,12 @@ void sdlMenuBoucle(sdlMenu *pSdlMenu, sdlJeu *pSdlJeu, sdlCredits *pSdlCredits, 
 						(pSdlMenu->niveau)++;
 						sdlFinInit(pSdlFin);
 						sdlFinBoucle(pSdlFin,ptypefin);
+						sdlFinDetruit(pSdlFin);
 					}
 					}while(ptypefin==1);
 					sdlMenuAff(pSdlMenu);
 					SDL_Flip (pSdlMenu->surface_ecran);
 					Mix_PlayMusic(pSdlMenu->musiquemenu,-1);
-					sdlFinDetruit(pSdlFin);
 				}
 				
 				if((event.button.x>pSdlMenu->positionQuitter.x)&&(event.button.x<(pSdlMenu->positionQuitter.x)+127)&&(event.button.y<(pSdlMenu->positionQuitter.y)+63)&&(event.button.y>pSdlMenu->positionQuitter.y))

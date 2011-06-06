@@ -114,6 +114,7 @@ void sdlFinDetruit(sdlFin *pSdlFin)
 	SDL_FreeSurface (pSdlFin->surface_bgdefaite);
 	SDL_FreeSurface (pSdlFin->surface_bgvictoire);
 	SDL_FreeSurface (pSdlFin->surface_ecran);
+	SDL_FreeSurface (pSdlFin->surface_icone);
 	/*Mix_FreeMusic (pSdlFin->musiquevictoire);
 	Mix_FreeMusic (pSdlFin->musiquedefaite);*/
 }

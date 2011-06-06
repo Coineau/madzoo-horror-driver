@@ -1,7 +1,6 @@
 
 #include <assert.h>
 #include "sdlJeu.h"
-#include "sdlFin.h"
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_mixer.h>
 
@@ -283,11 +282,11 @@ void sdljeuDetruit( sdlJeu *pSdlJeu)
 	SDL_FreeSurface( pSdlJeu->surface_heli);
 	SDL_FreeSurface( pSdlJeu->surface_sol);
 	SDL_FreeSurface(pSdlJeu->surface_ecran);
-
-	TTF_CloseFont(pSdlJeu->surface_police);
+	SDL_FreeSurface(pSdlJeu->surface_icone);
 	Mix_HaltChannel(-1);
 	Mix_FreeChunk(pSdlJeu->deplace);
 	Mix_FreeMusic(pSdlJeu->musique);
+	TTF_CloseFont( pSdlJeu->surface_police );
 	TTF_Quit();
 	JeuLibere(&(pSdlJeu->jeu));
 }
