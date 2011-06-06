@@ -45,7 +45,7 @@ void dZombieLibere(DesZombies * pdzon)
 void SupprimeZombie(DesZombies *pdzon ,int autoX ,int autoY , Terrain * pTer)
 {
 
-	int i,y,z;
+	int i,y;
 	Zombie* p;
 	Zombie* e;
 	y = 0;
