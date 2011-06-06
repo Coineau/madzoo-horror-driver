@@ -52,7 +52,7 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 	win = newwin( getDimY(jeuGetConstTerrainPtr(pJeu))+1, getDimX(jeuGetConstTerrainPtr(pJeu)), 10, 5 );
 	keypad(win, TRUE);		/* pour que les flèches soient traitées (il faut le faire après création de la fenêtre) */
 
-	halfdelay( 10 );
+	/* halfdelay(10 ); /*
 	/* notimeout(win,true); */
 	/* wtimeout( win, 500 ); */
 	/* nodelay(win,true); */
@@ -66,7 +66,6 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 		ncursAff( win, pJeu , niv);
 
 		c = wgetch(win);
-		/* jeuActionClavier( jeu, 'd'); */
 		switch(c)
 		{
 			case KEY_LEFT:
@@ -106,7 +105,7 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 					}
 				break;
 		}
-	} while (continue_boucle==1);
+	} while(continue_boucle==1);
 }
 
 void ncursFinJeu(Jeu *pJeu , int niveau)

@@ -29,7 +29,7 @@ void MenuNcurs()
 		printf("\n\nMenu");
 		AfficherChoixMenu();
 		scanf("%c",&ch);
-        if(ch <'a' || ch> 'd')
+        if(ch <'a' || ch> 'c')
         {
             printf ("Erreur choix menu\n");
         }
@@ -37,8 +37,11 @@ void MenuNcurs()
         {
             switch(ch)
 			{
-				case 'a' :		
+				case 'a' :
+		
 							jouer();
+							av =1;
+							
 							break;
 				case 'b' :		
 							printf("b: -Instructions- \n");
@@ -46,14 +49,9 @@ void MenuNcurs()
                 case 'c' :
 							printf("c: -CREDIT- \n");
 							break;
-				case 'd' :	
-							av = 1;
-							break;
 			}
         }
-        AfficherChoixMenu();
-        while( ((ch = getchar()) != '\n') && ch != EOF);
-        AfficherChoixMenu();
+        while( ((ch = getchar()) != '\n') && ch != EOF); 
     }
     Quitter();
 }
@@ -65,5 +63,4 @@ void AfficherChoixMenu()
 	printf("a: -JOUER- \n");
 	printf("b: -INSTRUCTIONS- \n");
 	printf("c: -CREDIT- \n");
-	printf("d: -QUITTER- \n");
 }
