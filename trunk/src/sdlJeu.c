@@ -80,7 +80,7 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	
 	pSdlJeu->surface_zombie = SDL_load_image("data/jeu/img/zombie.bmp");
 	if (pSdlJeu->surface_zombie==NULL)
-		pSdlJeu->surface_zombie = SDL_load_image("../data/jeu/img/zombie.bmp");
+		pSdlJeu->surface_zombie = SDL_load_image	("../data/jeu/img/zombie.bmp");
 	assert( pSdlJeu->surface_zombie!=NULL);
 
 	pSdlJeu->surface_survivant = SDL_load_image("data/jeu/img/survivant.bmp");
@@ -125,12 +125,12 @@ void sdljeuInit(sdlJeu *pSdlJeu,int niveau)
 	
 	
 	/*Gestion de la transparence*/
-	SDL_SetColorKey(pSdlJeu->surface_zombie, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_zombie->format,125, 25, 125));
-	SDL_SetColorKey(pSdlJeu->surface_autoHaut, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoHaut->format,125, 25, 125));
-	SDL_SetColorKey(pSdlJeu->surface_autoBas, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoBas->format,125, 25, 125));
-	SDL_SetColorKey(pSdlJeu->surface_autoGauche, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoGauche->format,125, 25, 125));
-	SDL_SetColorKey(pSdlJeu->surface_autoDroite, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoDroite->format,125, 25, 125));
-	SDL_SetColorKey(pSdlJeu->surface_survivant, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_survivant->format,125, 25, 125));
+	SDL_SetColorKey(pSdlJeu->surface_zombie,  SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_zombie->format,189, 189, 189));
+	SDL_SetColorKey(pSdlJeu->surface_autoHaut, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoHaut->format,150, 150, 150));
+	SDL_SetColorKey(pSdlJeu->surface_autoBas, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoBas->format,150, 150, 150));
+	SDL_SetColorKey(pSdlJeu->surface_autoGauche, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoGauche->format,150, 150, 150));
+	SDL_SetColorKey(pSdlJeu->surface_autoDroite, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_autoDroite->format,150, 150, 150));
+	SDL_SetColorKey(pSdlJeu->surface_survivant, SDL_SRCCOLORKEY, SDL_MapRGB(pSdlJeu->surface_survivant->format,189, 189, 189));
 
 	
 }
@@ -396,7 +396,7 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 	/* Give the offsets to the rectangle */
 	offset.x = x;
 	offset.y = y;
-
+	
 	/* Blit the surface */
 	SDL_BlitSurface( source, NULL, destination, &offset );
 }
