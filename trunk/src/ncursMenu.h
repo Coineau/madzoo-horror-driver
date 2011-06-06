@@ -8,5 +8,7 @@ void jouer();
 void Quitter();
 void AfficherChoixMenu();
 void MenuNcurs();
+void Instruction();
 
+void Credit();
 #endif

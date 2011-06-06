@@ -44,16 +44,28 @@ void MenuNcurs()
 							
 							break;
 				case 'b' :		
-							printf("b: -Instructions- \n");
+							Instruction();
 							break;
                 case 'c' :
-							printf("c: -CREDIT- \n");
+							Credit();
 							break;
 			}
         }
         while( ((ch = getchar()) != '\n') && ch != EOF); 
     }
     Quitter();
+}
+
+void Instruction()
+{
+	printf("Bienvenue dans Madzoo Horror Driver\n");
+	printf("A l'aide des fleches directionnelles recuperer ");
+	printf("le panda et rammener le le plus vite possible "); 
+	printf("a l'heliport en evitant les zombies.");
+}
+
+void Credit()
+{
 }
 
 
