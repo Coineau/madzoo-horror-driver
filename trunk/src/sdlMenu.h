@@ -24,9 +24,13 @@ typedef struct
         SDL_Surface* surface_quitter;
 } sdlMenu;
 
+/**Initialise le menu*/
 void sdlMenuInit(sdlMenu *);
+/**Affiche le menu*/
 void sdlMenuAff(sdlMenu *);
+/**Lance la boucle du menu qui appelle ensuite les credit et le jeu selon le choix de l'utilisateur*/
 void sdlMenuBoucle(sdlMenu *, sdlJeu *, sdlCredits *, sdlFin *);
+/**Detruit la structure*/
 void sdlMenuDetruit(sdlMenu *, sdlJeu *);
 
 #endif
