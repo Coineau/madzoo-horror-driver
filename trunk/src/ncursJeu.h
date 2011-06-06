@@ -4,6 +4,8 @@
 
 #include "Jeu.h"
 
-void ncursBoucle(Jeu *);
+void ncursBoucle(Jeu *pJeu , int niveau);
+
+void ncursFinJeu(Jeu *pJeu , int niveau);
 
 #endif
