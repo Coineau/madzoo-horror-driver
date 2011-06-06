@@ -36,7 +36,7 @@ void sdlFinInit(sdlFin *pSdlFin)
 	
 	
 	/**Chargement des musiques*/
-	pSdlFin->musiquedefaite=Mix_LoadMUS("data/jeu/musique/musiquedefaite.wav");
+	/*pSdlFin->musiquedefaite=Mix_LoadMUS("data/jeu/musique/musiquedefaite.wav");
 	if (pSdlFin->musiquedefaite==NULL)
 		pSdlFin->musiquedefaite=Mix_LoadMUS("../data/jeu/musique/musiquedefaite.wav");
 	assert( pSdlFin->musiquedefaite!=NULL);
@@ -44,7 +44,7 @@ void sdlFinInit(sdlFin *pSdlFin)
 	pSdlFin->musiquevictoire=Mix_LoadMUS("data/jeu/musique/musiquevictoire.wav");
 	if (pSdlFin->musiquevictoire==NULL)
 		pSdlFin->musiquevictoire=Mix_LoadMUS("../data/jeu/musique/musiquevictoire.wav");
-	assert( pSdlFin->musiquevictoire!=NULL);
+	assert( pSdlFin->musiquevictoire!=NULL);*/
 	
 	
 	/**Determination de la position de l'image*/
@@ -74,14 +74,14 @@ void sdlFinBoucle(sdlFin* pSdlFin,int typefin)
 	
 	sdlFinAff(pSdlFin, typefin);
 	assert( SDL_Flip( pSdlFin->surface_ecran )!=-1 );
-	if (typefin==1)
+	/*if (typefin==1)
 	{
 		Mix_PlayMusic(pSdlFin->musiquevictoire, -1);
 	}
 	else
 	{
 		Mix_PlayMusic(pSdlFin->musiquedefaite, -1);
-	}
+	}*/
 	
 	while ( continue_boucle == 1 )
 	{
@@ -113,8 +113,7 @@ void sdlFinDetruit(sdlFin *pSdlFin)
 {
 	SDL_FreeSurface (pSdlFin->surface_bgdefaite);
 	SDL_FreeSurface (pSdlFin->surface_bgvictoire);
-	SDL_FreeSurface (pSdlFin->surface_icone);
 	SDL_FreeSurface (pSdlFin->surface_ecran);
-	Mix_FreeMusic (pSdlFin->musiquevictoire);
-	Mix_FreeMusic (pSdlFin->musiquedefaite);
+	/*Mix_FreeMusic (pSdlFin->musiquevictoire);
+	Mix_FreeMusic (pSdlFin->musiquedefaite);*/
 }
