@@ -4,7 +4,7 @@
 
 void jeuInit(Jeu *pJeu)
 {
-	pJeu->niv=1;
+	pJeu->niv=3;
 	terInit(&(pJeu->ter),pJeu->niv);
 	autoInit(&(pJeu->oto),&(pJeu->ter));
 	dSurviInit(&(pJeu->dsurvis),&(pJeu->ter));
