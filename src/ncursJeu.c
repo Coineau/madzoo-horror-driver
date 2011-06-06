@@ -14,7 +14,7 @@ void ncursAff( WINDOW* win, const Jeu *pJeu,int niv)
 	int x,y;
 
 	int row = getDimY(jeuGetConstTerrainPtr(pJeu));
-        int col = getDimX(jeuGetConstTerrainPtr(pJeu));
+    int col = getDimX(jeuGetConstTerrainPtr(pJeu));
 
 	const Terrain *pTer = jeuGetConstTerrainPtr(pJeu);
 	const Auto *pAuto = jeuGetConstAutoPtr(pJeu);
@@ -29,7 +29,8 @@ void ncursAff( WINDOW* win, const Jeu *pJeu,int niv)
 
 	wmove( win, autoGetY(pAuto), autoGetX(pAuto));
 
-	mvwprintw(win,row,(col/2)-6,"MHD-niveau %d", niv);
+    mvwprintw(win,row,(col/2)-10,"PV %d|Passengers %d/%d ", autoGetPdv(pAuto),autoGetnbSurviDansAuto(pAuto),autoGetNbPlaces(pAuto));
+	mvwprintw(win,row+1,(col/2)-6,"MHD-niveau %d", niv);
 
 }
 
@@ -49,7 +50,7 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 
 	/* Creation d'une nouvelle fenetre en mode texte */
 	/* => fenetre de dimension et position ( WIDTH, HEIGHT, STARTX,STARTY) */
-	win = newwin( getDimY(jeuGetConstTerrainPtr(pJeu))+1, getDimX(jeuGetConstTerrainPtr(pJeu)), 10, 5 );
+	win = newwin( getDimY(jeuGetConstTerrainPtr(pJeu))+2, getDimX(jeuGetConstTerrainPtr(pJeu)), 10, 5 );
 	keypad(win, TRUE);		/* pour que les flèches soient traitées (il faut le faire après création de la fenêtre) */
 
 	halfdelay(10 );
@@ -109,7 +110,7 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 				endwin();
 				continue_boucle=0;
 				break;
-				
+
 		}
 	} while(continue_boucle==1);
 }

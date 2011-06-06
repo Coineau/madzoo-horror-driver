@@ -5,10 +5,10 @@
 #include "ncursMenu.h"
 
 void jouer()
-{ 
+{
     Jeu jeu;
     ncursBoucle(&jeu,1);
-    
+
 }
 
 void Quitter()
@@ -38,12 +38,12 @@ void MenuNcurs()
             switch(ch)
 			{
 				case 'a' :
-		
+
 							jouer();
 							av =1;
-							
+
 							break;
-				case 'b' :		
+				case 'b' :
 							Instruction();
 							break;
                 case 'c' :
@@ -51,7 +51,7 @@ void MenuNcurs()
 							break;
 			}
         }
-        while( ((ch = getchar()) != '\n') && ch != EOF); 
+        while( ((ch = getchar()) != '\n') && ch != EOF);
     }
     Quitter();
 }
@@ -60,26 +60,27 @@ void Instruction()
 {
 	printf("\nBienvenue dans Madzoo Horror Driver\n\n");
 	printf("A l'aide des fleches directionnelles recuperer\n");
-	printf("le panda et rammener le le plus vite possible\n"); 
-	printf("a l'heliport en evitant les zombies.\n");
+	printf("le panda et rammener le le plus vite possible\n");
+	printf("a l'heliport en evitant les zombies.\n\n");
+    printf("Appuyer sur q pour quitter le jeu.\n");
 }
 
 void Credit()
 {
-	printf("\    n-CREDIT-\n\n\n");
+	printf("\n    -CREDIT-\n\n\n");
 	printf("Programmers\n");
-	printf("Florent DALLOZ\n"); 
+	printf("Florent DALLOZ\n");
 	printf("Simon DEDIEU\n");
 	printf("Raphaël FIUME\n\n");
 	printf("SDL Version\n");
-	printf("Florent DALLOZ\n\n"); 
+	printf("Florent DALLOZ\n\n");
 	printf("Sound\n");
 	printf("Florent DALLOZ\n\n");
 	printf("NCURSE Version\n");
-	printf("Raphaël FIUME\n"); 
+	printf("Raphaël FIUME\n");
 	printf("Simon DEDIEU\n\n");
 	printf("Level Designer\n");
-	printf("Simon DEDIEU\n"); 
+	printf("Simon DEDIEU\n");
 }
 
 
