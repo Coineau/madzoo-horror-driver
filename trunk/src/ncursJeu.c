@@ -9,7 +9,7 @@
 #include "Jeu.h"
 #include "ncursJeu.h"
 
-void ncursAff( WINDOW* win, const Jeu *pJeu)
+void ncursAff( WINDOW* win, const Jeu *pJeu,int niv)
 {
 	int x,y;
 
@@ -29,7 +29,7 @@ void ncursAff( WINDOW* win, const Jeu *pJeu)
 
 	wmove( win, autoGetY(pAuto), autoGetX(pAuto));
 
-	mvwprintw(win,row,(col/2)-1,"MHD");
+	mvwprintw(win,row,(col/2)-1,"MHD %d", niv);
 
 }
 
@@ -63,7 +63,7 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 	continue_boucle = 1;
 	do
 	{
-		ncursAff( win, pJeu);
+		ncursAff( win, pJeu , niv);
 
 		c = wgetch(win);
 		/* jeuActionClavier( jeu, 'd'); */
@@ -107,14 +107,14 @@ void ncursBoucle(Jeu *pJeu , int niveau)
 				break;
 		}
 	} while (continue_boucle==1);
-	JeuLibere(pJeu);
-	endwin();
 }
 
 void ncursFinJeu(Jeu *pJeu , int niveau)
 {
 	if(JeuTestFinNiveau(pJeu) == 2)
 					{
+						JeuLibere(pJeu);
+						endwin();
 						printf("Perdu \n");
 					}
 	if(JeuTestFinNiveau(pJeu) == 1)

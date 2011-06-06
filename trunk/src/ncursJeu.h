@@ -6,6 +6,8 @@
 
 void ncursBoucle(Jeu *pJeu , int niveau);
 
+void ncursAff( WINDOW* win, const Jeu *pJeu,int niv);
+
 void ncursFinJeu(Jeu *pJeu , int niveau);
 
 #endif
