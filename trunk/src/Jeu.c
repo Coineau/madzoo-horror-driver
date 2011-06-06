@@ -2,9 +2,9 @@
 #include "Jeu.h"
 
 
-void jeuInit(Jeu *pJeu)
+void jeuInit(Jeu *pJeu,int niveau)
 {
-	pJeu->niv=3;
+	pJeu->niv=niveau;
 	terInit(&(pJeu->ter),pJeu->niv);
 	autoInit(&(pJeu->oto),&(pJeu->ter));
 	dSurviInit(&(pJeu->dsurvis),&(pJeu->ter));

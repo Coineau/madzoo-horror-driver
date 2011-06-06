@@ -17,7 +17,7 @@ typedef struct
 } Jeu;
 
 /** Initialise une structure Jeu*/
-void jeuInit(Jeu *);
+void jeuInit(Jeu *,int niveau);
 
 /**Libere la structure Jeu*/
 void JeuLibere(Jeu *pJeu);
