@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="../Auto.c" open="1" top="0" tabpos="10">
+		<Cursor position="414" topLine="3" />
+	</File>
+	<File name="../Auto.h" open="0" top="0" tabpos="0">
+		<Cursor position="429" topLine="18" />
+	</File>
+	<File name="../DesSurvivants.c" open="0" top="0" tabpos="5">
+		<Cursor position="1113" topLine="64" />
+	</File>
+	<File name="../DesSurvivants.h" open="0" top="0" tabpos="7">
+		<Cursor position="620" topLine="10" />
+	</File>
+	<File name="../DesZombies.c" open="0" top="0" tabpos="8">
+		<Cursor position="1391" topLine="79" />
+	</File>
+	<File name="../DesZombies.h" open="0" top="0" tabpos="6">
+		<Cursor position="847" topLine="15" />
+	</File>
+	<File name="../Jeu.c" open="1" top="0" tabpos="1">
+		<Cursor position="1531" topLine="84" />
+	</File>
+	<File name="../Jeu.h" open="1" top="0" tabpos="3">
+		<Cursor position="1529" topLine="33" />
+	</File>
+	<File name="../Survivant.c" open="0" top="0" tabpos="4">
+		<Cursor position="0" topLine="2" />
+	</File>
+	<File name="../Survivant.h" open="0" top="0" tabpos="3">
+		<Cursor position="267" topLine="0" />
+	</File>
+	<File name="../Terrain.c" open="1" top="0" tabpos="2">
+		<Cursor position="1057" topLine="30" />
+	</File>
+	<File name="../Terrain.h" open="1" top="0" tabpos="4">
+		<Cursor position="363" topLine="5" />
+	</File>
+	<File name="../Zombie.c" open="0" top="0" tabpos="5">
+		<Cursor position="1254" topLine="242" />
+	</File>
+	<File name="../Zombie.h" open="0" top="0" tabpos="12">
+		<Cursor position="644" topLine="12" />
+	</File>
+	<File name="../main.c" open="0" top="0" tabpos="6">
+		<Cursor position="616" topLine="17" />
+	</File>
+	<File name="../ncursJeu.c" open="0" top="0" tabpos="7">
+		<Cursor position="213" topLine="9" />
+	</File>
+	<File name="../ncursJeu.h" open="1" top="0" tabpos="5">
+		<Cursor position="245" topLine="0" />
+	</File>
+	<File name="../ncursMenu.c" open="0" top="0" tabpos="10">
+		<Cursor position="208" topLine="0" />
+	</File>
+	<File name="../ncursMenu.h" open="0" top="0" tabpos="11">
+		<Cursor position="255" topLine="0" />
+	</File>
+	<File name="../sdlCredits.h" open="1" top="0" tabpos="6">
+		<Cursor position="330" topLine="0" />
+	</File>
+	<File name="../sdlFin.c" open="1" top="0" tabpos="8">
+		<Cursor position="0" topLine="57" />
+	</File>
+	<File name="../sdlFin.h" open="1" top="0" tabpos="7">
+		<Cursor position="0" topLine="3" />
+	</File>
+	<File name="../sdlJeu.c" open="0" top="0" tabpos="4">
+		<Cursor position="7133" topLine="217" />
+	</File>
+	<File name="../sdlJeu.h" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="17" />
+	</File>
+	<File name="../sdlMenu.c" open="1" top="1" tabpos="9">
+		<Cursor position="391" topLine="15" />
+	</File>
+	<File name="../sdlMenu.h" open="0" top="0" tabpos="0">
+		<Cursor position="589" topLine="10" />
+	</File>
+</CodeBlocks_layout_file>
