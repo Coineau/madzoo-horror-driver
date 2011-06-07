@@ -19,7 +19,8 @@ contacts : sir.mc.ogan@gmail.com
 =========================================
 
 
-Le but du jeu est de récupérer des survivants (En l'occurence des pandas placés sur la carte) à l'aide d'une voiture conduite par un singe.
+Le but du jeu est de récupérer des survivants (en l'occurrence des pandas placés sur la carte) 
+à l'aide d'une voiture conduite par un singe.
 Le joueur devra faire avec des meutes de zombies qui vont chercher à endommager son véhicule.
 
 
@@ -35,7 +36,8 @@ Le joueur devra faire avec des meutes de zombies qui vont chercher à endommager 
 - dossier data :
 	- credits : contient l'image (au format bmp) et la musique (au format wav) nécessaire
 		à la mise en place des crédits
-	- jeu : contient les différents sprites et images (au format bmp), les musiques et 			bruitages (au format wav) et la police d'écriture (au format ttf)
+	- jeu : contient les différents sprites et images (au format bmp), les musiques et 			
+		bruitages (au format wav) et la police d'écriture (au format ttf)
 	- menu : contient les images(au format bmp) et la musique (au format wav) nécessaire
 		à la mise en place du menu
 	- niveau : contient les différents niveaux du jeu (au format txt)
