@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="cbd_mhd" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/cbd_mhd" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/cbd_mhd" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../Auto.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Auto.h" />
+		<Unit filename="../DesSurvivants.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../DesSurvivants.h" />
+		<Unit filename="../DesZombies.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../DesZombies.h" />
+		<Unit filename="../Jeu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Jeu.h" />
+		<Unit filename="../Survivant.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Survivant.h" />
+		<Unit filename="../Terrain.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Terrain.h" />
+		<Unit filename="../Zombie.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Zombie.h" />
+		<Unit filename="../main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ncursJeu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ncursJeu.h" />
+		<Unit filename="../ncursMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ncursMenu.h" />
+		<Unit filename="../sdlCredits.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../sdlCredits.h" />
+		<Unit filename="../sdlFin.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../sdlFin.h" />
+		<Unit filename="../sdlJeu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../sdlJeu.h" />
+		<Unit filename="../sdlMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../sdlMenu.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
