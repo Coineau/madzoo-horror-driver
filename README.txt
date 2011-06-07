@@ -93,6 +93,7 @@ La compilation s'effectue manuellement.
 Il suffit d'entrer "make" dans un terminal.
 Si vous avez choisi de jouer à MHD en mode graphique entrer "bin/mhd_gfx" dans votre terminal ou 
 "bin/mhd_txt" si vous avez choisi le mode texte.
+Si vous voulez passer d'une version à une autre vous devez faire "make clean" avant de récompiler.
 
 
 =========================================
